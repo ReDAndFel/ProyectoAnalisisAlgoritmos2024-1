@@ -3,24 +3,29 @@ import os
 import random
 
 # Ruta absoluta para el archivo JSON
-json_matrix_file_path = "../../matrix.json"
+json_matrix_file_path = "../matrix.json"
 
-def generar_arreglo_bidimensional():
-    n = random.randint(1, 10)  # Generar un número aleatorio entre 1 y 10 para el número de filas
-    m = random.randint(1, 10)  # Generar un número aleatorio entre 1 y 10 para el número de columnas
-    print("Valor de n:", n)  # Imprimir el valor de n
-    print("Valor de m:", m)  # Imprimir el valor de m
-    arreglo = []
+def generar_arreglo_bidimensional(n):
+    matrix = []
     for _ in range(n):
         fila = []
-        for _ in range(m):
+        for _ in range(n):
             numero = random.randint(100000, 999999)  # Generar número aleatorio de 6 dígitos
             fila.append(numero)
-        arreglo.append(fila)
-    return arreglo
+        matrix.append(fila)
+    return matrix
 
-arreglo_bidimensional = generar_arreglo_bidimensional()
+def generar_dos_arreglos_bidimensionales():
+    n = 4
+    # n = random.randint(1, 10)  # implementar que sea 2 sobre n 
+    print("Valor de n:", n)  # Imprimir el valor de n
+    matrix1 = generar_arreglo_bidimensional(n)
+    matrix2 = generar_arreglo_bidimensional(n)
+    return matrix1, matrix2
 
-# Guardar la matriz en un archivo JSON
-with open(json_matrix_file_path, 'w') as archivo_json:
-    json.dump(arreglo_bidimensional, archivo_json)
+matrix1, matrix2 = generar_dos_arreglos_bidimensionales()
+
+# Guardar los arreglos en un archivo JSON
+data = {"matrix1": matrix1, "matrix2": matrix2}
+with open(json_matrix_file_path, 'w') as file_json:
+    json.dump(data, file_json)
