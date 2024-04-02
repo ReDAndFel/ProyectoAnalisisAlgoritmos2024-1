@@ -42,9 +42,23 @@ end_time = time.time()
 elapsed_time = end_time - start_time
 Js.modify_property(json_times_file_path,"NaivLoopUnrollingTwo", elapsed_time)
 print("Tiempo de ejecución de NaivLoopUnrollingTwo:", elapsed_time, "segundos")
-#Imprime la matriz resultante de NaivOnArray
+#Imprime la matriz resultante de NaivLoopUnrollingTwo
 print("La matrix resultante del NaivLoopUnrollingTwo es:")
-for row in matrix_result_NaivOnArray:
+for row in matrix_result_NaivLoopUnrollingTwo:
     for element in row:
         print(element, end=" ")
     print()   
+
+# Se ejecuta el algoritmo NaivLoopUnrollingFour
+start_time = time.time()
+matrix_result_NaivLoopUnrollingFour = As.NaivLoopUnrollingFour(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"NaivLoopUnrollingFour", elapsed_time)
+print("Tiempo de ejecución de NaivLoopUnrollingFour:", elapsed_time, "segundos")
+#Imprime la matriz resultante de NaivLoopUnrollingFour
+print("La matrix resultante del NaivLoopUnrollingFour es:")
+for row in matrix_result_NaivLoopUnrollingFour:
+    for element in row:
+        print(element, end=" ")
+    print()      
