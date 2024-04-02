@@ -62,3 +62,17 @@ for row in matrix_result_NaivLoopUnrollingFour:
     for element in row:
         print(element, end=" ")
     print()      
+    
+# Se ejecuta el algoritmo WinogradOriginal
+start_time = time.time()
+matrix_result_WinogradOriginal = As.WinogradOriginal(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"WinogradOriginal", elapsed_time)
+print("Tiempo de ejecución de WinogradOriginal:", elapsed_time, "segundos")
+#Imprime la matriz resultante de WinogradOriginal
+print("La matrix resultante del WinogradOriginal es:")
+for row in matrix_result_WinogradOriginal:
+    for element in row:
+        print(element, end=" ")
+    print()    
