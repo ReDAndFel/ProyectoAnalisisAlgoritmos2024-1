@@ -76,3 +76,17 @@ for row in matrix_result_WinogradOriginal:
     for element in row:
         print(element, end=" ")
     print()    
+
+# Se ejecuta el algoritmo WinogradScaled
+start_time = time.time()
+matrix_result_WinogradScaled = As.WinogradScaled(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"WinogradScaled", elapsed_time)
+print("Tiempo de ejecución de WinogradScaled:", elapsed_time, "segundos")
+#Imprime la matriz resultante de WinogradScaled
+print("La matrix resultante del WinogradScaled es:")
+for row in matrix_result_WinogradScaled:
+    for element in row:
+        print(element, end=" ")
+    print()      
