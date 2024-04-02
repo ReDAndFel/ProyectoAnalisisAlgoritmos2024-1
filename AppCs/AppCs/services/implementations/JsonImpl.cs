@@ -15,9 +15,12 @@ class JsonImpl : JsonInterface
         JObject json = JObject.Parse(initialJsonText); 
         return json; 
     }
-    public JArray readJsonMatrix(string jsonMatrixPath)
+    public (JArray, JArray) readJsonMatrices(string jsonMatrixPath)
     {
-       string jsonString = File.ReadAllText(jsonMatrixPath);
-        return JArray.Parse(jsonString);
+        string jsonString = File.ReadAllText(jsonMatrixPath);
+        JObject jsonObject = JObject.Parse(jsonString);
+        JArray matrix1 = (JArray)jsonObject["matrix1"];
+        JArray matrix2 = (JArray)jsonObject["matrix2"];
+        return (matrix1, matrix2);
     }
 }

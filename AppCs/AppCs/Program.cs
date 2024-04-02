@@ -11,25 +11,33 @@ class Program
         JsonImpl jsonImpl = new JsonImpl();
 
         JObject jsonTimes = jsonImpl.readJson(jsonTimesFilePath);
-        JArray jsonMatrix = jsonImpl.readJsonMatrix(jsonMatrixFilePath);
-
-        // Suponiendo que el JSON solo contiene una matriz directamente
-        JArray matrix = JArray.Parse(jsonMatrix.ToString());
-
-        Console.WriteLine("La matriz del JSON es la siguiente:");
-
-        // Recorrer la matriz
-        for (int i = 0; i < matrix.Count(); i++)
+        (JArray matrix1, JArray matrix2) = jsonImpl.readJsonMatrices(jsonMatrixFilePath);
+        
+        // Imprimir la matriz1 del JSON
+        Console.WriteLine("La matriz1 del JSON es la siguiente:");
+        foreach (JArray row in matrix1)
         {
-            for (int j = 0; j < matrix[i].Count(); j++)
+            foreach (var element in row)
             {
-                Console.Write(matrix[i][j] + " ");
+                Console.Write(element + " ");
             }
             Console.WriteLine();
         }
 
+        // Imprimir la matriz2 del JSON
+        Console.WriteLine("La matriz2 del JSON es la siguiente:");
+        foreach (JArray row in matrix2)
+        {
+            foreach (var element in row)
+            {
+                Console.Write(element + " ");
+            }
+            Console.WriteLine();
+        }
+
+
         // Modificar propiedad "NaivOnArray" en "Cs por el valor 1"
-        algorithmImpl.addValue(jsonTimes, jsonTimesFilePath, "NaivOnArray", 1);
+        //algorithmImpl.addValue(jsonTimes, jsonTimesFilePath, "NaivOnArray", 1);
 
 
     }
