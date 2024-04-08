@@ -117,6 +117,20 @@ print("La matrix resultante del III.3 Sequential block es:")
 for row in matrix_result_III3SequentialBlock:
     for element in row:
         print(element, end=" ")
-    print()      
+    print()    
+
+# Se ejecuta el algoritmo III.4 Parallel block
+start_time = time.time()
+matrix_result_III4ParallelBlock = As.III4ParallelBlock(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"III.4 Parallel block", elapsed_time)
+print("Tiempo de ejecución de III.4 Parallel block:", elapsed_time, "segundos")
+#Imprime la matriz resultante de III.4 Parallel block
+print("La matrix resultante del III.4 Parallel block es:")
+for row in matrix_result_III4ParallelBlock:
+    for element in row:
+        print(element, end=" ")
+    print()         
 
     
