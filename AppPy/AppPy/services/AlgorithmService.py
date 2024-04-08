@@ -1,4 +1,5 @@
 from . import JsonService as js
+import math
 
 def NaivOnArray(matrix_A, matrix_B):
         
@@ -20,6 +21,8 @@ def NaivLoopUnrollingTwo(matrix_A, matrix_B):
     N = len(matrix_A)
     P = len(matrix_A[0])
     M = len(matrix_B[0])
+    
+    
     Result = [[0.0] * M for _ in range(N)]
 
     if P % 2 == 0:
@@ -131,8 +134,6 @@ def WinogradOriginal(matrix_A, matrix_B):
 
     return Result
 
-import math
-
 def WinogradScaled(matrix_A, matrix_B):
     rows_A = len(matrix_A)
     cols_A = len(matrix_A[0])
@@ -170,4 +171,22 @@ def MultiplyWithScalar(matrix, result, rows, cols, scalar):
     for i in range(rows):
         for j in range(cols):
             result[i][j] = matrix[i][j] * scalar
+    return result
+
+def III3SequentialBlock(matrix_A, matrix_B):
+    # Dimensiones de las matrices B y C
+       
+    num_rows_A = len(matrix_A)
+    num_cols_A = len(matrix_A[0])
+    num_cols_B = len(matrix_B[0])
+    
+    # Inicializar matriz A con ceros
+    result = [[0 for _ in range(num_cols_B)] for _ in range(num_rows_A)]
+    
+    # Calcular cada elemento de A usando la fórmula dada
+    for row in range(num_rows_A):
+        for col in range(num_cols_B):
+            for col_A in range(num_cols_A):
+                result[row][col] += matrix_A[row][col_A] * matrix_B[col_A][col]
+    
     return result

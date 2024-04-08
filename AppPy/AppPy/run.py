@@ -90,3 +90,31 @@ for row in matrix_result_WinogradScaled:
     for element in row:
         print(element, end=" ")
     print()      
+    
+"""Se ejecuta el algoritmo StrassenNaiv (corregir)
+start_time = time.time()
+matrix_result_StrassenNaiv = As.StrassenNaiv(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"StrassenNaiv", elapsed_time)
+print("Tiempo de ejecución de StrassenNaiv:", elapsed_time, "segundos")
+#Imprime la matriz resultante de StrassenNaiv
+print("La matrix resultante del StrassenNaiv es:")
+for row in matrix_result_StrassenNaiv:
+    for element in row:
+        print(element, end=" ")
+    print()     """
+
+# Se ejecuta el algoritmo III.3 Sequential block
+start_time = time.time()
+matrix_result_III3SequentialBlock = As.III3SequentialBlock(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"III.3 Sequential block", elapsed_time)
+print("Tiempo de ejecución de III.3 Sequential block:", elapsed_time, "segundos")
+#Imprime la matriz resultante de III.3 Sequential block
+print("La matrix resultante del III.3 Sequential block es:")
+for row in matrix_result_III3SequentialBlock:
+    for element in row:
+        print(element, end=" ")
+    print()      
