@@ -131,6 +131,21 @@ print("La matrix resultante del III.4 Parallel block es:")
 for row in matrix_result_III4ParallelBlock:
     for element in row:
         print(element, end=" ")
-    print()         
+    print()
+
+# Se ejecuta el algoritmo III.5 Enhanced Parallel Block
+start_time = time.time()
+matrix_result_III5EnhancedParallelBlock = As.III5EnhancedParallelBlock(matrix1,matrix2)
+end_time = time.time()
+elapsed_time = end_time - start_time
+Js.modify_property(json_times_file_path,"III.5 Enhanced Parallel Block", elapsed_time)
+print("Tiempo de ejecución de III.5 Enhanced Parallel Block:", elapsed_time, "segundos")
+#Imprime la matriz resultante de III.5 Enhanced Parallel Block
+print("La matrix resultante del III.5 Enhanced Parallel Block es:")
+for row in matrix_result_III5EnhancedParallelBlock:
+    for element in row:
+        print(element, end=" ")
+    print()
+             
 
     
