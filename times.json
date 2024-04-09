@@ -17,8 +17,8 @@
         "V.4 Parallel Block": 0
     },
     "py": {
-        "NaivOnArray": 0.0,
-        "NaivLoopUnrollingTwo": 0.0010008811950683594,
+        "NaivOnArray": 0.0009989738464355469,
+        "NaivLoopUnrollingTwo": 0.0,
         "NaivLoopUnrollingFour": 0.0,
         "WinogradOriginal": 0.0,
         "WinogradScaled": 0.0,
@@ -26,12 +26,12 @@
         "StrassenWinograd": 0,
         "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 0,
-        "III.5 Enhanced Parallel Block": 0.007048606872558594,
-        "IV.3 Sequential block": 0,
+        "III.5 Enhanced Parallel Block": 0.009996414184570312,
+        "IV.3 Sequential block": 0.0,
         "IV.4 Parallel Block": 0,
         "IV. 5 Enhanced Parallel Block": 0,
         "V.3 Sequential block": 0,
         "V.4 Parallel Block": 0,
-        "III.4 Parallel block": 0.003000974655151367
+        "III.4 Parallel block": 0.021002769470214844
     }
 }
