@@ -17,21 +17,21 @@
         "V.4 Parallel Block": 0
     },
     "py": {
-        "NaivOnArray": 0.0009989738464355469,
+        "NaivOnArray": 0.0009958744049072266,
         "NaivLoopUnrollingTwo": 0.0,
         "NaivLoopUnrollingFour": 0.0,
-        "WinogradOriginal": 0.0,
+        "WinogradOriginal": 0.0009946823120117188,
         "WinogradScaled": 0.0,
         "StrassenNaiv": 0.0,
         "StrassenWinograd": 0,
         "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 0,
-        "III.5 Enhanced Parallel Block": 0.009996414184570312,
+        "III.5 Enhanced Parallel Block": 0.0020029544830322266,
         "IV.3 Sequential block": 0.0,
-        "IV.4 Parallel Block": 0,
+        "IV.4 Parallel Block": 0.0009987354278564453,
         "IV. 5 Enhanced Parallel Block": 0,
         "V.3 Sequential block": 0,
         "V.4 Parallel Block": 0,
-        "III.4 Parallel block": 0.021002769470214844
+        "III.4 Parallel block": 0.027016878128051758
     }
 }

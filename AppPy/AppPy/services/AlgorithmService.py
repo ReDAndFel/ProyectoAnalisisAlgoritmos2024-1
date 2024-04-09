@@ -175,23 +175,28 @@ def MultiplyWithScalar(matrix, result, rows, cols, scalar):
     return result
 
 def III3SequentialBlock(matrix_A, matrix_B):
-    size = len(matrix_A)
-    block_size = size // 2  # Tamaño del bloque
+    # Obtener las dimensiones de las matrices
     
-    # Inicializar matriz A con ceros
-    result = [[0 for _ in range(size)] for _ in range(size)]
+    rows_A = len(matrix_A)
+    cols_B = len(matrix_B[0])
+    cols_A = len(matrix_A[0])
+            
+    # Inicializar la matriz resultante
+    result = [[0 for _ in range(cols_B)] for _ in range(rows_A)]    
+    # Tamaño de los bloques
+    block_size = min(rows_A, cols_B, cols_A) // 2
+
     
-    for row_start in range(0, size, block_size):
-        for col_start in range(0, size, block_size):
-            for inner_start in range(0, size, block_size):
-                for row in range(row_start, min(row_start + block_size, size)):
-                    for col in range(col_start, min(col_start + block_size, size)):
-                        for inner in range(inner_start, min(inner_start + block_size, size)):
-                            result[row][col] += matrix_A[row][inner] * matrix_B[inner][col]
-    
+    # Multiplicar las matrices por bloques
+    for row_block in range(0, rows_A, block_size):
+        for col_block in range(0, cols_B, block_size):
+            for col_A_block in range(0, cols_A, block_size):
+                for row in range(row_block, min(row_block + block_size, rows_A)):
+                    for col in range(col_block, min(col_block + block_size, cols_B)):
+                        for col_A in range(col_A_block, min(col_A_block + block_size, cols_A)):
+                            result[row][col] += matrix_A[row][col_A] * matrix_B[col_A][col]
     return result
                   
-
 def III4ParallelBlock (matrix_A, matrix_B):
     size = len(matrix_A)
     block_size = size // 2  # Tamaño del bloque
@@ -273,4 +278,31 @@ def IV3Sequentialblock(matrix_A, matrix_B):
                             result[row][col] += matrix_A[row][col_A] * matrix_B[col_A][col]
 
     
+    return result
+
+def IV4ParallelBlock (matrix_A, matrix_B):
+    
+    size = len(matrix_A)
+    block_size = size // 2  # Tamaño del bloque
+    
+    # Inicializar matriz A con ceros
+    result = [[0 for _ in range(size)] for _ in range(size)]
+    
+    def multiply_block(row_start, col_start, inner_start):
+        for row in range(row_start, min(row_start + block_size, size)):
+            for col in range(col_start, min(col_start + block_size, size)):
+                for inner in range(inner_start, min(inner_start + block_size, size)):
+                    result[row][col] += matrix_A[row][inner] * matrix_B[inner][col]
+
+    with ThreadPoolExecutor() as executor:
+        futures = []
+        for row_start in range(0, size, block_size):
+            for col_start in range(0, size, block_size):
+                for inner_start in range(0, size, block_size):
+                    futures.append(executor.submit(multiply_block, row_start, col_start, inner_start))
+
+        # Esperar a que todas las tareas se completen
+        for future in futures:
+            future.result()
+
     return result

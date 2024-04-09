@@ -147,19 +147,20 @@ for row in matrix_result_III5EnhancedParallelBlock:
         print(element, end=" ")
     print()
     
-# Se ejecuta el algoritmo IV.3 Sequential block
+# Se ejecuta el algoritmo IV.4 Parallel Block
 start_time = time.time()
-matrix_result_IV3Sequentialblock = As.IV3Sequentialblock(matrix1,matrix2)
+matrix_result_IV4ParallelBlock = As.IV4ParallelBlock(matrix1,matrix2)
 end_time = time.time()
 elapsed_time = end_time - start_time
-Js.modify_property(json_times_file_path,"IV.3 Sequential block", elapsed_time)
-print("Tiempo de ejecución de IV.3 Sequential block:", elapsed_time, "segundos")
-#Imprime la matriz resultante de IV.3 Sequential block
-print("La matrix resultante del IV.3 Sequential block es:")
-for row in matrix_result_IV3Sequentialblock:
+Js.modify_property(json_times_file_path,"IV.4 Parallel Block", elapsed_time)
+print("Tiempo de ejecución de IV.4 Parallel Block:", elapsed_time, "segundos")
+#Imprime la matriz resultante de IV.4 Parallel Block
+print("La matrix resultante del IV.4 Parallel Block es:")
+for row in matrix_result_IV4ParallelBlock:
     for element in row:
         print(element, end=" ")
     print()    
+
              
 
     
