@@ -275,7 +275,7 @@ def IV3Sequentialblock(matrix_A, matrix_B):
                 for row in range(row_block, min(row_block + block_size, rows_A)):
                     for col in range(col_block, min(col_block + block_size, cols_B)):
                         for col_A in range(col_A_block, min(col_A_block + block_size, cols_A)):
-                            result[row][col] += matrix_A[row][col_A] * matrix_B[col_A][col]
+                            result[row][col_A] += matrix_A[row][col] * matrix_B[col][col_A]
 
     
     return result
@@ -292,7 +292,91 @@ def IV4ParallelBlock (matrix_A, matrix_B):
         for row in range(row_start, min(row_start + block_size, size)):
             for col in range(col_start, min(col_start + block_size, size)):
                 for inner in range(inner_start, min(inner_start + block_size, size)):
-                    result[row][col] += matrix_A[row][inner] * matrix_B[inner][col]
+                    result[row][inner] += matrix_A[row][col] * matrix_B[col][inner]
+
+    with ThreadPoolExecutor() as executor:
+        futures = []
+        for row_start in range(0, size, block_size):
+            for col_start in range(0, size, block_size):
+                for inner_start in range(0, size, block_size):
+                    futures.append(executor.submit(multiply_block, row_start, col_start, inner_start))
+
+        # Esperar a que todas las tareas se completen
+        for future in futures:
+            future.result()
+
+    return result
+
+def IV5EnhancedParallelBlock (matrix_A, matrix_B):
+    size = len(matrix_A)
+    block_size = size // 2  # Tamaño del bloque
+    
+    # Inicializar matriz A con ceros
+    result = [[0 for _ in range(size)] for _ in range(size)]
+    
+    def multiply_block(row_start, col_start, inner_start):
+        for row in range(row_start, min(row_start + block_size, size)):
+            for col in range(col_start, min(col_start + block_size, size)):
+                for inner in range(inner_start, min(inner_start + block_size, size)):
+                    result[row][inner] += matrix_A[row][col] * matrix_B[col][inner]
+
+    with ThreadPoolExecutor() as executor:
+        futures = []
+        for row_start in range(0, size // 2, block_size):
+            for col_start in range(0, size, block_size):
+                for inner_start in range(0, size, block_size):
+                    futures.append(executor.submit(multiply_block, row_start, col_start, inner_start))
+        
+            for row_start in range(size // 2, size, block_size):
+                for col_start in range(0, size, block_size):
+                    for inner_start in range(0, size, block_size):
+                        futures.append(executor.submit(multiply_block, row_start, col_start, inner_start))
+        
+        # Esperar a que todas las tareas se completen
+        for future in futures:
+            future.result()
+
+    return result
+
+def V3Sequentialblock(matrix_A, matrix_B):
+    
+    # Obtener las dimensiones de las matrices
+    
+    rows_A = len(matrix_A)
+    cols_B = len(matrix_B[0])
+    cols_A = len(matrix_A[0])
+            
+    # Inicializar la matriz resultante
+    result = [[0 for _ in range(cols_B)] for _ in range(rows_A)]    
+    # Tamaño de los bloques
+    block_size = min(rows_A, cols_B, cols_A) // 2
+
+    
+    # Multiplicar las matrices por bloques
+    for row_block in range(0, rows_A, block_size):
+        for col_block in range(0, cols_B, block_size):
+            for col_A_block in range(0, cols_A, block_size):
+                for row in range(row_block, min(row_block + block_size, rows_A)):
+                    for col in range(col_block, min(col_block + block_size, cols_B)):
+                        for col_A in range(col_A_block, min(col_A_block + block_size, cols_A)):
+                            result[col_A][row] += matrix_A[col_A][col] * matrix_B[col][row]
+
+    
+    return result
+
+def V4ParallelBlock (matrix_A, matrix_B):
+    
+    size = len(matrix_A)
+    block_size = size // 2  # Tamaño del bloque
+    
+    # Inicializar matriz A con ceros
+    result = [[0 for _ in range(size)] for _ in range(size)]
+    
+    def multiply_block(row_start, col_start, inner_start):
+        for row in range(row_start, min(row_start + block_size, size)):
+            for col in range(col_start, min(col_start + block_size, size)):
+                for inner in range(inner_start, min(inner_start + block_size, size)):
+                    result[inner][row] += matrix_A[inner][col] * matrix_B[col][row]
 
     with ThreadPoolExecutor() as executor:
         futures = []
