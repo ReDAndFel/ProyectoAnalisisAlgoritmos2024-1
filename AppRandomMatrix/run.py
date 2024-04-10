@@ -16,11 +16,11 @@ def generar_arreglo_bidimensional(n):
     return matrix
 
 def generar_dos_arreglos_bidimensionales():
-    n = 4
-    # n = random.randint(1, 10)  # implementar que sea 2 sobre n 
-    print("Valor de n:", n)  # Imprimir el valor de n
-    matrix1 = generar_arreglo_bidimensional(n)
-    matrix2 = generar_arreglo_bidimensional(n)
+    n = 2 # exponencial
+    size = pow(2, n) #Crea una tamaño de 2 a la n
+    print("Tamaño de la matriz:", size)  # Imprimir el valor del tamaño
+    matrix1 = generar_arreglo_bidimensional(size)
+    matrix2 = generar_arreglo_bidimensional(size)
     return matrix1, matrix2
 
 matrix1, matrix2 = generar_dos_arreglos_bidimensionales()
