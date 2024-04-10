@@ -1,0 +1,40 @@
+{
+    "cs": {
+        "NaivOnArray": 1.0,
+        "NaivLoopUnrollingTwo": 2.0,
+        "NaivLoopUnrollingFour": 1.739123,
+        "WinogradOriginal": 2.3012,
+        "WinogradScaled": 3.0009994506835938,
+        "StrassenNaiv": 1.0123,
+        "StrassenWinograd": 3.0,
+        "III.3 Sequential block": 3.91203,
+        "III.4 Parallel Block": 3.212,
+        "III.5 Enhanced Parallel Block": 1.0029947757720947,
+        "IV.3 Sequential block": 2.03123,
+        "IV.4 Parallel Block": 3.003999948501587,
+        "IV. 5 Enhanced Parallel Block": 4.0031023,
+        "V.3 Sequential block": 2.0123,
+        "V.4 Parallel Block": 2.3009942054748533,
+        "III.4 Parallel block": 4.190253734588623,
+        "IV.5 Enhanced Parallel Block": 4.00800633430481
+    },
+    "py": {
+        "NaivOnArray": 0.0,
+        "NaivLoopUnrollingTwo": 0.0,
+        "NaivLoopUnrollingFour": 0.0,
+        "WinogradOriginal": 0.0,
+        "WinogradScaled": 0.0,
+        "StrassenNaiv": 1.412123,
+        "StrassenWinograd": 3.123412,
+        "III.3 Sequential block": 0.0,
+        "III.4 Parallel Block": 3.212,
+        "III.5 Enhanced Parallel Block": 0.01167607307434082,
+        "IV.3 Sequential block": 2.3413123,
+        "IV.4 Parallel Block": 0.0,
+        "IV. 5 Enhanced Parallel Block": 4.4031023,
+        "V.3 Sequential block": 0.0,
+        "V.4 Parallel Block": 0.00024318695068359375,
+        "III.4 Parallel block": 0.0,
+        "IV.5 Enhanced Parallel Block": 0.000997781753540039
+    }
+}

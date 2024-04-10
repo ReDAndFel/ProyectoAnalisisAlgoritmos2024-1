@@ -17,9 +17,10 @@ def read_json(json_file_path):
     with open(json_file_path, 'r') as json_matrix:
         return json.load(json_matrix) 
           
-def read_json_matrix(json_matrix_file_path):
+def read_json_matrix(json_matrix_file_path, case_index):
     with open(json_matrix_file_path, 'r') as json_matrix:
         data = json.load(json_matrix)
-        matrix1 = data.get("matrix1", [])  # Obtener la matriz1 del JSON, si no existe, retornar una lista vacía
-        matrix2 = data.get("matrix2", [])  # Obtener la matriz2 del JSON, si no existe, retornar una lista vacía
+        case_key = f"caso{case_index}"
+        matrix1 = data[case_key]["matrix1"]
+        matrix2 = data[case_key]["matrix2"]
         return matrix1, matrix2            
