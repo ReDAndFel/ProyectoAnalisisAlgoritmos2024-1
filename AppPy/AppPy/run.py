@@ -66,7 +66,7 @@ for i in range(8):
             print(element, end=" ")
         print()      
         
-    # Se ejecuta el algoritmo WinogradOriginal
+    #Se ejecuta el algoritmo WinogradOriginal
     start_time = time.time()
     matrix_result_WinogradOriginal = As.WinogradOriginal(matrix1,matrix2)
     end_time = time.time()
@@ -78,7 +78,7 @@ for i in range(8):
     for row in matrix_result_WinogradOriginal:
         for element in row:
             print(element, end=" ")
-        print()    
+        print()
 
     # Se ejecuta el algoritmo WinogradScaled
     start_time = time.time()
@@ -92,7 +92,7 @@ for i in range(8):
     for row in matrix_result_WinogradScaled:
         for element in row:
             print(element, end=" ")
-        print()      
+        print()
         
     """Se ejecuta el algoritmo StrassenNaiv (corregir)
     start_time = time.time()
@@ -180,7 +180,7 @@ for i in range(8):
 
     # Se ejecuta el algoritmo V.3 Sequential block
     start_time = time.time()
-    matrix_result_V3Sequentialblock = As.V3Sequentialblock(matrix1,matrix2)
+    matrix_result_V3Sequentialblock = As.V3SequentialBlock(matrix1,matrix2)
     end_time = time.time()
     elapsed_time = end_time - start_time
     Js.modify_property(json_times_file_path,"V.3 Sequential block", elapsed_time)
