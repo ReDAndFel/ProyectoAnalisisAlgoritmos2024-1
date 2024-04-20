@@ -9,7 +9,7 @@ for i in range(8):
     json_times_file_path = f"times{i+1}.json"
 
     matrix1, matrix2 = Js.read_json_matrix(json_matrix_file_path, i+1)
-
+    """
     # Imprimir la matriz1
     print("La matriz1 desde el archivo JSON es:")
     for row in matrix1:
@@ -78,7 +78,7 @@ for i in range(8):
     for row in matrix_result_WinogradOriginal:
         for element in row:
             print(element, end=" ")
-        print()
+        print()"""
 
     # Se ejecuta el algoritmo WinogradScaled
     start_time = time.time()
@@ -94,7 +94,7 @@ for i in range(8):
             print(element, end=" ")
         print()
         
-    """Se ejecuta el algoritmo StrassenNaiv (corregir)
+    #Se ejecuta el algoritmo StrassenNaiv
     start_time = time.time()
     matrix_result_StrassenNaiv = As.StrassenNaiv(matrix1,matrix2)
     end_time = time.time()
@@ -106,8 +106,9 @@ for i in range(8):
     for row in matrix_result_StrassenNaiv:
         for element in row:
             print(element, end=" ")
-        print()     """
-
+        print()   
+          
+    """
     # Se ejecuta el algoritmo III.3 Sequential block
     start_time = time.time()
     matrix_result_III3SequentialBlock = As.III3SequentialBlock(matrix1,matrix2)
@@ -204,4 +205,4 @@ for i in range(8):
     for row in matrix_result_V4ParallelBlock:
         for element in row:
             print(element, end=" ")
-        print()      
+        print()      """

@@ -7,7 +7,7 @@ from model .IV5EnhancedParallelBlock import IV5EnhancedParallelBlockImpl
 from model .NaivLoopUnrollingFour import NaivLoopUnrollingFourImpl
 from model .NaivLoopUnrollingTwo import NaivLoopUnrollingTwoImpl
 from model .NaivOnArray import NaivOnArrayImpl
-#from model .StrassenNaiv import StrassenNaivImpl
+from model .StrassenNaiv import strassen_naiv
 #from model .StrassenWinograd import StrassenWinogradImpl
 from model .V3SequentialBlock import V3SequentialBlockImpl
 from model .V4ParallelBlock import V4ParallelBlockImpl
@@ -54,7 +54,7 @@ def V4ParallelBlock(matrix_A,matrix_B):
     return V4ParallelBlockImpl(matrix_A,matrix_B)
 
 def StrassenNaiv(matrix_A,matrix_B):
-    return StrassenNaivImpl(matrix_A,matrix_B)
+    return strassen_naiv(matrix_A,matrix_B)
 
-def StrassenWinograd(matrix_A,matrix_B):
-    return StrassenWinogradImpl(matrix_A,matrix_B)
+"""def StrassenWinograd(matrix_A,matrix_B):
+    return StrassenWinogradImpl(matrix_A,matrix_B)"""
