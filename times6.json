@@ -23,18 +23,18 @@
         "NaivLoopUnrollingTwo": 0.0,
         "NaivLoopUnrollingFour": 0.0,
         "WinogradOriginal": 0.0,
-        "WinogradScaled": 0.0,
-        "StrassenNaiv": 0.0010142326354980469,
-        "StrassenWinograd": 3.123412,
+        "WinogradScaled": 0.001016378402709961,
+        "StrassenNaiv": 0.001020669937133789,
+        "StrassenWinograd": 0.0,
         "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 0.0010161399841308594,
+        "III.5 Enhanced Parallel Block": 0.0010242462158203125,
         "IV.3 Sequential block": 2.3413123,
-        "IV.4 Parallel Block": 0.0,
+        "IV.4 Parallel Block": 0.0005171298980712891,
         "IV. 5 Enhanced Parallel Block": 4.4031023,
         "V.3 Sequential block": 0.0,
-        "V.4 Parallel Block": 0.0010144710540771484,
-        "III.4 Parallel block": 0.0,
-        "IV.5 Enhanced Parallel Block": 0.001512289047241211
+        "V.4 Parallel Block": 0.0010347366333007812,
+        "III.4 Parallel block": 0.001007080078125,
+        "IV.5 Enhanced Parallel Block": 0.0010128021240234375
     }
 }

@@ -24,17 +24,17 @@
         "NaivLoopUnrollingFour": 0.0,
         "WinogradOriginal": 0.0,
         "WinogradScaled": 0.0,
-        "StrassenNaiv": 0.0005173683166503906,
-        "StrassenWinograd": 3.123412,
+        "StrassenNaiv": 0.0005273818969726562,
+        "StrassenWinograd": 0.001024484634399414,
         "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 0.0005128383636474609,
+        "III.5 Enhanced Parallel Block": 0.0010712146759033203,
         "IV.3 Sequential block": 2.3413123,
         "IV.4 Parallel Block": 0.0,
         "IV. 5 Enhanced Parallel Block": 4.4031023,
         "V.3 Sequential block": 0.0,
-        "V.4 Parallel Block": 0.0010144710540771484,
-        "III.4 Parallel block": 0.0010144710540771484,
-        "IV.5 Enhanced Parallel Block": 0.0010166168212890625
+        "V.4 Parallel Block": 0.0010042190551757812,
+        "III.4 Parallel block": 0.001018524169921875,
+        "IV.5 Enhanced Parallel Block": 0.0
     }
 }

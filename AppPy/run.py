@@ -5,11 +5,13 @@ import services.JsonService as Js
 json_matrix_file_path = "matrixExperimental.json"
 
 for i in range(8):
+
+    print(f"caso de uso {i+1}")
     
     json_times_file_path = f"times{i+1}.json"
 
     matrix1, matrix2 = Js.read_json_matrix(json_matrix_file_path, i+1)
-    """
+    
     # Imprimir la matriz1
     print("La matriz1 desde el archivo JSON es:")
     for row in matrix1:
@@ -78,7 +80,7 @@ for i in range(8):
     for row in matrix_result_WinogradOriginal:
         for element in row:
             print(element, end=" ")
-        print()"""
+        print()
 
     # Se ejecuta el algoritmo WinogradScaled
     start_time = time.time()
@@ -107,8 +109,22 @@ for i in range(8):
         for element in row:
             print(element, end=" ")
         print()   
+
+    #Se ejecuta el algoritmo StrassenWinograd
+    start_time = time.time()
+    matrix_result_StrassenWinograd = As.StrassenWinograd(matrix1,matrix2)
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    Js.modify_property(json_times_file_path,"StrassenWinograd", elapsed_time)
+    print("Tiempo de ejecución de StrassenWinograd:", elapsed_time, "segundos")
+    #Imprime la matriz resultante de StrassenWinograd
+    print("La matrix resultante del StrassenWinograd es:")
+    for row in matrix_result_StrassenWinograd:
+        for element in row:
+            print(element, end=" ")
+        print()
           
-    """
+    
     # Se ejecuta el algoritmo III.3 Sequential block
     start_time = time.time()
     matrix_result_III3SequentialBlock = As.III3SequentialBlock(matrix1,matrix2)
@@ -205,4 +221,4 @@ for i in range(8):
     for row in matrix_result_V4ParallelBlock:
         for element in row:
             print(element, end=" ")
-        print()      """
+        print()    
