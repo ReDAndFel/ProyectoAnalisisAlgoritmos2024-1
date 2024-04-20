@@ -2,11 +2,11 @@ import time
 import services.AlgorithmService as As
 import services.JsonService as Js
 
-json_matrix_file_path = "../matrix.json"
+json_matrix_file_path = "matrixExperimental.json"
 
 for i in range(8):
     
-    json_times_file_path = f"../times{i+1}.json"
+    json_times_file_path = f"times{i+1}.json"
 
     matrix1, matrix2 = Js.read_json_matrix(json_matrix_file_path, i+1)
 

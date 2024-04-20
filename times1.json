@@ -21,20 +21,20 @@
     "py": {
         "NaivOnArray": 0.0,
         "NaivLoopUnrollingTwo": 0.0,
-        "NaivLoopUnrollingFour": 0.008217334747314453,
+        "NaivLoopUnrollingFour": 0.0,
         "WinogradOriginal": 0.0,
-        "WinogradScaled": 0.0,
+        "WinogradScaled": 0.0005171298980712891,
         "StrassenNaiv": 1.412123,
         "StrassenWinograd": 3.123412,
         "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 0.004061222076416016,
+        "III.5 Enhanced Parallel Block": 0.0005152225494384766,
         "IV.3 Sequential block": 2.3413123,
-        "IV.4 Parallel Block": 0.001957416534423828,
+        "IV.4 Parallel Block": 0.0,
         "IV. 5 Enhanced Parallel Block": 4.4031023,
         "V.3 Sequential block": 0.0,
-        "V.4 Parallel Block": 0.0,
-        "III.4 Parallel block": 0.004761219024658203,
-        "IV.5 Enhanced Parallel Block": 0.004065036773681641
+        "V.4 Parallel Block": 0.0015301704406738281,
+        "III.4 Parallel block": 0.0010213851928710938,
+        "IV.5 Enhanced Parallel Block": 0.0
     }
 }

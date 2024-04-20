@@ -26,15 +26,15 @@
         "WinogradScaled": 0.0,
         "StrassenNaiv": 1.412123,
         "StrassenWinograd": 3.123412,
-        "III.3 Sequential block": 0.003495454788208008,
+        "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 0.0019979476928710938,
+        "III.5 Enhanced Parallel Block": 0.0005128383636474609,
         "IV.3 Sequential block": 2.3413123,
-        "IV.4 Parallel Block": 0.00099945068359375,
+        "IV.4 Parallel Block": 0.0,
         "IV. 5 Enhanced Parallel Block": 4.4031023,
         "V.3 Sequential block": 0.0,
-        "V.4 Parallel Block": 0.004004716873168945,
-        "III.4 Parallel block": 0.0,
-        "IV.5 Enhanced Parallel Block": 0.0
+        "V.4 Parallel Block": 0.0010144710540771484,
+        "III.4 Parallel block": 0.0010144710540771484,
+        "IV.5 Enhanced Parallel Block": 0.0010166168212890625
     }
 }

@@ -2,7 +2,7 @@ import services.JsonService as js
 import matplotlib.pyplot as plt
 import numpy as np
 
-json_times_file_path = "../times8.json"
+json_times_file_path = "times8.json"
 data = js.read_json(json_times_file_path)
 
 labels = list(data['cs'].keys())
