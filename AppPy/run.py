@@ -2,7 +2,7 @@ import time
 import services.AlgorithmService as As
 import services.JsonService as Js
 
-json_matrix_file_path = "matrixExperimental.json"
+json_matrix_file_path = "matrix.json"
 
 for i in range(8):
 
