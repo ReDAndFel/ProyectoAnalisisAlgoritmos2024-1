@@ -12,11 +12,9 @@
         "III.5 Enhanced Parallel Block": 1.0029947757720947,
         "IV.3 Sequential block": 2.03123,
         "IV.4 Parallel Block": 3.003999948501587,
-        "IV. 5 Enhanced Parallel Block": 4.0031023,
+        "IV.5 Enhanced Parallel Block": 4.0031023,
         "V.3 Sequential block": 2.0123,
-        "V.4 Parallel Block": 2.3009942054748533,
-        "III.4 Parallel block": 4.190253734588623,
-        "IV.5 Enhanced Parallel Block": 4.00800633430481
+        "V.4 Parallel Block": 2.3009942054748533
     },
     "py": {
         "NaivOnArray": 0.0,
@@ -24,17 +22,15 @@
         "NaivLoopUnrollingFour": 0.0,
         "WinogradOriginal": 0.0,
         "WinogradScaled": 0.0,
-        "StrassenNaiv": 0.0005068778991699219,
-        "StrassenWinograd": 0.0010180473327636719,
+        "StrassenNaiv": 0.0005273818969726562,
+        "StrassenWinograd": 0.001024484634399414,
         "III.3 Sequential block": 0.0,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 0.0010190010070800781,
+        "III.5 Enhanced Parallel Block": 0.0010712146759033203,
         "IV.3 Sequential block": 2.3413123,
-        "IV.4 Parallel Block": 0.001013040542602539,
-        "IV. 5 Enhanced Parallel Block": 4.4031023,
-        "V.3 Sequential block": 0.0010216236114501953,
-        "V.4 Parallel Block": 0.0005047321319580078,
-        "III.4 Parallel block": 0.0020508766174316406,
-        "IV.5 Enhanced Parallel Block": 0.0010306835174560547
+        "IV.4 Parallel Block": 0.0,
+        "IV.5 Enhanced Parallel Block": 4.4031023,
+        "V.3 Sequential block": 0.0,
+        "V.4 Parallel Block": 0.0010042190551757812
     }
 }

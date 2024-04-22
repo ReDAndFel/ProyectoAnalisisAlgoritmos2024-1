@@ -109,6 +109,34 @@ for i in range(8):
         for element in row:
             print(element, end=" ")
         print()   
+        
+    #Se ejecuta el algoritmo StrassenNaiv
+    start_time = time.time()
+    matrix_result_StrassenNaiv = As.StrassenNaiv(matrix1,matrix2)
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    Js.modify_property(json_times_file_path,"StrassenNaiv", elapsed_time)
+    print("Tiempo de ejecución de StrassenNaiv:", elapsed_time, "segundos")
+    #Imprime la matriz resultante de StrassenNaiv
+    print("La matrix resultante del StrassenNaiv es:")
+    for row in matrix_result_StrassenNaiv:
+        for element in row:
+            print(element, end=" ")
+        print()   
+
+    #Se ejecuta el algoritmo IV.3 Sequential Block
+    start_time = time.time()
+    matrix_result_IV3SequentialBlock = As.IV3SequentialBlock(matrix1,matrix2)
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    Js.modify_property(json_times_file_path,"IV.3 Sequential Block", elapsed_time)
+    print("Tiempo de ejecución de IV.3 Sequential Block:", elapsed_time, "segundos")
+    #Imprime la matriz resultante de IV.3 Sequential Block
+    print("La matrix resultante del IV.3 Sequential Block es:")
+    for row in matrix_result_IV3SequentialBlock:
+        for element in row:
+            print(element, end=" ")
+        print()    
 
     #Se ejecuta el algoritmo StrassenWinograd
     start_time = time.time()
