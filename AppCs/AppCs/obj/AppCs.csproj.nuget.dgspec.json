@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj": {}
+    "C:\\Users\\ASUS\\Documents\\Mis documentos Andres\\Analisis Algoritmos\\ProyectoAlgoritmos2.0\\AppCs\\AppCs\\AppCs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj": {
+    "C:\\Users\\ASUS\\Documents\\Mis documentos Andres\\Analisis Algoritmos\\ProyectoAlgoritmos2.0\\AppCs\\AppCs\\AppCs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\Mis documentos Andres\\Analisis Algoritmos\\ProyectoAlgoritmos2.0\\AppCs\\AppCs\\AppCs.csproj",
         "projectName": "AppCs",
-        "projectPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\Mis documentos Andres\\Analisis Algoritmos\\ProyectoAlgoritmos2.0\\AppCs\\AppCs\\AppCs.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\Mis documentos Andres\\Analisis Algoritmos\\ProyectoAlgoritmos2.0\\AppCs\\AppCs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
