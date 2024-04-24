@@ -19,7 +19,7 @@
     "py": {
         "NaivOnArray": 1498.4490768909454,
         "NaivLoopUnrollingTwo": 1087.2003877162933,
-        "NaivLoopUnrollingFour": 1.3824131488800049,
+        "NaivLoopUnrollingFour": 1001.7046129703522,
         "WinogradOriginal": 1.498485803604126,
         "WinogradScaled": 1.5308969020843506,
         "StrassenNaiv": 1.8809916973114014,
