@@ -21,7 +21,7 @@
         "NaivLoopUnrollingTwo": 0.0035042762756347656,
         "NaivLoopUnrollingFour": 0.0030062198638916016,
         "WinogradOriginal": 0.0030007362365722656,
-        "WinogradScaled": 0.20520782470703125,
+        "WinogradScaled": 0.003999233245849609,
         "StrassenNaiv": 0.2882671356201172,
         "StrassenWinograd": 0.27028656005859375,
         "III.3 Sequential block": 0.20419549942016602,
