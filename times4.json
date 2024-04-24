@@ -18,7 +18,7 @@
     },
     "py": {
         "NaivOnArray": 0.2962684631347656,
-        "NaivLoopUnrollingTwo": 13.706021785736084,
+        "NaivLoopUnrollingTwo": 0.19024372100830078,
         "NaivLoopUnrollingFour": 12.458434820175171,
         "WinogradOriginal": 14.72768521308899,
         "WinogradScaled": 14.494048833847046,
