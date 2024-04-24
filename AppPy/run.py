@@ -47,7 +47,7 @@ for i in range(8):
     elapsed_time = end_time - start_time
     Js.modify_property(json_times_file_path,"WinogradOriginal", elapsed_time)
     print("Tiempo de ejecución de WinogradOriginal:", elapsed_time, "segundos")
-    """
+    
     # Se ejecuta el algoritmo WinogradScaled
     start_time = time.time()
     matrix_result_WinogradScaled = As.WinogradScaled(matrix1,matrix2)
@@ -63,7 +63,7 @@ for i in range(8):
     elapsed_time = end_time - start_time
     Js.modify_property(json_times_file_path,"StrassenNaiv", elapsed_time)
     print("Tiempo de ejecución de StrassenNaiv:", elapsed_time, "segundos")
-    
+    """
     #Se ejecuta el algoritmo IV.3 Sequential Block
     start_time = time.time()
     matrix_result_IV3SequentialBlock = As.IV3SequentialBlock(matrix1,matrix2)
