@@ -23,7 +23,7 @@
         "WinogradOriginal": 147.5673861503601,
         "WinogradScaled": 136.9718656539917,
         "StrassenNaiv": 95.37078094482422,
-        "StrassenWinograd": 0.2617464065551758,
+        "StrassenWinograd": 95.04868960380554,
         "III.3 Sequential block": 0.19368577003479004,
         "III.4 Parallel Block": 3.212,
         "III.5 Enhanced Parallel Block": 0.2032167911529541,

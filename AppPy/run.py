@@ -63,7 +63,7 @@ for i in range(8):
     elapsed_time = end_time - start_time
     Js.modify_property(json_times_file_path,"StrassenNaiv", elapsed_time)
     print("Tiempo de ejecución de StrassenNaiv:", elapsed_time, "segundos")
-    """
+    
     #Se ejecuta el algoritmo IV.3 Sequential Block
     start_time = time.time()
     matrix_result_IV3SequentialBlock = As.IV3SequentialBlock(matrix1,matrix2)
@@ -79,7 +79,7 @@ for i in range(8):
     elapsed_time = end_time - start_time
     Js.modify_property(json_times_file_path,"StrassenWinograd", elapsed_time)
     print("Tiempo de ejecución de StrassenWinograd:", elapsed_time, "segundos")
-       
+    """   
     # Se ejecuta el algoritmo III.3 Sequential block
     start_time = time.time()
     matrix_result_III3SequentialBlock = As.III3SequentialBlock(matrix1,matrix2)
