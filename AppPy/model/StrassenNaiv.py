@@ -80,31 +80,31 @@ def strassen_naiv_step(matrizA, matrizB, matrizResultado, cantidadFilasMatrices,
 
         # Asignar memoria para cada fila
         for i in range(nuevoTamanio):
-            matrizA11.append([])
-            matrizA12.append([])
-            matrizA21.append([])
-            matrizA22.append([])
+            matrizA11.append([0] * nuevoTamanio)
+            matrizA12.append([0] * nuevoTamanio)
+            matrizA21.append([0] * nuevoTamanio)
+            matrizA22.append([0] * nuevoTamanio)
             
-            matrizB11.append([])
-            matrizB12.append([])
-            matrizB21.append([])
-            matrizB22.append([])
+            matrizB11.append([0] * nuevoTamanio)
+            matrizB12.append([0] * nuevoTamanio)
+            matrizB21.append([0] * nuevoTamanio)
+            matrizB22.append([0] * nuevoTamanio)
             
-            matrizResultadoParte11.append([])
-            matrizResultadoParte12.append([])
-            matrizResultadoParte21.append([])
-            matrizResultadoParte22.append([])
+            matrizResultadoParte11.append([0] * nuevoTamanio)
+            matrizResultadoParte12.append([0] * nuevoTamanio)
+            matrizResultadoParte21.append([0] * nuevoTamanio)
+            matrizResultadoParte22.append([0] * nuevoTamanio)
             
-            ayudante1.append([])
-            ayudante2.append([])
+            ayudante1.append([0] * nuevoTamanio)
+            ayudante2.append([0] * nuevoTamanio)
             
-            auxiliar1.append([])
-            auxiliar2.append([])
-            auxiliar3.append([])
-            auxiliar4.append([])
-            auxiliar5.append([])
-            auxiliar6.append([])
-            auxiliar7.append([])
+            auxiliar1.append([0] * nuevoTamanio)
+            auxiliar2.append([0] * nuevoTamanio)
+            auxiliar3.append([0] * nuevoTamanio)
+            auxiliar4.append([0] * nuevoTamanio)
+            auxiliar5.append([0] * nuevoTamanio)
+            auxiliar6.append([0] * nuevoTamanio)
+            auxiliar7.append([0] * nuevoTamanio)
             
         # Llenamos las matrices
         for i in range(nuevoTamanio):

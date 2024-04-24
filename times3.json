@@ -17,20 +17,22 @@
         "V.4 Parallel Block": 2.3009942054748533
     },
     "py": {
-        "NaivOnArray": 0.0,
-        "NaivLoopUnrollingTwo": 0.0,
-        "NaivLoopUnrollingFour": 0.0,
-        "WinogradOriginal": 0.0,
-        "WinogradScaled": 0.0,
-        "StrassenNaiv": 0.0005273818969726562,
-        "StrassenWinograd": 0.001024484634399414,
-        "III.3 Sequential block": 0.0,
+        "NaivOnArray": 0.03603863716125488,
+        "NaivLoopUnrollingTwo": 1.5739734172821045,
+        "NaivLoopUnrollingFour": 1.4349663257598877,
+        "WinogradOriginal": 1.5274946689605713,
+        "WinogradScaled": 1.5998783111572266,
+        "StrassenNaiv": 1.9178614616394043,
+        "StrassenWinograd": 1.9032199382781982,
+        "III.3 Sequential block": 1.5911812782287598,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 0.0010712146759033203,
+        "III.5 Enhanced Parallel Block": 1.6820414066314697,
         "IV.3 Sequential block": 2.3413123,
-        "IV.4 Parallel Block": 0.0,
-        "IV.5 Enhanced Parallel Block": 4.4031023,
-        "V.3 Sequential block": 0.0,
-        "V.4 Parallel Block": 0.0010042190551757812
+        "IV.4 Parallel Block": 1.5984857082366943,
+        "IV.5 Enhanced Parallel Block": 1.5878803730010986,
+        "V.3 Sequential block": 1.6723253726959229,
+        "V.4 Parallel Block": 1.8439922332763672,
+        "IV.3 Sequential Block": 1.542633295059204,
+        "III.4 Parallel block": 1.6684575080871582
     }
 }

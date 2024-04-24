@@ -23,7 +23,7 @@ def generar_dos_arreglos_bidimensionales(n):
     return matrix1, matrix2
 
 data = {}
-n=1
+n=4
 for i in range(8):
     case_name = f"caso{i+1}"
     matrix1, matrix2 = generar_dos_arreglos_bidimensionales(n)
