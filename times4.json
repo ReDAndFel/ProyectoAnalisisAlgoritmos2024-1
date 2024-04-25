@@ -26,7 +26,7 @@
         "StrassenWinograd": 0.2612619400024414,
         "III.3 Sequential block": 0.19822406768798828,
         "III.4 Parallel Block": 3.212,
-        "III.5 Enhanced Parallel Block": 14.899112939834595,
+        "III.5 Enhanced Parallel Block": 0.20571017265319824,
         "IV.3 Sequential block": 2.3413123,
         "IV.4 Parallel Block": 14.399973154067993,
         "IV.5 Enhanced Parallel Block": 13.835975408554077,
