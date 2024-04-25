@@ -24,7 +24,7 @@ ax.bar(x - width/2, cs_values, width, label='C#')
 ax.bar(x + width/2, py_values, width, label='Python')
 
 ax.set_xlabel('Algoritmo')
-ax.set_ylabel('Tiempo')
+ax.set_ylabel('Tiempo en segundos')
 ax.set_title('Comparación de tiempos entre C# y Python')
 ax.set_xticks(x)
 ax.set_xticklabels(labels, rotation=90)
