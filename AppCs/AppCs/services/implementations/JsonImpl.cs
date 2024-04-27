@@ -2,7 +2,7 @@ using Newtonsoft.Json.Linq;
 
 class JsonImpl : JsonInterface
 {
-    public void modifyProperty(JObject json,String jsonFilePath, string property, int value)
+    public void modifyProperty(JObject json,String jsonFilePath, string property, double value)
     {
         json["cs"][property] = value;
         string modifiedJson = json.ToString();
@@ -15,12 +15,13 @@ class JsonImpl : JsonInterface
         JObject json = JObject.Parse(initialJsonText); 
         return json; 
     }
-    public (JArray, JArray) readJsonMatrices(string jsonMatrixPath)
-    {
-        string jsonString = File.ReadAllText(jsonMatrixPath);
-        JObject jsonObject = JObject.Parse(jsonString);
-        JArray matrix1 = (JArray)jsonObject["matrix1"];
-        JArray matrix2 = (JArray)jsonObject["matrix2"];
-        return (matrix1, matrix2);
-    }
+    public (JArray, JArray) readJsonMatrices(string jsonMatrixPath, int caseIndex)
+{
+    string jsonString = File.ReadAllText(jsonMatrixPath);
+    JObject jsonObject = JObject.Parse(jsonString);
+    string caseKey = "caso" + caseIndex;
+    JArray matrix1 = (JArray)jsonObject[caseKey]["matrix1"];
+    JArray matrix2 = (JArray)jsonObject[caseKey]["matrix2"];
+    return (matrix1, matrix2);
+}
 }

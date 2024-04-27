@@ -1,5 +1,5 @@
-using Newtonsoft.Json.Linq;
+namespace services.interfaces;
+public interface AlgorithmInterface{
+        int[][] NaivOnArrayExec(double[,] matrixA, double[,] matrixB);
 
-interface AlgorithmInterface{
-    void addValue(JObject json,String jsonFilePath,string algorithm_name,int value);
 }
