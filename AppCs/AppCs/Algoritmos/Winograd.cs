@@ -1,6 +1,8 @@
-using Microsoft.VisualBasic.CompilerServices;
-using Algoritmos.Util;
-public class Winograd{
+using System;
+using services.interfaces;
+
+public class Winograd : AlgorithmInterface
+{
     /// <summary>
     /// Realiza la multiplicación de dos matrices utilizando el algoritmo original de Winograd.
     /// Calcula primero dos vectores auxiliares, y y z, para mejorar el rendimiento del algoritmo. 
@@ -10,30 +12,26 @@ public class Winograd{
     /// </summary>
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
-    /// <param name="Result">Matriz donde se almacenará el resultado.</param>
-    /// <param name="N">Número de filas de la matriz A y número de columnas de la matriz B.</param>
-    /// <param name="P">Número de columnas de la matriz A y número de filas de la matriz B.</param>
-    /// <param name="M">Número de filas de la matriz B y de la matriz resultado.</param>
-    public static void Original(double[,] A, double[,] B)
+    /// <returns>Matriz resultado de la multiplicación.</returns>
+    public static int[][] Original(int[][] A, int[][] B)
     {
-        int N = A[].Length;
+        int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        double[][] result = new int[rowsA][];
+        int[][] result = new int[N][];
         int i, j, k;
-        double aux;
         int upsilon = P % 2;
         int gamma = P - upsilon;
-        double[] y = new double[M];
-        double[] z = new double[N];
+        int[] y = new int[M];
+        int[] z = new int[N];
 
         // Calculo de y
         for (i = 0; i < M; i++)
         {
-            aux = 0.0;
+            int aux = 0;
             for (j = 0; j < gamma; j += 2)
             {
-                aux += A[i, j] * A[i, j + 1];
+                aux += A[i][j] * A[i][j + 1];
             }
             y[i] = aux;
         }
@@ -41,12 +39,18 @@ public class Winograd{
         // Calculo de z
         for (i = 0; i < N; i++)
         {
-            aux = 0.0;
+            int aux = 0;
             for (j = 0; j < gamma; j += 2)
             {
-                aux += B[j, i] * B[j + 1, i];
+                aux += B[j][i] * B[j + 1][i];
             }
             z[i] = aux;
+        }
+
+        result = new int[N][];
+        for (i = 0; i < N; i++)
+        {
+            result[i] = new int[M];
         }
 
         if (upsilon == 1)
@@ -57,12 +61,12 @@ public class Winograd{
             {
                 for (k = 0; k < N; k++)
                 {
-                    aux = 0.0;
+                    int aux = 0;
                     for (j = 0; j < gamma; j += 2)
                     {
-                        aux += (A[i, j] + B[j + 1, k]) * (A[i, j + 1] + B[j, k]);
+                        aux += (A[i][j] + B[j + 1][k]) * (A[i][j + 1] + B[j][k]);
                     }
-                    Result[i, k] = aux - y[i] - z[k] + A[i, PP] * B[PP, k];
+                    result[i][k] = aux - y[i] - z[k] + A[i][PP] * B[PP][k];
                 }
             }
         }
@@ -73,19 +77,17 @@ public class Winograd{
             {
                 for (k = 0; k < N; k++)
                 {
-                    aux = 0.0;
+                    int aux = 0;
                     for (j = 0; j < gamma; j += 2)
                     {
-                        aux += (A[i, j] + B[j + 1, k]) * (A[i, j + 1] + B[j, k]);
+                        aux += (A[i][j] + B[j + 1][k]) * (A[i][j + 1] + B[j][k]);
                     }
-                    Result[i, k] = aux - y[i] - z[k];
+                    result[i][k] = aux - y[i] - z[k];
                 }
             }
         }
 
-        // Liberación de memoria
-        y = null;
-        z = null;
+        return result;
     }
 
     /// <summary>
@@ -97,16 +99,26 @@ public class Winograd{
     /// </summary>
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
-    /// <param name="Result">Matriz donde se almacenará el resultado.</param>
-    /// <param name="N">Número de filas de la matriz A y número de columnas de la matriz B.</param>
-    /// <param name="P">Número de columnas de la matriz A y número de filas de la matriz B.</param>
-    /// <param name="M">Número de filas de la matriz B y de la matriz resultado.</param>
-    public static void Scaled(double[,] A, double[,] B, double[,] Result, int N, int P, int M)
+    /// <returns>Matriz resultado de la multiplicación.</returns>
+    public static int[][] Scaled(int[][] A, int[][] B)
     {
+        int N = A.Length;
+        int P = B[0].Length;
+        int M = A[0].Length;
+        int[][] result = new int[N][];
         int i;
+
         // Crear copias escaladas de A y B
-        double[,] CopyA = new double[N, P];
-        double[,] CopyB = new double[P, M];
+        int[][] copyA = new int[N][];
+        int[][] copyB = new int[P][];
+        for (i = 0; i < N; i++)
+        {
+            copyA[i] = new int[P];
+        }
+        for (i = 0; i < P; i++)
+        {
+            copyB[i] = new int[M];
+        }
 
         // Factor de escala
         double a = NormInf(A, N, P);
@@ -114,10 +126,39 @@ public class Winograd{
         double lambda = Math.Floor(0.5 + Math.Log(b / a) / Math.Log(4));
 
         // Escalar
-        Util.MultiplyWithScalar(A, CopyA, N, P, Math.Pow(2, lambda));
-        Util.MultiplyWithScalar(B, CopyB, P, M, Math.Pow(2, -lambda));
+        Util.MultiplyWithScalar(A, copyA, N, P, Math.Pow(2, lambda));
+        Util.MultiplyWithScalar(B, copyB, P, M, Math.Pow(2, -lambda));
 
         // Utilizar Winograd con las matrices escaladas
-        Original(CopyA, CopyB, Result, N, P, M);
+        result = Original(copyA, copyB);
+
+        return result;
+    }
+
+    /// <summary>
+    /// Calcula la norma infinito de una matriz.
+    /// </summary>
+    /// <param name="matrix">La matriz.</param>
+    /// <param name="rows">El número de filas de la matriz.</param>
+    /// <param name="cols">El número de columnas de la matriz.</param>
+    /// <returns>La norma infinito de la matriz.</returns>
+    private static double NormInf(int[][] matrix, int rows, int cols)
+    {
+        double maxNorm = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            double rowSum = 0;
+            for (int j = 0; j < cols; j++)
+            {
+                rowSum += Math.Abs(matrix[i][j]);
+            }
+            maxNorm = Math.Max(maxNorm, rowSum);
+        }
+        return maxNorm;
+    }
+
+    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    {
+        return Original(matrix1,matrix2);
     }
 }

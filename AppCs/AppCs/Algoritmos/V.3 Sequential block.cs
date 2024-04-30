@@ -1,20 +1,21 @@
-public class SequentialBlocks{
+using services.interfaces;
+public class SequentialBlock2 : AlgorithmInterface{
     /// <summary>
-    /// Se obtienen las dimensiones de las matrices de entrada y se calcula el tamaño del bloque.
-    /// Se recorren las matrices utilizando bucles anidados para iterar sobre los bloques de las matrices. 
-    /// Dentro de estos bucles, se realiza la multiplicación de matrices tradicional para los elementos dentro de cada bloque.
+    ///  Se recorren las matrices utilizando bucles anidados para iterar sobre los bloques de las matrices. 
+    /// Dentro de estos bucles, se realiza la multiplicación de matrices tradicional para los elementos dentro de cada bloque. 
+    /// Se invierte el orden de acceso y actualización de los elementos en la matriz resultante.
     /// </summary>
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
     /// <returns>La matriz resultante de la multiplicación.</returns>
     public static int[][] Multiplication(int[][] matrixA, int[][] matrixB)
     {
-        // Obtiene las dimensiones de las matrices
+        // Obtener las dimensiones de las matrices
         int rowsA = matrixA.Length;
         int colsB = matrixB[0].Length;
         int colsA = matrixA[0].Length;
 
-        // Inicializa la matriz resultante
+        // Inicializar la matriz resultante
         int[][] result = new int[rowsA][];
         for (int i = 0; i < rowsA; i++)
         {
@@ -37,7 +38,7 @@ public class SequentialBlocks{
                         {
                             for (int colA = colABlock; colA < Math.Min(colABlock + blockSize, colsA); colA++)
                             {
-                                result[row][col] += matrixA[row][col] * matrixB[col][colA];
+                                result[colA][row] += matrixA[colA][col] * matrixB[col][row];
                             }
                         }
                     }
@@ -46,5 +47,10 @@ public class SequentialBlocks{
         }
 
         return result;
+    }
+
+    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    {
+        return Multiplication(matrix1,matrix2);
     }
 }

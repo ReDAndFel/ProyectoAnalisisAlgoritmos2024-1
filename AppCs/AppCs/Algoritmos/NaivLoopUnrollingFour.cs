@@ -1,4 +1,5 @@
-public class NaivLoopUnrollingFour{
+using services.interfaces;
+public class NaivLoopUnrollingFour : AlgorithmInterface{
     /// <summary>
     /// La multiplicación se realiza fila por columna. Dependiendo del residuo de la división de P por 4
     /// se ajusta el bucle interno en consecuencia para mejorar el rendimiento. 
@@ -7,18 +8,19 @@ public class NaivLoopUnrollingFour{
     /// </summary>
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
-    /// <param name="Result">Matriz donde se almacenará el resultado.</param>
-    /// <param name="N">Número de filas de la matriz A y de la matriz resultado.</param>
-    /// <param name="P">Número de columnas de la matriz A y número de filas de la matriz B.</param>
-    /// <param name="M">Número de columnas de la matriz B y de la matriz resultado.</param>
-    public static void Multiplication(double[,] A, double[,] B)
+    /// <returns>Matriz resultado de la multiplicación de A y B.</returns>
+    public static int[][] Multiplication(int[][] A, int[][] B)
     {
-        int N = A[].Length;
+        int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        double[][] result = new int[rowsA][];
+        int[][] result = new int[N][];
+        for (int o = 0; o < N; o++)
+        {
+            result[o] = new int[M];
+        }
         int i, j, k;
-        double aux;
+        int aux;
 
         if (P % 4 == 0)
         {
@@ -27,12 +29,12 @@ public class NaivLoopUnrollingFour{
             {
                 for (j = 0; j < M; j++)
                 {
-                    aux = 0.0;
+                    aux = 0;
                     for (k = 0; k < P; k += 4)
                     {
-                        aux += A[i, k] * B[k, j] + A[i, k + 1] * B[k + 1, j] + A[i, k + 2] * B[k + 2, j] + A[i, k + 3] * B[k + 3, j];
+                        aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
-                    Result[i, j] = aux;
+                    result[i][j] = aux;
                 }
             }
         }
@@ -44,12 +46,12 @@ public class NaivLoopUnrollingFour{
             {
                 for (j = 0; j < M; j++)
                 {
-                    aux = 0.0;
+                    aux = 0;
                     for (k = 0; k < PP; k += 4)
                     {
-                        aux += A[i, k] * B[k, j] + A[i, k + 1] * B[k + 1, j] + A[i, k + 2] * B[k + 2, j] + A[i, k + 3] * B[k + 3, j];
+                        aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
-                    Result[i, j] = aux + A[i, PP] * B[PP, j];
+                    result[i][j] = aux + A[i][PP] * B[PP][j];
                 }
             }
         }
@@ -62,12 +64,12 @@ public class NaivLoopUnrollingFour{
             {
                 for (j = 0; j < M; j++)
                 {
-                    aux = 0.0;
+                    aux = 0;
                     for (k = 0; k < PP; k += 4)
                     {
-                        aux += A[i, k] * B[k, j] + A[i, k + 1] * B[k + 1, j] + A[i, k + 2] * B[k + 2, j] + A[i, k + 3] * B[k + 3, j];
+                        aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
-                    Result[i, j] = aux + A[i, PP] * B[PP, j] + A[i, PPP] * B[PPP, j];
+                    result[i][j] = aux + A[i][PP] * B[PP][j] + A[i][PPP] * B[PPP][j];
                 }
             }
         }
@@ -81,15 +83,21 @@ public class NaivLoopUnrollingFour{
             {
                 for (j = 0; j < M; j++)
                 {
-                    aux = 0.0;
+                    aux = 0;
                     for (k = 0; k < PP; k += 4)
                     {
-                        aux += A[i, k] * B[k, j] + A[i, k + 1] * B[k + 1, j] + A[i, k + 2] * B[k + 2, j] + A[i, k + 3] * B[k + 3, j];
+                        aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
-                    Result[i, j] = aux + A[i, PP] * B[PP, j] + A[i, PPP] * B[PPP, j] + A[i, PPPP] * B[PPPP, j];
+                    result[i][j] = aux + A[i][PP] * B[PP][j] + A[i][PPP] * B[PPP][j] + A[i][PPPP] * B[PPPP][j];
                 }
             }
         }
+        
+        return result;
     }
 
+    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    {
+        return Multiplication(matrix1,matrix2);
+    }
 }

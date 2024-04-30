@@ -1,8 +1,11 @@
-public class SequentialBlock2{
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using services.interfaces;
+public class SequentialBlocks : AlgorithmInterface{
     /// <summary>
-    ///  Se recorren las matrices utilizando bucles anidados para iterar sobre los bloques de las matrices. 
-    /// Dentro de estos bucles, se realiza la multiplicación de matrices tradicional para los elementos dentro de cada bloque. 
-    /// Se invierte el orden de acceso y actualización de los elementos en la matriz resultante.
+    /// Se recorren las matrices utilizando bucles anidados para iterar sobre los bloques de las matrices. 
+    /// Dentro de estos bucles, se realiza la multiplicación de matrices tradicional para los elementos dentro de cada bloque.
     /// </summary>
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
@@ -37,14 +40,18 @@ public class SequentialBlock2{
                         {
                             for (int colA = colABlock; colA < Math.Min(colABlock + blockSize, colsA); colA++)
                             {
-                                result[colA][row] += matrixA[colA][col] * matrixB[col][row];
+                                result[row][col] += matrixA[row][colA] * matrixB[colA][col];
                             }
                         }
                     }
                 }
             }
         }
-
         return result;
+    }
+
+    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    {
+        return Multiplication(matrix1,matrix2);
     }
 }

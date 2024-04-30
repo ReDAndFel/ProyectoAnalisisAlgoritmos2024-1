@@ -1,0 +1,15 @@
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.csproj.AssemblyReference.cache
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.GeneratedMSBuildEditorConfig.editorconfig
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.AssemblyInfoInputs.cache
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.AssemblyInfo.cs
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.csproj.CoreCompileInputs.cache
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs.deps.json
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs.dll
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs.pdb
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.dll
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/refint/AppCs.dll
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.pdb
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/ref/AppCs.dll
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs.runtimeconfig.json
+/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.genruntimeconfig.cache

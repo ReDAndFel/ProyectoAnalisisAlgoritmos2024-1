@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj": {}
+    "/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/AppCs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj": {
+    "/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/AppCs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj",
+        "projectUniqueName": "/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/AppCs.csproj",
         "projectName": "AppCs",
-        "projectPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\obj\\",
+        "projectPath": "/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/AppCs.csproj",
+        "packagesPath": "/home/nomcci/.nuget/packages/",
+        "outputPath": "/home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/nomcci/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -32,22 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
-            }
-          },
+        "net7.0": {
+          "targetAlias": "net7.0",
           "imports": [
             "net461",
             "net462",
@@ -60,14 +49,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.116/RuntimeIdentifierGraph.json"
         }
       }
     }

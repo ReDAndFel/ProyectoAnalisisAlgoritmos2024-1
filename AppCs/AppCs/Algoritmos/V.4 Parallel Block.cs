@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-public class ParallelBlocks{
+using services.interfaces;
+public class ParallelBlock3 : AlgorithmInterface{
     /// <summary>
-    ///  Se define un método interno MultiplyBlock que multiplica un bloque específico
-    ///  de las matrices de entrada y actualiza la matriz resultante con el resultado de la multiplicación.
-    ///  Se inician tareas para multiplicar bloques específicos de las matrices de entrada en paralelo utilizando múltiples hilos.
-    /// 
-    ///  Este enfoque aprovecha la capacidad de paralelización para mejorar el rendimiento de la multiplicación
-    ///  de matrices al distribuir la carga de trabajo en múltiples hilos.
+    /// Se define un método interno MultiplyBlock para multiplicar un bloque específico de las matrices 
+    /// de entrada y actualizar la matriz resultante. 
+    /// Se invierte el orden de acceso a los elementos en la matriz resultante.
     /// </summary>
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
@@ -18,7 +13,7 @@ public class ParallelBlocks{
         int size = matrixA.Length;
         int blockSize = size / 2;  // Tamaño del bloque
 
-        // Inicializar matriz resultante
+        // Inicializar matriz A con ceros
         int[][] result = new int[size][];
         for (int i = 0; i < size; i++)
         {
@@ -34,13 +29,13 @@ public class ParallelBlocks{
                 {
                     for (int inner = innerStart; inner < Math.Min(innerStart + blockSize, size); inner++)
                     {
-                        result[row][col] += matrixA[row][inner] * matrixB[inner][col];
+                        result[inner][row] += matrixA[inner][col] * matrixB[col][row];
                     }
                 }
             }
         }
 
-        // Iniciar tareas de multiplicacion en paralelo
+        // Iniciar tareas de multiplicación en paralelo
         List<Task> tasks = new List<Task>();
         for (int rowStart = 0; rowStart < size; rowStart += blockSize)
         {
@@ -57,5 +52,10 @@ public class ParallelBlocks{
         Task.WaitAll(tasks.ToArray());
 
         return result;
+    }
+
+    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    {
+        return Multiplication(matrix1,matrix2);
     }
 }
