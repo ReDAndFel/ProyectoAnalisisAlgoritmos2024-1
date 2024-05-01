@@ -15,7 +15,7 @@ class Pruebas
         int[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
 
         // Imprimir la matriz resultante
-        Console.WriteLine("Resultado de la multiplicación:");
+        Console.WriteLine("Resultado de la NaivOnArray:");
         PrintMatrix(result);
 
         // Crear una instancia del algoritmo naivLoopUnrollingTwo
@@ -70,7 +70,7 @@ class Pruebas
         result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
 
         // Imprimir la matriz resultante
-        Console.WriteLine("Resultado de la multiplicación:");
+        Console.WriteLine("Resultado de la StrassenNaive:");
         PrintMatrix(result);
 
         // Crear una instancia del algoritmo strassenWinograd
@@ -179,7 +179,7 @@ class Pruebas
 
     static void PrintMatrix(int[][] matrix)
     {
-        Console.Write(matrix[matrix.Length-1][matrix.Length-1]);
+        Console.Write(matrix[matrix.Length-1][matrix.Length-1] + "\n");
     }
 
    static int[][] GenerarMatrizAleatoria(int n)

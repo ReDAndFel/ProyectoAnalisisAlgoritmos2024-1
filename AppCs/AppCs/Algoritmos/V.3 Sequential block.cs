@@ -8,37 +8,37 @@ public class SequentialBlock2 : AlgorithmInterface{
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
     /// <returns>La matriz resultante de la multiplicación.</returns>
-    public static int[][] Multiplication(int[][] matrixA, int[][] matrixB)
+    static int[][] Multiplication(int[][] matrix_A, int[][] matrix_B)
     {
         // Obtener las dimensiones de las matrices
-        int rowsA = matrixA.Length;
-        int colsB = matrixB[0].Length;
-        int colsA = matrixA[0].Length;
+        int rows_A = matrix_A.Length;
+        int cols_B = matrix_B[0].Length;
+        int cols_A = matrix_A[0].Length;
 
         // Inicializar la matriz resultante
-        int[][] result = new int[rowsA][];
-        for (int i = 0; i < rowsA; i++)
+        int[][] result = new int[rows_A][];
+        for (int i = 0; i < rows_A; i++)
         {
-            result[i] = new int[colsB];
+            result[i] = new int[cols_B];
         }
 
         // Tamaño de los bloques
-        int blockSize = Math.Min(Math.Min(rowsA, colsB), colsA) / 2;
+        int block_size = Math.Min(Math.Min(rows_A, cols_B), cols_A) / 2;
 
         // Multiplicar las matrices por bloques
-        for (int rowBlock = 0; rowBlock < rowsA; rowBlock += blockSize)
+        for (int row_block = 0; row_block < rows_A; row_block += block_size)
         {
-            for (int colBlock = 0; colBlock < colsB; colBlock += blockSize)
+            for (int col_block = 0; col_block < cols_B; col_block += block_size)
             {
-                for (int colABlock = 0; colABlock < colsA; colABlock += blockSize)
+                for (int col_A_block = 0; col_A_block < cols_A; col_A_block += block_size)
                 {
-                    for (int row = rowBlock; row < Math.Min(rowBlock + blockSize, rowsA); row++)
+                    for (int row = row_block; row < Math.Min(row_block + block_size, rows_A); row++)
                     {
-                        for (int col = colBlock; col < Math.Min(colBlock + blockSize, colsB); col++)
+                        for (int col = col_block; col < Math.Min(col_block + block_size, cols_B); col++)
                         {
-                            for (int colA = colABlock; colA < Math.Min(colABlock + blockSize, colsA); colA++)
+                            for (int col_A = col_A_block; col_A < Math.Min(col_A_block + block_size, cols_A); col_A++)
                             {
-                                result[colA][row] += matrixA[colA][col] * matrixB[col][row];
+                                result[col_A][row] += matrix_A[col_A][col] * matrix_B[col][row];
                             }
                         }
                     }
@@ -48,6 +48,7 @@ public class SequentialBlock2 : AlgorithmInterface{
 
         return result;
     }
+
 
     public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
     {

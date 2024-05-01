@@ -4,12 +4,11 @@ using System.Threading.Tasks;
 using services.interfaces;
 public class ParallelBlocks : AlgorithmInterface{
     /// <summary>
-    ///  Se define un método interno MultiplyBlock que multiplica un bloque específico
-    ///  de las matrices de entrada y actualiza la matriz resultante con el resultado de la multiplicación.
-    ///  Se inician tareas para multiplicar bloques específicos de las matrices de entrada en paralelo utilizando múltiples hilos.
-    /// 
-    ///  Este enfoque aprovecha la capacidad de paralelización para mejorar el rendimiento de la multiplicación
-    ///  de matrices al distribuir la carga de trabajo en múltiples hilos.
+    /// Se define un método interno MultiplyBlock que multiplica un bloque específico
+    /// de las matrices de entrada y actualiza la matriz resultante con el resultado de la multiplicación.
+    /// Se inician tareas para multiplicar bloques específicos de las matrices de entrada en paralelo utilizando múltiples hilos.
+    /// Este enfoque aprovecha la capacidad de paralelización para mejorar el rendimiento de la multiplicación
+    /// de matrices al distribuir la carga de trabajo en múltiples hilos.
     /// </summary>
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
@@ -35,7 +34,7 @@ public class ParallelBlocks : AlgorithmInterface{
                 {
                     for (int inner = innerStart; inner < Math.Min(innerStart + blockSize, size); inner++)
                     {
-                        result[row][col] += matrixA[row][inner] * matrixB[inner][col];
+                        result[row][col] += matrixA[row][inner] * matrixB[inner][col]; // Se corrigió el acceso a los elementos de matrixA y matrixB
                     }
                 }
             }
@@ -49,7 +48,10 @@ public class ParallelBlocks : AlgorithmInterface{
             {
                 for (int innerStart = 0; innerStart < size; innerStart += blockSize)
                 {
-                    tasks.Add(Task.Run(() => MultiplyBlock(rowStart, colStart, innerStart)));
+                    int rowStartCopy = rowStart;
+                    int colStartCopy = colStart;
+                    int innerStartCopy = innerStart;
+                    tasks.Add(Task.Run(() => MultiplyBlock(rowStartCopy, colStartCopy, innerStartCopy)));
                 }
             }
         }
@@ -59,6 +61,8 @@ public class ParallelBlocks : AlgorithmInterface{
 
         return result;
     }
+
+
 
     public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
     {

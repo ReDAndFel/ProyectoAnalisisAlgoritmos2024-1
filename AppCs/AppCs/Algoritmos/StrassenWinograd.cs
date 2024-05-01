@@ -16,67 +16,130 @@ public class StrassenWinograd : AlgorithmInterface
             matrizResultado[i] = new int[cantidadColumnasMatrices];
         }
 
-        int tamanioMaximo = Math.Max(cantidadFilasMatrices, delimitadorMaximaIteracionesFilaColumna);
-        tamanioMaximo = Math.Max(tamanioMaximo, cantidadFilasMatrices);
+        int mitad = cantidadFilasMatrices / 2;
 
-        if (tamanioMaximo < 16)
+        // Verificar si las matrices son lo suficientemente pequeñas como para usar el algoritmo naive
+        if (cantidadFilasMatrices <= 16)
         {
-            tamanioMaximo = 16; // Si no, no es posible computar K
+            matrizResultado = NaivStandard.NaivStandardMultiply(matrizA, matrizB);
         }
-
-        int k = (int)Math.Floor(Math.Log(tamanioMaximo) / Math.Log(2)) - 4;
-        int m = (int)Math.Floor(tamanioMaximo * Math.Pow(2, -k)) + 1;
-        int nuevoTamanio = (int)(m * Math.Pow(2, k));
-
-        int[][] nuevaMatrizA = new int[nuevoTamanio][];
-        int[][] nuevaMatrizB = new int[nuevoTamanio][];
-        int[][] matrizResultadoAuxiliar = new int[nuevoTamanio][];
-        for (int i = 0; i < nuevoTamanio; i++)
+        else
         {
-            nuevaMatrizA[i] = new int[nuevoTamanio];
-            nuevaMatrizB[i] = new int[nuevoTamanio];
-            matrizResultadoAuxiliar[i] = new int[nuevoTamanio];
-        }
+            // Dividir las matrices en submatrices
+            int[][] A11 = new int[mitad][];
+            int[][] A12 = new int[mitad][];
+            int[][] A21 = new int[mitad][];
+            int[][] A22 = new int[mitad][];
 
-        // Asignar memoria e inicializar Inicializar cada elemento de las nuevas matrices A y B con ceros
-        for (int i = 0; i < nuevoTamanio; i++)
-        {
-            for (int j = 0; j < nuevoTamanio; j++)
+            int[][] B11 = new int[mitad][];
+            int[][] B12 = new int[mitad][];
+            int[][] B21 = new int[mitad][];
+            int[][] B22 = new int[mitad][];
+
+            for (int i = 0; i < mitad; i++)
             {
-                nuevaMatrizA[i][j] = 0;
-                nuevaMatrizB[i][j] = 0;
-                matrizResultadoAuxiliar[i][j] = 0;
+                A11[i] = new int[mitad];
+                A12[i] = new int[mitad];
+                A21[i] = new int[mitad];
+                A22[i] = new int[mitad];
+
+                B11[i] = new int[mitad];
+                B12[i] = new int[mitad];
+                B21[i] = new int[mitad];
+                B22[i] = new int[mitad];
+
+                for (int j = 0; j < mitad; j++)
+                {
+                    A11[i][j] = matrizA[i][j];
+                    A12[i][j] = matrizA[i][j + mitad];
+                    A21[i][j] = matrizA[i + mitad][j];
+                    A22[i][j] = matrizA[i + mitad][j + mitad];
+
+                    B11[i][j] = matrizB[i][j];
+                    B12[i][j] = matrizB[i][j + mitad];
+                    B21[i][j] = matrizB[i + mitad][j];
+                    B22[i][j] = matrizB[i + mitad][j + mitad];
+                }
             }
-        }
 
-        // Asignamos en cada posición i,j de las nuevas matrices A y B los valores que están en las matrices A y B respectivamente
-        for (int i = 0; i < cantidadFilasMatrices; i++)
-        {
-            for (int j = 0; j < delimitadorMaximaIteracionesFilaColumna; j++)
+            // Calcular las submatrices del resultado
+            int[][] C11 = SumarMatrices(StrassenWinogradMultiply(SumarMatrices(A11, A22), SumarMatrices(B11, B22)),
+                                        StrassenWinogradMultiply(SumarMatrices(A12, A22), B11));
+            int[][] C12 = SumarMatrices(StrassenWinogradMultiply(SumarMatrices(A11, A22), B12),
+                                        StrassenWinogradMultiply(A12, B22));
+            int[][] C21 = SumarMatrices(StrassenWinogradMultiply(A21, SumarMatrices(B11, B21)),
+                                        StrassenWinogradMultiply(A22, SumarMatrices(B12, B22)));
+            int[][] C22 = SumarMatrices(StrassenWinogradMultiply(A11, SumarMatrices(B21, B22)),
+                                        StrassenWinogradMultiply(A22, SumarMatrices(B12, B11)));
+
+            // Combinar las submatrices en la matriz resultado
+            for (int i = 0; i < mitad; i++)
             {
-                nuevaMatrizA[i][j] = matrizA[i][j];
-            }
-        }
-
-        for (int i = 0; i < delimitadorMaximaIteracionesFilaColumna; i++)
-        {
-            for (int j = 0; j < cantidadColumnasMatrices; j++)
-            {
-                nuevaMatrizB[i][j] = matrizB[i][j];
-            }
-        }
-
-        matrizResultadoAuxiliar = StrassenWinogradStep(nuevaMatrizA, nuevaMatrizB, matrizResultadoAuxiliar, nuevoTamanio, m);
-
-        for (int i = 0; i < cantidadFilasMatrices; i++)
-        {
-            for (int j = 0; j < cantidadColumnasMatrices; j++)
-            {
-                matrizResultado[i][j] = matrizResultadoAuxiliar[i][j];
+                for (int j = 0; j < mitad; j++)
+                {
+                    matrizResultado[i][j] = C11[i][j];
+                    matrizResultado[i][j + mitad] = C12[i][j];
+                    matrizResultado[i + mitad][j] = C21[i][j];
+                    matrizResultado[i + mitad][j + mitad] = C22[i][j];
+                }
             }
         }
 
         return matrizResultado;
+    }
+
+
+    // Método auxiliar para verificar si un número es potencia de dos
+    private static bool EsPotenciaDeDos(int n)
+    {
+        return (n & (n - 1)) == 0;
+    }
+
+    // Método auxiliar para obtener una submatriz de una matriz
+    private static int[][] Submatriz(int[][] matriz, int filaInicio, int columnaInicio, int tamanio)
+    {
+        int[][] submatriz = new int[tamanio][];
+        for (int i = 0; i < tamanio; i++)
+        {
+            submatriz[i] = new int[tamanio];
+            for (int j = 0; j < tamanio; j++)
+            {
+                submatriz[i][j] = matriz[filaInicio + i][columnaInicio + j];
+            }
+        }
+        return submatriz;
+    }
+
+    // Método auxiliar para sumar dos matrices
+    private static int[][] SumarMatrices(int[][] matrizA, int[][] matrizB)
+    {
+        int n = matrizA.Length;
+        int[][] resultado = new int[n][];
+        for (int i = 0; i < n; i++)
+        {
+            resultado[i] = new int[n];
+            for (int j = 0; j < n; j++)
+            {
+                resultado[i][j] = matrizA[i][j] + matrizB[i][j];
+            }
+        }
+        return resultado;
+    }
+
+    // Método auxiliar para restar dos matrices
+    private static int[][] RestarMatrices(int[][] matrizA, int[][] matrizB)
+    {
+        int n = matrizA.Length;
+        int[][] resultado = new int[n][];
+        for (int i = 0; i < n; i++)
+        {
+            resultado[i] = new int[n];
+            for (int j = 0; j < n; j++)
+            {
+                resultado[i][j] = matrizA[i][j] - matrizB[i][j];
+            }
+        }
+        return resultado;
     }
     /// <summary>
     /// Método privado que realiza la multiplicación de matrices de manera recursiva utilizando el algoritmo de Strassen-Winograd.

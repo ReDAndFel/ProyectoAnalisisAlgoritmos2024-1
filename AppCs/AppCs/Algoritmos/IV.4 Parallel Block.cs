@@ -25,7 +25,6 @@ public class ParallelBlocks2 : AlgorithmInterface{
             result[i] = new int[size];
         }
 
-        // Método para multiplicar un bloque específico
         void MultiplyBlock(int rowStart, int colStart, int innerStart)
         {
             for (int row = rowStart; row < Math.Min(rowStart + blockSize, size); row++)
@@ -34,7 +33,7 @@ public class ParallelBlocks2 : AlgorithmInterface{
                 {
                     for (int inner = innerStart; inner < Math.Min(innerStart + blockSize, size); inner++)
                     {
-                        result[row][inner] += matrixA[row][col] * matrixB[col][inner];
+                        result[row][col] += matrixA[row][inner] * matrixB[inner][col];
                     }
                 }
             }
@@ -48,7 +47,10 @@ public class ParallelBlocks2 : AlgorithmInterface{
             {
                 for (int innerStart = 0; innerStart < size; innerStart += blockSize)
                 {
-                    tasks.Add(Task.Run(() => MultiplyBlock(rowStart, colStart, innerStart)));
+                    int rowStartCopy = rowStart;
+                    int colStartCopy = colStart;
+                    int innerStartCopy = innerStart;
+                    tasks.Add(Task.Run(() => MultiplyBlock(rowStartCopy, colStartCopy, innerStartCopy)));
                 }
             }
         }

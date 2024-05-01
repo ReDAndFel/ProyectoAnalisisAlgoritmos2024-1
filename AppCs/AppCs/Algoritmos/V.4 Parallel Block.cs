@@ -43,7 +43,10 @@ public class ParallelBlock3 : AlgorithmInterface{
             {
                 for (int innerStart = 0; innerStart < size; innerStart += blockSize)
                 {
-                    tasks.Add(Task.Run(() => MultiplyBlock(rowStart, colStart, innerStart)));
+                    int rowStartCopy = rowStart;
+                    int colStartCopy = colStart;
+                    int innerStartCopy = innerStart;
+                    tasks.Add(Task.Run(() => MultiplyBlock(rowStartCopy, colStartCopy, innerStartCopy)));
                 }
             }
         }
