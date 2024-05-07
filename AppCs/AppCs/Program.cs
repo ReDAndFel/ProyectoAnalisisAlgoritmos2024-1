@@ -39,7 +39,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivLoopUnrollingTwo
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingTwo: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingTwo", stopwatch.Elapsed.TotalSeconds);
-            */
+            
             // Crear una instancia del algoritmo naivLoopUnrollingFour
             var naivLoopUnrollingFour = new NaivLoopUnrollingFour();
             var algorithm = new JsonManager(naivLoopUnrollingFour);
@@ -51,8 +51,8 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivLoopUnrollingFour
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingFour: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingFour", stopwatch.Elapsed.TotalSeconds);
-
-            /*    
+            */
+                
             // Crear una instancia del algoritmo winogradOriginal
             var winogradOriginal = new Winograd();
             var algorithm = new JsonManager(winogradOriginal);
@@ -64,7 +64,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradOriginal
             Console.WriteLine("Tiempo de ejecución del algoritmo WinogradOriginal: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradOriginal", stopwatch.Elapsed.TotalSeconds);
-
+            /*
             // Crear una instancia del algoritmo winogradScaled
             var winogradScaled = new WinogradScaled();
             algorithm = new JsonManager(winogradScaled);

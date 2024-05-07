@@ -3,7 +3,7 @@
     "NaivOnArray": 0.5619217,
     "NaivLoopUnrollingTwo": 0.34862,
     "NaivLoopUnrollingFour": 0.3262531,
-    "WinogradOriginal": 2.3012,
+    "WinogradOriginal": 0.3582244,
     "WinogradScaled": 3.0009994506835938,
     "StrassenNaiv": 1.0123,
     "StrassenWinograd": 3.0,
