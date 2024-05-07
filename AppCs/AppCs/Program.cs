@@ -13,184 +13,190 @@ class Program
             string timesJsonPath = "../../times" + (i + 1) + ".json";
             JObject jsonTimes = JsonInterface.readJson(timesJsonPath);
             (long[][] matrix1, long[][] matrix2) = JsonInterface.readJsonMatrix(matrixJsonPath, (i + 1));
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+
             // Crear una instancia del algoritmo NaivOnArray
             var naivOnArrayAlgorithm = new NaivOnArray();
             var algorithm = new JsonManager(naivOnArrayAlgorithm);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo NaivOnArray
             long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
             stopwatch.Stop();
-            // Detener la medición.
-            // Mostrar el tiempo transcurriodo con un formato hh:mm:ss.000
-            // Multiplicar por 10^17 y convertir a entero
-            
-            // Usar elapsedSecondsInt donde necesites un entero con 17 decimales
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivOnArray
+            Console.WriteLine("Tiempo de ejecución del algoritmo NaivOnArray: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivOnArray", stopwatch.Elapsed.TotalSeconds);
 
-            Console.WriteLine("Tiempo de ejecución: {0} segundos",stopwatch.Elapsed.TotalSeconds );
-            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivOnArray", stopwatch.Elapsed.TotalSeconds );
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de la NaivOnArray:");
-            PrintMatrix(result);
             /*
             // Crear una instancia del algoritmo naivLoopUnrollingTwo
             var naivLoopUnrollingTwo = new NaivLoopUnrollingTwo();
             algorithm = new JsonManager(naivLoopUnrollingTwo);
-
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo naivLoopUnrollingTwo
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de naivLoopUnrollingTwo:");
-            PrintMatrix(result);
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivLoopUnrollingTwo
+            Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingTwo: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingTwo", stopwatch.Elapsed.TotalSeconds);
 
             // Crear una instancia del algoritmo naivLoopUnrollingFour
             var naivLoopUnrollingFour = new NaivLoopUnrollingFour();
             algorithm = new JsonManager(naivLoopUnrollingFour);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo NaivLoopUnrollingFour
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivLoopUnrollingFour
+            Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingFour: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingFour", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo StrassenNaive
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de naivLoopUnrollingFour:");
-            PrintMatrix(result);
 
             // Crear una instancia del algoritmo winogradOriginal
             var winogradOriginal = new Winograd();
             algorithm = new JsonManager(winogradOriginal);
-
-            // Multiplicar las matrices usando el algoritmo StrassenNaive
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de winogradOriginal:");
-            PrintMatrix(result);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo WinogradOriginal
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradOriginal
+            Console.WriteLine("Tiempo de ejecución del algoritmo WinogradOriginal: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradOriginal", stopwatch.Elapsed.TotalSeconds);
 
             // Crear una instancia del algoritmo winogradScaled
             var winogradScaled = new WinogradScaled();
             algorithm = new JsonManager(winogradScaled);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo WinogradScaled
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradScaled
+            Console.WriteLine("Tiempo de ejecución del algoritmo WinogradScaled: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradScaled", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo StrassenNaive
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de winogradScaled:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo StrassenNaive
+            // Crear una instancia del algoritmo StrassenNaiv
             var strassenNaiv = new StrassenNaive();
             algorithm = new JsonManager(strassenNaiv);
-
-            // Multiplicar las matrices usando el algoritmo StrassenNaive
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de la StrassenNaive:");
-            PrintMatrix(result);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo StrassenNaiv
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenNaiv
+            Console.WriteLine("Tiempo de ejecución del algoritmo StrassenNaiv: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenNaiv", stopwatch.Elapsed.TotalSeconds);
 
             // Crear una instancia del algoritmo strassenWinograd
             var strassenWinograd = new StrassenWinograd();
             algorithm = new JsonManager(strassenWinograd);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo StrassenWinograd
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenWinograd
+            Console.WriteLine("Tiempo de ejecución del algoritmo StrassenWinograd: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenWinograd", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo strassenWinograd
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de strassenWinograd:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo sequentialBlocks
+            // Crear una instancia del algoritmo III.3 Sequential block
             var sequentialBlocks = new SequentialBlocks();
             algorithm = new JsonManager(sequentialBlocks);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo III.3 Sequential block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
+            Console.WriteLine("Tiempo de ejecución del algoritmo III.3 Sequential block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.3 Sequential block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo SequentialBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de sequentialBlocks:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo parallelBlocks
+            // Crear una instancia del algoritmo III.4 Parallel Block
             var parallelBlocks = new ParallelBlocks();
             algorithm = new JsonManager(parallelBlocks);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo III.4 Parallel Block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
+            Console.WriteLine("Tiempo de ejecución del algoritmo III.4 Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.4 Parallel Block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo parallelBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de parallelBlocks:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo enhancedParallelBlocks
+            // Crear una instancia del algoritmo III.5 Enhanced Parallel Block
             var enhancedParallelBlocks = new EnhancedParallelBlocks();
             algorithm = new JsonManager(enhancedParallelBlocks);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo III.5 Enhanced Parallel Block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
+            Console.WriteLine("Tiempo de ejecución del algoritmo III.5 Enhanced Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.5 Enhanced Parallel Block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo enhancedParallelBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de enhancedParallelBlocks:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo IV3SequentialBlocks
+            // Crear una instancia del algoritmo IV.3 Sequential block
             var sequentialBlocks2 = new IV3SequentialBlocks();
             algorithm = new JsonManager(sequentialBlocks2);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo IV.3 Sequential block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo IV.3 Sequential block
+            Console.WriteLine("Tiempo de ejecución del algoritmo IV.3 Sequential block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "IV.3 Sequential block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo IV3SequentialBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de IV3SequentialBlocks:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo IV.4parallelBlocks
+            // Crear una instancia del algoritmo IV.4 Parallel Block
             var parallelBlocks2 = new ParallelBlocks2();
             algorithm = new JsonManager(parallelBlocks2);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo IV.4 Parallel Block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo IV.4 Parallel Block
+            Console.WriteLine("Tiempo de ejecución del algoritmo IV.4 Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "IV.4 Parallel Block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo IV.4parallelBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de IV.4parallelBlocks:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo IV.5enhancedParallelBlocks
+            // Crear una instancia del algoritmo IV.5 Enhanced Parallel Block
             var enhancedParallelBlocks2 = new ParallelBlocks();
             algorithm = new JsonManager(enhancedParallelBlocks2);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo IV.5 Enhanced Parallel Block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo IV.5 Enhanced Parallel Block
+            Console.WriteLine("Tiempo de ejecución del algoritmo IV.5 Enhanced Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "IV.5 Enhanced Parallel Block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo IV.5enhancedParallelBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de IV.5enhancedParallelBlocks:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo V3.sequentialBlock
+            // Crear una instancia del algoritmo V.3 Sequential block
             var sequentialBlock2 = new SequentialBlock2();
             algorithm = new JsonManager(sequentialBlock2);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo V.3 Sequential block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo V.3 Sequential block
+            Console.WriteLine("Tiempo de ejecución del algoritmo V.3 Sequential block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "V.3 Sequential block", stopwatch.Elapsed.TotalSeconds);
 
-            // Multiplicar las matrices usando el algoritmo V3.sequentialBlock2
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
 
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de V3.SequentialBlock2:");
-            PrintMatrix(result);
-
-            // Crear una instancia del algoritmo V4.ParallelBlocks
+            // Crear una instancia del algoritmo V.4 Parallel Block
             var parallelBlocks3 = new ParallelBlock3();
             algorithm = new JsonManager(parallelBlocks3);
-
-            // Multiplicar las matrices usando el algoritmo V4.ParallelBlocks
-            result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-
-            // Imprimir la matriz resultante
-            Console.WriteLine("Resultado de V4.ParallelBlocks:");
-            PrintMatrix(result);*/
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            // Multiplicar las matrices usando el algoritmo V.4 Parallel Block
+            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            stopwatch.Stop();
+            //imprime y setea en el json el tiemp de ejecucion del algoritmo V.4 Parallel Block
+            Console.WriteLine("Tiempo de ejecución del algoritmo V.4 Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "V.4 Parallel Block", stopwatch.Elapsed.TotalSeconds);
+        }*/
         }
-    }
-
-    static void PrintMatrix(long[][] matrix)
-    {
-        Console.Write(matrix[matrix.Length - 1][matrix.Length - 1] + "\n");
     }
 }
