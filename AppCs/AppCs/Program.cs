@@ -27,7 +27,7 @@ class Program
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivOnArray: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivOnArray", stopwatch.Elapsed.TotalSeconds);
 
-            */
+            
             // Crear una instancia del algoritmo naivLoopUnrollingTwo
             var naivLoopUnrollingTwo = new NaivLoopUnrollingTwo();
             var algorithm = new JsonManager(naivLoopUnrollingTwo);
@@ -39,10 +39,10 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivLoopUnrollingTwo
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingTwo: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingTwo", stopwatch.Elapsed.TotalSeconds);
-            /*
+            */
             // Crear una instancia del algoritmo naivLoopUnrollingFour
             var naivLoopUnrollingFour = new NaivLoopUnrollingFour();
-            algorithm = new JsonManager(naivLoopUnrollingFour);
+            var algorithm = new JsonManager(naivLoopUnrollingFour);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo NaivLoopUnrollingFour
@@ -52,10 +52,10 @@ class Program
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingFour: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingFour", stopwatch.Elapsed.TotalSeconds);
 
-
+            /*    
             // Crear una instancia del algoritmo winogradOriginal
             var winogradOriginal = new Winograd();
-            algorithm = new JsonManager(winogradOriginal);
+            var algorithm = new JsonManager(winogradOriginal);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo WinogradOriginal

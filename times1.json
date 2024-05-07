@@ -2,7 +2,7 @@
   "cs": {
     "NaivOnArray": 0.0002001,
     "NaivLoopUnrollingTwo": 0.0002922,
-    "NaivLoopUnrollingFour": 1.739123,
+    "NaivLoopUnrollingFour": 0.0004557,
     "WinogradOriginal": 2.3012,
     "WinogradScaled": 3.0009994506835938,
     "StrassenNaiv": 1.0123,
