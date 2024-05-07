@@ -14,7 +14,7 @@
     "IV.4 Parallel Block": 0.0029843,
     "IV.5 Enhanced Parallel Block": 6.97E-05,
     "V.3 Sequential block": 0.009986,
-    "V.4 Parallel Block": 2.3009942054748533
+    "V.4 Parallel Block": 0.0041382
   },
   "py": {
     "NaivOnArray": 0.2962684631347656,
