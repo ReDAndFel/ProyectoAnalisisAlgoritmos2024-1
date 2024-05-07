@@ -1,6 +1,6 @@
 {
   "cs": {
-    "NaivOnArray": 0.5156652,
+    "NaivOnArray": 0.5619217,
     "NaivLoopUnrollingTwo": 2.0,
     "NaivLoopUnrollingFour": 1.739123,
     "WinogradOriginal": 2.3012,

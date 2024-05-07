@@ -9,11 +9,12 @@ class Program
         string matrixJsonPath = "../../matrix.json";
         for (int i = 0; i < 8; i++)
         {
+            
             Console.Write("Caso " + (i + 1));
             string timesJsonPath = "../../times" + (i + 1) + ".json";
             JObject jsonTimes = JsonInterface.readJson(timesJsonPath);
             (long[][] matrix1, long[][] matrix2) = JsonInterface.readJsonMatrix(matrixJsonPath, (i + 1));
-
+            /*
             // Crear una instancia del algoritmo NaivOnArray
             var naivOnArrayAlgorithm = new NaivOnArray();
             var algorithm = new JsonManager(naivOnArrayAlgorithm);
@@ -26,10 +27,10 @@ class Program
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivOnArray: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivOnArray", stopwatch.Elapsed.TotalSeconds);
 
-            /*
+            */
             // Crear una instancia del algoritmo naivLoopUnrollingTwo
             var naivLoopUnrollingTwo = new NaivLoopUnrollingTwo();
-            algorithm = new JsonManager(naivLoopUnrollingTwo);
+            var algorithm = new JsonManager(naivLoopUnrollingTwo);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo naivLoopUnrollingTwo
@@ -38,7 +39,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo NaivLoopUnrollingTwo
             Console.WriteLine("Tiempo de ejecución del algoritmo NaivLoopUnrollingTwo: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivLoopUnrollingTwo", stopwatch.Elapsed.TotalSeconds);
-
+            /*
             // Crear una instancia del algoritmo naivLoopUnrollingFour
             var naivLoopUnrollingFour = new NaivLoopUnrollingFour();
             algorithm = new JsonManager(naivLoopUnrollingFour);
