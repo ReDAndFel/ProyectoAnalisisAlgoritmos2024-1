@@ -2,7 +2,7 @@ using Newtonsoft.Json.Linq;
 
 public class JsonInterface
 {
-    public static void modifyProperty(JObject json, String jsonFilePath, string property, int value)
+    public static void modifyProperty(JObject json, String jsonFilePath, string property, double value)
     {
         json["cs"][property] = value;
         string modifiedJson = json.ToString();

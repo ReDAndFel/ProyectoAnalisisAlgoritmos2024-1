@@ -1,14 +1,17 @@
 using System.Diagnostics;
+using Newtonsoft.Json.Linq;
 
 class Program
 {
 
     static void Main()
     {
-        string matrixJsonPath = "../../matrixExperimental.json";
+        string matrixJsonPath = "../../matrix.json";
         for (int i = 0; i < 8; i++)
         {
-            Console.Write("Caso " + (i+1));
+            Console.Write("Caso " + (i + 1));
+            string timesJsonPath = "../../times" + (i + 1) + ".json";
+            JObject jsonTimes = JsonInterface.readJson(timesJsonPath);
             (long[][] matrix1, long[][] matrix2) = JsonInterface.readJsonMatrix(matrixJsonPath, (i + 1));
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -17,9 +20,15 @@ class Program
             var algorithm = new JsonManager(naivOnArrayAlgorithm);
             // Multiplicar las matrices usando el algoritmo NaivOnArray
             long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
-            stopwatch.Stop(); // Detener la medición.
+            stopwatch.Stop();
+            // Detener la medición.
             // Mostrar el tiempo transcurriodo con un formato hh:mm:ss.000
-            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed.ToString("hh\\:mm\\:ss\\.fff"));            
+            // Multiplicar por 10^17 y convertir a entero
+            
+            // Usar elapsedSecondsInt donde necesites un entero con 17 decimales
+
+            Console.WriteLine("Tiempo de ejecución: {0} segundos",stopwatch.Elapsed.TotalSeconds );
+            JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "NaivOnArray", stopwatch.Elapsed.TotalSeconds );
             // Imprimir la matriz resultante
             Console.WriteLine("Resultado de la NaivOnArray:");
             PrintMatrix(result);
