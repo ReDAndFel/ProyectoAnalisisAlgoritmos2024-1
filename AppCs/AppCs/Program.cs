@@ -64,8 +64,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradOriginal
             Console.WriteLine("Tiempo de ejecución del algoritmo WinogradOriginal: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradOriginal", stopwatch.Elapsed.TotalSeconds);
-            */
-            
+                        
             // Crear una instancia del algoritmo winogradScaled
             var winogradScaled = new WinogradScaled();
             var algorithm = new JsonManager(winogradScaled);
@@ -77,10 +76,11 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradScaled
             Console.WriteLine("Tiempo de ejecución del algoritmo WinogradScaled: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradScaled", stopwatch.Elapsed.TotalSeconds);
-            /*
+            */
+            
             // Crear una instancia del algoritmo StrassenNaiv
             var strassenNaiv = new StrassenNaive();
-            algorithm = new JsonManager(strassenNaiv);
+            var algorithm = new JsonManager(strassenNaiv);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo StrassenNaiv
@@ -89,7 +89,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenNaiv
             Console.WriteLine("Tiempo de ejecución del algoritmo StrassenNaiv: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenNaiv", stopwatch.Elapsed.TotalSeconds);
-
+            /*
             // Crear una instancia del algoritmo strassenWinograd
             var strassenWinograd = new StrassenWinograd();
             algorithm = new JsonManager(strassenWinograd);
