@@ -100,8 +100,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenWinograd
             Console.WriteLine("Tiempo de ejecución del algoritmo StrassenWinograd: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenWinograd", stopwatch.Elapsed.TotalSeconds);
-            */
-            
+                        
             // Crear una instancia del algoritmo III.3 Sequential block
             var sequentialBlocks = new SequentialBlocks();
             var algorithm = new JsonManager(sequentialBlocks);
@@ -113,10 +112,11 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
             Console.WriteLine("Tiempo de ejecución del algoritmo III.3 Sequential block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.3 Sequential block", stopwatch.Elapsed.TotalSeconds);
-            /*
+            */
+            
             // Crear una instancia del algoritmo III.4 Parallel Block
             var parallelBlocks = new ParallelBlocks();
-            algorithm = new JsonManager(parallelBlocks);
+            var algorithm = new JsonManager(parallelBlocks);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo III.4 Parallel Block
@@ -125,7 +125,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
             Console.WriteLine("Tiempo de ejecución del algoritmo III.4 Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.4 Parallel Block", stopwatch.Elapsed.TotalSeconds);
-
+            /*
             // Crear una instancia del algoritmo III.5 Enhanced Parallel Block
             var enhancedParallelBlocks = new EnhancedParallelBlocks();
             algorithm = new JsonManager(enhancedParallelBlocks);
