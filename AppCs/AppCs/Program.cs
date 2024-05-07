@@ -88,8 +88,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenNaiv
             Console.WriteLine("Tiempo de ejecución del algoritmo StrassenNaiv: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenNaiv", stopwatch.Elapsed.TotalSeconds);
-            */
-            
+                        
             // Crear una instancia del algoritmo strassenWinograd
             var strassenWinograd = new StrassenWinograd();
             var algorithm = new JsonManager(strassenWinograd);
@@ -101,10 +100,11 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenWinograd
             Console.WriteLine("Tiempo de ejecución del algoritmo StrassenWinograd: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenWinograd", stopwatch.Elapsed.TotalSeconds);
-            /*
+            */
+            
             // Crear una instancia del algoritmo III.3 Sequential block
             var sequentialBlocks = new SequentialBlocks();
-            algorithm = new JsonManager(sequentialBlocks);
+            var algorithm = new JsonManager(sequentialBlocks);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo III.3 Sequential block
@@ -113,7 +113,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
             Console.WriteLine("Tiempo de ejecución del algoritmo III.3 Sequential block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.3 Sequential block", stopwatch.Elapsed.TotalSeconds);
-
+            /*
             // Crear una instancia del algoritmo III.4 Parallel Block
             var parallelBlocks = new ParallelBlocks();
             algorithm = new JsonManager(parallelBlocks);
