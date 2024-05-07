@@ -124,8 +124,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
             Console.WriteLine("Tiempo de ejecución del algoritmo III.4 Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.4 Parallel Block", stopwatch.Elapsed.TotalSeconds);
-            */
-            
+                        
             // Crear una instancia del algoritmo III.5 Enhanced Parallel Block
             var enhancedParallelBlocks = new EnhancedParallelBlocks();
             var algorithm = new JsonManager(enhancedParallelBlocks);
@@ -137,10 +136,11 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo SequentialBlocks
             Console.WriteLine("Tiempo de ejecución del algoritmo III.5 Enhanced Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "III.5 Enhanced Parallel Block", stopwatch.Elapsed.TotalSeconds);
-            /*
+            */
+            
             // Crear una instancia del algoritmo IV.3 Sequential block
             var sequentialBlocks2 = new IV3SequentialBlocks();
-            algorithm = new JsonManager(sequentialBlocks2);
+            var algorithm = new JsonManager(sequentialBlocks2);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo IV.3 Sequential block
@@ -149,7 +149,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo IV.3 Sequential block
             Console.WriteLine("Tiempo de ejecución del algoritmo IV.3 Sequential block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "IV.3 Sequential block", stopwatch.Elapsed.TotalSeconds);
-
+            /*
             // Crear una instancia del algoritmo IV.4 Parallel Block
             var parallelBlocks2 = new ParallelBlocks2();
             algorithm = new JsonManager(parallelBlocks2);
