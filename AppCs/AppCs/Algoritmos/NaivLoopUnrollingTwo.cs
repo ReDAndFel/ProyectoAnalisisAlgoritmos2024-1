@@ -6,17 +6,17 @@ public class NaivLoopUnrollingTwo : AlgorithmInterface {
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
     /// <returns>Matriz resultado de la multiplicación de A y B.</returns>
-    public static int[][] Multiplication(int[][] A, int[][] B) {
+    public static long[][] Multiplication(long[][] A, long[][] B) {
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        int[][] result = new int[N][];
+        long[][] result = new long[N][];
         for (int o = 0; o < N; o++)
         {
-            result[o] = new int[M];
+            result[o] = new long[M];
         }
         int i, j, k;
-        int aux;
+        long aux;
 
         if (P % 2 == 0) {
             // Si P es par
@@ -46,7 +46,7 @@ public class NaivLoopUnrollingTwo : AlgorithmInterface {
         return result;
     }
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return Multiplication(matrix1,matrix2);
     }

@@ -13,22 +13,22 @@ public class Winograd : AlgorithmInterface
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
     /// <returns>Matriz resultado de la multiplicación.</returns>
-    public static int[][] Original(int[][] A, int[][] B)
+    public static long[][] Original(long[][] A, long[][] B)
     {
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        int[][] result = new int[N][];
+        long[][] result = new long[N][];
         int i, j, k;
         int upsilon = P % 2;
         int gamma = P - upsilon;
-        int[] y = new int[M];
-        int[] z = new int[N];
+        long[] y = new long[M];
+        long[] z = new long[N];
 
         // Calculo de y
         for (i = 0; i < M; i++)
         {
-            int aux = 0;
+            long aux = 0;
             for (j = 0; j < gamma; j += 2)
             {
                 aux += A[i][j] * A[i][j + 1];
@@ -39,7 +39,7 @@ public class Winograd : AlgorithmInterface
         // Calculo de z
         for (i = 0; i < N; i++)
         {
-            int aux = 0;
+            long aux = 0;
             for (j = 0; j < gamma; j += 2)
             {
                 aux += B[j][i] * B[j + 1][i];
@@ -47,10 +47,10 @@ public class Winograd : AlgorithmInterface
             z[i] = aux;
         }
 
-        result = new int[N][];
+        result = new long[N][];
         for (i = 0; i < N; i++)
         {
-            result[i] = new int[M];
+            result[i] = new long[M];
         }
 
         if (upsilon == 1)
@@ -61,7 +61,7 @@ public class Winograd : AlgorithmInterface
             {
                 for (k = 0; k < N; k++)
                 {
-                    int aux = 0;
+                    long aux = 0;
                     for (j = 0; j < gamma; j += 2)
                     {
                         aux += (A[i][j] + B[j + 1][k]) * (A[i][j + 1] + B[j][k]);
@@ -77,7 +77,7 @@ public class Winograd : AlgorithmInterface
             {
                 for (k = 0; k < N; k++)
                 {
-                    int aux = 0;
+                    long aux = 0;
                     for (j = 0; j < gamma; j += 2)
                     {
                         aux += (A[i][j] + B[j + 1][k]) * (A[i][j + 1] + B[j][k]);
@@ -100,24 +100,24 @@ public class Winograd : AlgorithmInterface
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
     /// <returns>Matriz resultado de la multiplicación.</returns>
-    public static int[][] Scaled(int[][] A, int[][] B)
+    public static long[][] Scaled(long[][] A, long[][] B)
     {
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        int[][] result = new int[N][];
+        long[][] result = new long[N][];
         int i;
 
         // Crear copias escaladas de A y B
-        int[][] copyA = new int[N][];
-        int[][] copyB = new int[P][];
+        long[][] copyA = new long[N][];
+        long[][] copyB = new long[P][];
         for (i = 0; i < N; i++)
         {
-            copyA[i] = new int[P];
+            copyA[i] = new long[P];
         }
         for (i = 0; i < P; i++)
         {
-            copyB[i] = new int[M];
+            copyB[i] = new long[M];
         }
 
         // Factor de escala
@@ -142,7 +142,7 @@ public class Winograd : AlgorithmInterface
     /// <param name="rows">El número de filas de la matriz.</param>
     /// <param name="cols">El número de columnas de la matriz.</param>
     /// <returns>La norma infinito de la matriz.</returns>
-    private static double NormInf(int[][] matrix, int rows, int cols)
+    private static double NormInf(long[][] matrix, int rows, int cols)
     {
         double maxNorm = 0;
         for (int i = 0; i < rows; i++)
@@ -157,7 +157,7 @@ public class Winograd : AlgorithmInterface
         return maxNorm;
     }
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return Original(matrix1,matrix2);
     }

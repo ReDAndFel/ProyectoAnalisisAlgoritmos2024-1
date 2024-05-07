@@ -5,15 +5,15 @@ using services.interfaces;
 public class StrassenWinograd : AlgorithmInterface
 {
 
-    public static int[][] StrassenWinogradMultiply(int[][] matrizA, int[][] matrizB)
+    public static long[][] StrassenWinogradMultiply(long[][] matrizA, long[][] matrizB)
     {
         int cantidadFilasMatrices = matrizA.Length;
         int cantidadColumnasMatrices = matrizB[0].Length;
         int delimitadorMaximaIteracionesFilaColumna = matrizA[0].Length;
-        int[][] matrizResultado = new int[cantidadFilasMatrices][];
+        long[][] matrizResultado = new long[cantidadFilasMatrices][];
         for (int i = 0; i < cantidadFilasMatrices; i++)
         {
-            matrizResultado[i] = new int[cantidadColumnasMatrices];
+            matrizResultado[i] = new long[cantidadColumnasMatrices];
         }
 
         int mitad = cantidadFilasMatrices / 2;
@@ -26,27 +26,27 @@ public class StrassenWinograd : AlgorithmInterface
         else
         {
             // Dividir las matrices en submatrices
-            int[][] A11 = new int[mitad][];
-            int[][] A12 = new int[mitad][];
-            int[][] A21 = new int[mitad][];
-            int[][] A22 = new int[mitad][];
+            long[][] A11 = new long[mitad][];
+            long[][] A12 = new long[mitad][];
+            long[][] A21 = new long[mitad][];
+            long[][] A22 = new long[mitad][];
 
-            int[][] B11 = new int[mitad][];
-            int[][] B12 = new int[mitad][];
-            int[][] B21 = new int[mitad][];
-            int[][] B22 = new int[mitad][];
+            long[][] B11 = new long[mitad][];
+            long[][] B12 = new long[mitad][];
+            long[][] B21 = new long[mitad][];
+            long[][] B22 = new long[mitad][];
 
             for (int i = 0; i < mitad; i++)
             {
-                A11[i] = new int[mitad];
-                A12[i] = new int[mitad];
-                A21[i] = new int[mitad];
-                A22[i] = new int[mitad];
+                A11[i] = new long[mitad];
+                A12[i] = new long[mitad];
+                A21[i] = new long[mitad];
+                A22[i] = new long[mitad];
 
-                B11[i] = new int[mitad];
-                B12[i] = new int[mitad];
-                B21[i] = new int[mitad];
-                B22[i] = new int[mitad];
+                B11[i] = new long[mitad];
+                B12[i] = new long[mitad];
+                B21[i] = new long[mitad];
+                B22[i] = new long[mitad];
 
                 for (int j = 0; j < mitad; j++)
                 {
@@ -63,13 +63,13 @@ public class StrassenWinograd : AlgorithmInterface
             }
 
             // Calcular las submatrices del resultado
-            int[][] C11 = SumarMatrices(StrassenWinogradMultiply(SumarMatrices(A11, A22), SumarMatrices(B11, B22)),
+            long[][] C11 = SumarMatrices(StrassenWinogradMultiply(SumarMatrices(A11, A22), SumarMatrices(B11, B22)),
                                         StrassenWinogradMultiply(SumarMatrices(A12, A22), B11));
-            int[][] C12 = SumarMatrices(StrassenWinogradMultiply(SumarMatrices(A11, A22), B12),
+            long[][] C12 = SumarMatrices(StrassenWinogradMultiply(SumarMatrices(A11, A22), B12),
                                         StrassenWinogradMultiply(A12, B22));
-            int[][] C21 = SumarMatrices(StrassenWinogradMultiply(A21, SumarMatrices(B11, B21)),
+            long[][] C21 = SumarMatrices(StrassenWinogradMultiply(A21, SumarMatrices(B11, B21)),
                                         StrassenWinogradMultiply(A22, SumarMatrices(B12, B22)));
-            int[][] C22 = SumarMatrices(StrassenWinogradMultiply(A11, SumarMatrices(B21, B22)),
+            long[][] C22 = SumarMatrices(StrassenWinogradMultiply(A11, SumarMatrices(B21, B22)),
                                         StrassenWinogradMultiply(A22, SumarMatrices(B12, B11)));
 
             // Combinar las submatrices en la matriz resultado
@@ -111,13 +111,13 @@ public class StrassenWinograd : AlgorithmInterface
     }
 
     // Método auxiliar para sumar dos matrices
-    private static int[][] SumarMatrices(int[][] matrizA, int[][] matrizB)
+    private static long[][] SumarMatrices(long[][] matrizA, long[][] matrizB)
     {
         int n = matrizA.Length;
-        int[][] resultado = new int[n][];
+        long[][] resultado = new long[n][];
         for (int i = 0; i < n; i++)
         {
-            resultado[i] = new int[n];
+            resultado[i] = new long[n];
             for (int j = 0; j < n; j++)
             {
                 resultado[i][j] = matrizA[i][j] + matrizB[i][j];
@@ -150,81 +150,81 @@ public class StrassenWinograd : AlgorithmInterface
     /// <param name="cantidadFilasMatrices">El número de filas de las matrices.</param>
     /// <param name="m">Parámetro de ajuste del tamaño de la matriz.</param>
     /// <returns>La matriz resultado de la multiplicación.</returns>
-    public static int[][] StrassenWinogradStep(int[][] matrizA, int[][] matrizB, int[][] matrizResultado, int cantidadFilasMatrices, int m)
+    public static long[][] StrassenWinogradStep(long[][] matrizA, long[][] matrizB, long[][] matrizResultado, int cantidadFilasMatrices, int m)
     {
         int nuevoTamanio = 0;
         if ((cantidadFilasMatrices % 2 == 0) && (cantidadFilasMatrices > m))
         {
             nuevoTamanio = cantidadFilasMatrices / 2;
 
-            int[][] matrizA11 = new int[nuevoTamanio][];
-            int[][] matrizA12 = new int[nuevoTamanio][];
-            int[][] matrizA21 = new int[nuevoTamanio][];
-            int[][] matrizA22 = new int[nuevoTamanio][];
+            long[][] matrizA11 = new long[nuevoTamanio][];
+            long[][] matrizA12 = new long[nuevoTamanio][];
+            long[][] matrizA21 = new long[nuevoTamanio][];
+            long[][] matrizA22 = new long[nuevoTamanio][];
 
-            int[][] matrizB11 = new int[nuevoTamanio][];
-            int[][] matrizB12 = new int[nuevoTamanio][];
-            int[][] matrizB21 = new int[nuevoTamanio][];
-            int[][] matrizB22 = new int[nuevoTamanio][];
+            long[][] matrizB11 = new long[nuevoTamanio][];
+            long[][] matrizB12 = new long[nuevoTamanio][];
+            long[][] matrizB21 = new long[nuevoTamanio][];
+            long[][] matrizB22 = new long[nuevoTamanio][];
 
-            int[][] matrizA1 = new int[nuevoTamanio][];
-            int[][] matrizA2 = new int[nuevoTamanio][];
-            int[][] matrizB1 = new int[nuevoTamanio][];
-            int[][] matrizB2 = new int[nuevoTamanio][];
+            long[][] matrizA1 = new long[nuevoTamanio][];
+            long[][] matrizA2 = new long[nuevoTamanio][];
+            long[][] matrizB1 = new long[nuevoTamanio][];
+            long[][] matrizB2 = new long[nuevoTamanio][];
 
-            int[][] matrizResultadoParte11 = new int[nuevoTamanio][];
-            int[][] matrizResultadoParte12 = new int[nuevoTamanio][];
-            int[][] matrizResultadoParte21 = new int[nuevoTamanio][];
-            int[][] matrizResultadoParte22 = new int[nuevoTamanio][];
+            long[][] matrizResultadoParte11 = new long[nuevoTamanio][];
+            long[][] matrizResultadoParte12 = new long[nuevoTamanio][];
+            long[][] matrizResultadoParte21 = new long[nuevoTamanio][];
+            long[][] matrizResultadoParte22 = new long[nuevoTamanio][];
 
-            int[][] ayudante1 = new int[nuevoTamanio][];
-            int[][] ayudante2 = new int[nuevoTamanio][];
+            long[][] ayudante1 = new long[nuevoTamanio][];
+            long[][] ayudante2 = new long[nuevoTamanio][];
 
-            int[][] auxiliar1 = new int[nuevoTamanio][];
-            int[][] auxiliar2 = new int[nuevoTamanio][];
-            int[][] auxiliar3 = new int[nuevoTamanio][];
-            int[][] auxiliar4 = new int[nuevoTamanio][];
-            int[][] auxiliar5 = new int[nuevoTamanio][];
-            int[][] auxiliar6 = new int[nuevoTamanio][];
-            int[][] auxiliar7 = new int[nuevoTamanio][];
-            int[][] auxiliar8 = new int[nuevoTamanio][];
-            int[][] auxiliar9 = new int[nuevoTamanio][];
+            long[][] auxiliar1 = new long[nuevoTamanio][];
+            long[][] auxiliar2 = new long[nuevoTamanio][];
+            long[][] auxiliar3 = new long[nuevoTamanio][];
+            long[][] auxiliar4 = new long[nuevoTamanio][];
+            long[][] auxiliar5 = new long[nuevoTamanio][];
+            long[][] auxiliar6 = new long[nuevoTamanio][];
+            long[][] auxiliar7 = new long[nuevoTamanio][];
+            long[][] auxiliar8 = new long[nuevoTamanio][];
+            long[][] auxiliar9 = new long[nuevoTamanio][];
 
             // Asignar memoria para cada fila
             for (int i = 0; i < nuevoTamanio; i++)
             {
-                matrizA11[i] = new int[nuevoTamanio];
-                matrizA12[i] = new int[nuevoTamanio];
-                matrizA21[i] = new int[nuevoTamanio];
-                matrizA22[i] = new int[nuevoTamanio];
+                matrizA11[i] = new long[nuevoTamanio];
+                matrizA12[i] = new long[nuevoTamanio];
+                matrizA21[i] = new long[nuevoTamanio];
+                matrizA22[i] = new long[nuevoTamanio];
 
-                matrizB11[i] = new int[nuevoTamanio];
-                matrizB12[i] = new int[nuevoTamanio];
-                matrizB21[i] = new int[nuevoTamanio];
-                matrizB22[i] = new int[nuevoTamanio];
+                matrizB11[i] = new long[nuevoTamanio];
+                matrizB12[i] = new long[nuevoTamanio];
+                matrizB21[i] = new long[nuevoTamanio];
+                matrizB22[i] = new long[nuevoTamanio];
 
-                matrizA1[i] = new int[nuevoTamanio];
-                matrizA2[i] = new int[nuevoTamanio];
-                matrizB1[i] = new int[nuevoTamanio];
-                matrizB2[i] = new int[nuevoTamanio];
+                matrizA1[i] = new long[nuevoTamanio];
+                matrizA2[i] = new long[nuevoTamanio];
+                matrizB1[i] = new long[nuevoTamanio];
+                matrizB2[i] = new long[nuevoTamanio];
 
-                matrizResultadoParte11[i] = new int[nuevoTamanio];
-                matrizResultadoParte12[i] = new int[nuevoTamanio];
-                matrizResultadoParte21[i] = new int[nuevoTamanio];
-                matrizResultadoParte22[i] = new int[nuevoTamanio];
+                matrizResultadoParte11[i] = new long[nuevoTamanio];
+                matrizResultadoParte12[i] = new long[nuevoTamanio];
+                matrizResultadoParte21[i] = new long[nuevoTamanio];
+                matrizResultadoParte22[i] = new long[nuevoTamanio];
 
-                ayudante1[i] = new int[nuevoTamanio];
-                ayudante2[i] = new int[nuevoTamanio];
+                ayudante1[i] = new long[nuevoTamanio];
+                ayudante2[i] = new long[nuevoTamanio];
 
-                auxiliar1[i] = new int[nuevoTamanio];
-                auxiliar2[i] = new int[nuevoTamanio];
-                auxiliar3[i] = new int[nuevoTamanio];
-                auxiliar4[i] = new int[nuevoTamanio];
-                auxiliar5[i] = new int[nuevoTamanio];
-                auxiliar6[i] = new int[nuevoTamanio];
-                auxiliar7[i] = new int[nuevoTamanio];
-                auxiliar8[i] = new int[nuevoTamanio];
-                auxiliar9[i] = new int[nuevoTamanio];
+                auxiliar1[i] = new long[nuevoTamanio];
+                auxiliar2[i] = new long[nuevoTamanio];
+                auxiliar3[i] = new long[nuevoTamanio];
+                auxiliar4[i] = new long[nuevoTamanio];
+                auxiliar5[i] = new long[nuevoTamanio];
+                auxiliar6[i] = new long[nuevoTamanio];
+                auxiliar7[i] = new long[nuevoTamanio];
+                auxiliar8[i] = new long[nuevoTamanio];
+                auxiliar9[i] = new long[nuevoTamanio];
             }
 
             // Llenamos las matrices
@@ -321,7 +321,7 @@ public class StrassenWinograd : AlgorithmInterface
         return matrizResultado;
     }
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return StrassenWinogradMultiply(matrix1,matrix2);
     }

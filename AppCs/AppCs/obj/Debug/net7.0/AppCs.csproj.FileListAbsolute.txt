@@ -13,3 +13,18 @@
 /home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs
 /home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/bin/Debug/net7.0/AppCs.runtimeconfig.json
 /home/nomcci/Repo/ProyectoAnalisisAlgoritmos2024-1/AppCs/AppCs/obj/Debug/net7.0/AppCs.genruntimeconfig.cache
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.AssemblyInfoInputs.cache
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.AssemblyInfo.cs
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.sourcelink.json
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.dll
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\refint\AppCs.dll
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.pdb
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net7.0\AppCs.exe
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net7.0\AppCs.deps.json
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net7.0\AppCs.runtimeconfig.json
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net7.0\AppCs.dll
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net7.0\AppCs.pdb
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\AppCs.genruntimeconfig.cache
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net7.0\ref\AppCs.dll

@@ -8,7 +8,7 @@ public class IV3SequentialBlocks : AlgorithmInterface{
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
     /// <returns>La matriz resultante de la multiplicación.</returns>
-    static public int[][] Multiplication(int[][] matrix_A, int[][] matrix_B)
+    static public long[][] Multiplication(long[][] matrix_A, long[][] matrix_B)
     {
         // Obtener las dimensiones de las matrices
         int rows_A = matrix_A.Length;
@@ -16,10 +16,10 @@ public class IV3SequentialBlocks : AlgorithmInterface{
         int cols_A = matrix_A[0].Length;
 
         // Inicializar la matriz resultante
-        int[][] result = new int[rows_A][];
+        long[][] result = new long[rows_A][];
         for (int i = 0; i < rows_A; i++)
         {
-            result[i] = new int[cols_B];
+            result[i] = new long[cols_B];
         }
 
         // Tamaño de los bloques
@@ -50,7 +50,7 @@ public class IV3SequentialBlocks : AlgorithmInterface{
     }
 
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return Multiplication(matrix1,matrix2);
     }

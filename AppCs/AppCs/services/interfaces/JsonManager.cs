@@ -9,7 +9,7 @@ public class JsonManager
         this.algorithm = algorithm;
     }
 
-    public int[][] MultiplyMatricesFromJson(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatricesFromJson(long[][] matrix1, long[][] matrix2)
     {
         return algorithm.MultiplyMatrices(matrix1, matrix2);
     }

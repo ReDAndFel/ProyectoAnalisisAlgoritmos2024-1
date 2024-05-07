@@ -10,7 +10,7 @@ public class SequentialBlocks : AlgorithmInterface{
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
     /// <returns>La matriz resultante de la multiplicación.</returns>
-    public static int[][] Multiplication(int[][] matrixA, int[][] matrixB)
+    public static long[][] Multiplication(long[][] matrixA, long[][] matrixB)
     {
         // Obtener las dimensiones de las matrices
         int rowsA = matrixA.Length;
@@ -18,10 +18,10 @@ public class SequentialBlocks : AlgorithmInterface{
         int colsA = matrixA[0].Length;
 
         // Inicializar la matriz resultante
-        int[][] result = new int[rowsA][];
+        long[][] result = new long[rowsA][];
         for (int i = 0; i < rowsA; i++)
         {
-            result[i] = new int[colsB];
+            result[i] = new long[colsB];
         }
 
         // Tamaño de los bloques
@@ -50,7 +50,7 @@ public class SequentialBlocks : AlgorithmInterface{
         return result;
     }
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return Multiplication(matrix1,matrix2);
     }

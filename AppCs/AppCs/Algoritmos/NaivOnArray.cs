@@ -1,7 +1,7 @@
 using services.interfaces;
 
 class NaivOnArray : AlgorithmInterface {
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return naivOnArray(matrix1,matrix2);
     }
@@ -14,20 +14,20 @@ class NaivOnArray : AlgorithmInterface {
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
     /// <returns>Matriz donde se almacenará el resultado.</returns>
-    public int[][] naivOnArray(int[][] A, int[][] B)
+    public long[][] naivOnArray(long[][] A, long[][] B)
     {
         int N = A.Length;
         int P = B[0].Length;
         int M = B.Length;
-        int[][] result = new int[N][];
+        long[][] result = new long[N][];
         for (int o = 0; o < N; o++)
         {
-            result[o] = new int[M];
+            result[o] = new long[M];
         }
         
         for (int i = 0; i < N; i++)
         {
-            result[i] = new int[M];
+            result[i] = new long[M];
             for (int j = 0; j < M; j++)
             {
                 result[i][j] = 0;

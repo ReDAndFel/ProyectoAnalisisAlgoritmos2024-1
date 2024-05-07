@@ -12,16 +12,16 @@ public class EnhancedParallelBlocks : AlgorithmInterface{
     /// <param name="matrixA">La primera matriz a multiplicar.</param>
     /// <param name="matrixB">La segunda matriz a multiplicar.</param>
     /// <returns>La matriz resultante de la multiplicación.</returns>
-    public static int[][] Multiplication(int[][] matrixA, int[][] matrixB)
+    public static long[][] Multiplication(long[][] matrixA, long[][] matrixB)
     {
         int size = matrixA.Length;
         int blockSize = size / 2;  // Tamaño del bloque
 
         // Inicializar matriz resultante
-        int[][] result = new int[size][];
+        long[][] result = new long[size][];
         for (int i = 0; i < size; i++)
         {
-            result[i] = new int[size];
+            result[i] = new long[size];
         }
 
         // Método para multiplicar un bloque específico
@@ -75,7 +75,7 @@ public class EnhancedParallelBlocks : AlgorithmInterface{
         return result;
     }
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return Multiplication(matrix1,matrix2);
     }

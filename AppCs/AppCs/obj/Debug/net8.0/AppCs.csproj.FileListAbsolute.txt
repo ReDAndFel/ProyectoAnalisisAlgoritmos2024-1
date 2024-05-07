@@ -55,32 +55,21 @@ C:\Users\ASUS\Documents\Mis documentos Andres\Analisis Algoritmos\ProyectoAlgori
 C:\Users\ASUS\Documents\Mis documentos Andres\Analisis Algoritmos\ProyectoAlgoritmos\AppCs\AppCs\obj\Debug\net8.0\AppCs.pdb
 C:\Users\ASUS\Documents\Mis documentos Andres\Analisis Algoritmos\ProyectoAlgoritmos\AppCs\AppCs\obj\Debug\net8.0\AppCs.genruntimeconfig.cache
 C:\Users\ASUS\Documents\Mis documentos Andres\Analisis Algoritmos\ProyectoAlgoritmos\AppCs\AppCs\obj\Debug\net8.0\ref\AppCs.dll
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\appsettings.json
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\AppCs.exe
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\AppCs.deps.json
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\AppCs.runtimeconfig.json
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\AppCs.dll
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\AppCs.pdb
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.csproj.AssemblyReference.cache
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.AssemblyInfoInputs.cache
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.AssemblyInfo.cs
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.csproj.CoreCompileInputs.cache
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.sourcelink.json
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets\msbuild.AppCs.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets\msbuild.build.AppCs.props
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.AppCs.props
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AppCs.props
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\scopedcss\bundle\AppCs.styles.css
-C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.csproj.Up2Date
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.dll
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\refint\AppCs.dll
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.pdb
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.genruntimeconfig.cache
 C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\ref\AppCs.dll
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.csproj.AssemblyReference.cache
+C:\Users\user\Documents\Analisis de algoritmos\ProyectoAlgoritmos_push\AppCs\AppCs\obj\Debug\net8.0\AppCs.csproj.Up2Date

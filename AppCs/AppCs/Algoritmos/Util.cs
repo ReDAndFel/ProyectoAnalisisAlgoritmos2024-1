@@ -8,7 +8,7 @@ public class Util
     /// <param name="rows">Número de filas de la matriz.</param>
     /// <param name="cols">Número de columnas de la matriz.</param>
     /// <param name="scalar">Escalar multiplicador.</param>
-    public static void MultiplyWithScalar(int[][] matrix, int[][] result, int rows, int cols, double scalar)
+    public static void MultiplyWithScalar(long[][] matrix, long[][] result, int rows, int cols, double scalar)
     {
         for (int i = 0; i < rows; i++)
         {
@@ -27,7 +27,7 @@ public class Util
     /// <param name="B">Matriz B.</param>
     /// <param name="Result">Matriz donde se almacenará la suma.</param>
     /// <param name="Size">Tamaño de las matrices.</param>
-    public static void Plus(int[][] A, int[][] B, int[][] Result, int Size)
+    public static void Plus(long[][] A, long[][] B, long[][] Result, int Size)
     {
         for (int i = 0; i < Size; i++)
         {
@@ -45,7 +45,7 @@ public class Util
     /// <param name="B">Matriz B.</param>
     /// <param name="Result">Matriz donde se almacenará la resta.</param>
     /// <param name="Size">Tamaño de las matrices.</param>
-    public static void Minus(int[][] A, int[][] B, int[][] Result, int Size)
+    public static void Minus(long[][] A, long[][] B, long[][] Result, int Size)
     {
         for (int i = 0; i < Size; i++)
         {
@@ -63,13 +63,13 @@ public class Util
     /// <param name="rows">Número de filas de la matriz.</param>
     /// <param name="cols">Número de columnas de la matriz.</param>
     /// <returns>La norma infinito de la matriz.</returns>
-    public static int NormInf(int[][] matrix, int rows, int cols)
+    public static long NormInf(long[][] matrix, int rows, int cols)
     {
-        int maxNorm = int.MinValue;
+        long maxNorm = int.MinValue;
 
         for (int i = 0; i < rows; i++)
         {
-            int rowSum = 0;
+            long rowSum = 0;
             for (int j = 0; j < cols; j++)
             {
                 rowSum += Math.Abs(matrix[i][j]);

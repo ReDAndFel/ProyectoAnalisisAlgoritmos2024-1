@@ -13,24 +13,24 @@ public class WinogradScaled : AlgorithmInterface
     /// <param name="A">Matriz A.</param>
     /// <param name="B">Matriz B.</param>
     /// <returns>Matriz resultado de la multiplicación.</returns>
-    public static int[][] Multiplication(int[][] A, int[][] B)
+    public static long[][] Multiplication(long[][] A, long[][] B)
     {
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        int[][] result = new int[N][];
+        long[][] result = new long[N][];
         int i;
 
         // Crear copias escaladas de A y B
-        int[][] CopyA = new int[N][];
-        int[][] CopyB = new int[P][];
+        long[][] CopyA = new long[N][];
+        long[][] CopyB = new long[P][];
         for (i = 0; i < N; i++)
         {
-            CopyA[i] = new int[P];
+            CopyA[i] = new long[P];
         }
         for (i = 0; i < P; i++)
         {
-            CopyB[i] = new int[M];
+            CopyB[i] = new long[M];
         }
 
         // Factor de escala
@@ -55,7 +55,7 @@ public class WinogradScaled : AlgorithmInterface
     /// <param name="rows">El número de filas de la matriz.</param>
     /// <param name="cols">El número de columnas de la matriz.</param>
     /// <returns>La norma infinito de la matriz.</returns>
-    private static double NormInf(int[][] matrix, int rows, int cols)
+    private static double NormInf(long[][] matrix, int rows, int cols)
     {
         double maxNorm = 0;
         for (int i = 0; i < rows; i++)
@@ -70,7 +70,7 @@ public class WinogradScaled : AlgorithmInterface
         return maxNorm;
     }
 
-    public int[][] MultiplyMatrices(int[][] matrix1, int[][] matrix2)
+    public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
         return Multiplication(matrix1,matrix2);
     }

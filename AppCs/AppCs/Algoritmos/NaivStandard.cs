@@ -8,7 +8,7 @@ public static class NaivStandard
     /// <param name="matrizA">La primera matriz a multiplicar.</param>
     /// <param name="matrizB">La segunda matriz a multiplicar.</param>
     /// <returns>La matriz resultado de la multiplicación.</returns>
-    public static int[][] NaivStandardMultiply(int[][] matrizA, int[][] matrizB)
+    public static long[][] NaivStandardMultiply(long[][] matrizA, long[][] matrizB)
     {
         int cantidadFilasMatrizA = matrizA.Length;
         int cantidadColumnasMatrizA = matrizA[0].Length;
@@ -20,10 +20,10 @@ public static class NaivStandard
             throw new ArgumentException("Las dimensiones de las matrices no son compatibles para la multiplicación.");
         }
 
-        int[][] matrizResultado = new int[cantidadFilasMatrizA][];
+        long[][] matrizResultado = new long[cantidadFilasMatrizA][];
         for (int i = 0; i < cantidadFilasMatrizA; i++)
         {
-            matrizResultado[i] = new int[cantidadColumnasMatrizB];
+            matrizResultado[i] = new long[cantidadColumnasMatrizB];
             for (int j = 0; j < cantidadColumnasMatrizB; j++)
             {
                 double aux = 0.0;
