@@ -1,3 +1,5 @@
+#Algoritmo basado en el libro METHODS OF MATRIX MULTIPLICATION AN OVERVIEW OF SEVERAL METHODS AND THEIR IMPLEMENTATION y apoyado en IA
+
 def NaivLoopUnrollingTwoImpl(matrix_A, matrix_B):
     N = len(matrix_A)
     P = len(matrix_A[0])

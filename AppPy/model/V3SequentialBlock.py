@@ -1,3 +1,5 @@
+#Algoritmo basado en el libro METHODS OF MATRIX MULTIPLICATION AN OVERVIEW OF SEVERAL METHODS AND THEIR IMPLEMENTATION y apoyado en IA
+
 def V3SequentialBlockImpl(matrix_A, matrix_B):
     
     # Obtener las dimensiones de las matrices
