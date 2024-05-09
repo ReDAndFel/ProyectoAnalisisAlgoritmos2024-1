@@ -1,292 +1,246 @@
+//Algoritmo basado en el libro METHODS OF MATRIX MULTIPLICATION AN OVERVIEW OF SEVERAL METHODS AND THEIR IMPLEMENTATION y apoyado en IA
 using System;
-using System.Linq;
 using services.interfaces;
 public class StrassenNaive : AlgorithmInterface
 {
-    /// <summary>
-    /// Realiza la multiplicación de dos matrices utilizando el algoritmo de Strassen
-    /// de forma ingenua (naive).
-    /// </summary>
-    /// <param name="matrizA">La primera matriz a multiplicar.</param>
-    /// <param name="matrizB">La segunda matriz a multiplicar.</param>
-    /// <returns>La matriz resultante de la multiplicación.</returns>
-    public static long[][] StrassenNaiveMultiply(long[][] matrizA, long[][] matrizB)
+    public static long[][] StrassenNaivMultiply(long[][] matrixA, long[][] matrixB)
     {
-        int cantidadFilasMatrices = matrizA.Length;
-        int cantidadColumnasMatrices = matrizB[0].Length;
-        int delimitadorMaximaIteracionesFilaColumna = matrizA[0].Length;
-        long[][] matrizResultado = new long[cantidadFilasMatrices][];
-        for (int i = 0; i < cantidadFilasMatrices; i++)
+        int rows = matrixA.Length;
+        int cols = matrixB[0].Length;
+        int maxIt = matrixA[0].Length;
+        long[][] matrixResult = new long[rows][];
+
+        for (int i = 0; i < rows; i++)
         {
-            matrizResultado[i] = new long[cantidadColumnasMatrices];
+            matrixResult[i] = new long[cols];
         }
 
-        int tamanioMaximo = Math.Max(cantidadFilasMatrices, delimitadorMaximaIteracionesFilaColumna);
-        tamanioMaximo = Math.Max(tamanioMaximo, cantidadFilasMatrices);
+        int maxSize = Math.Max(rows, maxIt);
+        maxSize = Math.Max(maxSize, rows);
 
-        if (tamanioMaximo < 16)
+        if (maxSize < 16)
         {
-            tamanioMaximo = 16; // Si no, no es posible computar K
+            maxSize = 16;
         }
 
-        int k = (int)Math.Floor(Math.Log(tamanioMaximo) / Math.Log(2)) - 4;
-        int m = (int)Math.Floor(tamanioMaximo * Math.Pow(2, -k)) + 1;
-        int nuevoTamanio = (int)(m * Math.Pow(2, k));
+        int k = (int)Math.Floor(Math.Log(maxSize) / Math.Log(2)) - 4;
+        int m = (int)(maxSize * Math.Pow(2, -k)) + 1;
+        int newSize = m * (int)Math.Pow(2, k);
 
-        long[][] nuevaMatrizA = new long[nuevoTamanio][];
-        long[][] nuevaMatrizB = new long[nuevoTamanio][];
-        long[][] matrizResultadoAuxiliar = new long[nuevoTamanio][];
-        for (int i = 0; i < nuevoTamanio; i++)
+        long[][] newMatrixA = new long[newSize][];
+        long[][] newMatrixB = new long[newSize][];
+        long[][] matrixResultAux = new long[newSize][];
+
+        for (int i = 0; i < newSize; i++)
         {
-            nuevaMatrizA[i] = new long[nuevoTamanio];
-            nuevaMatrizB[i] = new long[nuevoTamanio];
-            matrizResultadoAuxiliar[i] = new long[nuevoTamanio];
+            newMatrixA[i] = new long[newSize];
+            newMatrixB[i] = new long[newSize];
+            matrixResultAux[i] = new long[newSize];
         }
 
-        for (int i = 0; i < cantidadFilasMatrices; i++)
+        for (int i = 0; i < rows; i++)
         {
-            for (int j = 0; j < delimitadorMaximaIteracionesFilaColumna; j++)
+            for (int j = 0; j < cols; j++)
             {
-                nuevaMatrizA[i][j] = matrizA[i][j];
+                newMatrixA[i][j] = matrixA[i][j];
+                newMatrixB[i][j] = matrixB[i][j];
             }
         }
 
-        for (int i = 0; i < delimitadorMaximaIteracionesFilaColumna; i++)
+        matrixResultAux = StrassenNaivStep(newMatrixA, newMatrixB, matrixResultAux, newSize, m);
+
+        for (int i = 0; i < rows; i++)
         {
-            for (int j = 0; j < cantidadColumnasMatrices; j++)
+            for (int j = 0; j < cols; j++)
             {
-                nuevaMatrizB[i][j] = matrizB[i][j];
+                matrixResult[i][j] = matrixResultAux[i][j];
             }
         }
 
-        matrizResultadoAuxiliar = StrassenNaiveStep(nuevaMatrizA, nuevaMatrizB, matrizResultadoAuxiliar, nuevoTamanio, m);
-
-        for (int i = 0; i < cantidadFilasMatrices; i++)
-        {
-            for (int j = 0; j < cantidadColumnasMatrices; j++)
-            {
-                matrizResultado[i][j] = matrizResultadoAuxiliar[i][j];
-            }
-        }
-
-        return matrizResultado;
+        return matrixResult;
     }
 
-    /// <summary>
-    /// Realiza una etapa del algoritmo de Strassen para multiplicación de matrices
-    /// de forma ingenua (naive).
-    /// </summary>
-    /// <param name="matrizA">La primera submatriz de la matriz A.</param>
-    /// <param name="matrizB">La primera submatriz de la matriz B.</param>
-    /// <param name="matrizResultado">La matriz resultante.</param>
-    /// <param name="cantidadFilasMatrices">El tamaño de las submatrices.</param>
-    /// <param name="m">El parámetro m del algoritmo.</param>
-    /// <returns>La matriz resultante de la multiplicación.</returns>
-    public static long[][] StrassenNaiveStep(long[][] matrizA, long[][] matrizB, long[][] matrizResultado, int cantidadFilasMatrices, int m)
+    private static long[][] StrassenNaivStep(long[][] matrixA, long[][] matrixB, long[][] matrixResult, int size, int m)
     {
-        int nuevoTamanio = 0;
-        if (cantidadFilasMatrices % 2 == 0 && cantidadFilasMatrices > m)
+        int newSize = 0;
+        if (size % 2 == 0 && size > m)
         {
-            nuevoTamanio = cantidadFilasMatrices / 2;
+            newSize = size / 2;
 
-            long[][] matrizA11 = new long[nuevoTamanio][];
-            long[][] matrizA12 = new long[nuevoTamanio][];
-            long[][] matrizA21 = new long[nuevoTamanio][];
-            long[][] matrizA22 = new long[nuevoTamanio][];
+            long[][] matrixA11 = new long[newSize][];
+            long[][] matrixA12 = new long[newSize][];
+            long[][] matrixA21 = new long[newSize][];
+            long[][] matrixA22 = new long[newSize][];
+            long[][] matrixB11 = new long[newSize][];
+            long[][] matrixB12 = new long[newSize][];
+            long[][] matrixB21 = new long[newSize][];
+            long[][] matrixB22 = new long[newSize][];
+            long[][] matrixResult11 = new long[newSize][];
+            long[][] matrixResult12 = new long[newSize][];
+            long[][] matrixResult21 = new long[newSize][];
+            long[][] matrixResult22 = new long[newSize][];
+            long[][] helper1 = new long[newSize][];
+            long[][] helper2 = new long[newSize][];
+            long[][] aux1 = new long[newSize][];
+            long[][] aux2 = new long[newSize][];
+            long[][] aux3 = new long[newSize][];
+            long[][] aux4 = new long[newSize][];
+            long[][] aux5 = new long[newSize][];
+            long[][] aux6 = new long[newSize][];
+            long[][] aux7 = new long[newSize][];
 
-            long[][] matrizB11 = new long[nuevoTamanio][];
-            long[][] matrizB12 = new long[nuevoTamanio][];
-            long[][] matrizB21 = new long[nuevoTamanio][];
-            long[][] matrizB22 = new long[nuevoTamanio][];
-
-            long[][] matrizResultadoParte11 = new long[nuevoTamanio][];
-            long[][] matrizResultadoParte12 = new long[nuevoTamanio][];
-            long[][] matrizResultadoParte21 = new long[nuevoTamanio][];
-            long[][] matrizResultadoParte22 = new long[nuevoTamanio][];
-
-            long[][] ayudante1 = new long[nuevoTamanio][];
-            long[][] ayudante2 = new long[nuevoTamanio][];
-
-            long[][] auxiliar1 = new long[nuevoTamanio][];
-            long[][] auxiliar2 = new long[nuevoTamanio][];
-            long[][] auxiliar3 = new long[nuevoTamanio][];
-            long[][] auxiliar4 = new long[nuevoTamanio][];
-            long[][] auxiliar5 = new long[nuevoTamanio][];
-            long[][] auxiliar6 = new long[nuevoTamanio][];
-            long[][] auxiliar7 = new long[nuevoTamanio][];
-
-            for (int i = 0; i < nuevoTamanio; i++)
+            for (int i = 0; i < newSize; i++)
             {
-                matrizA11[i] = new long[nuevoTamanio];
-                matrizA12[i] = new long[nuevoTamanio];
-                matrizA21[i] = new long[nuevoTamanio];
-                matrizA22[i] = new long[nuevoTamanio];
-
-                matrizB11[i] = new long[nuevoTamanio];
-                matrizB12[i] = new long[nuevoTamanio];
-                matrizB21[i] = new long[nuevoTamanio];
-                matrizB22[i] = new long[nuevoTamanio];
-
-                matrizResultadoParte11[i] = new long[nuevoTamanio];
-                matrizResultadoParte12[i] = new long[nuevoTamanio];
-                matrizResultadoParte21[i] = new long[nuevoTamanio];
-                matrizResultadoParte22[i] = new long[nuevoTamanio];
-
-                ayudante1[i] = new long[nuevoTamanio];
-                ayudante2[i] = new long[nuevoTamanio];
-
-                auxiliar1[i] = new long[nuevoTamanio];
-                auxiliar2[i] = new long[nuevoTamanio];
-                auxiliar3[i] = new long[nuevoTamanio];
-                auxiliar4[i] = new long[nuevoTamanio];
-                auxiliar5[i] = new long[nuevoTamanio];
-                auxiliar6[i] = new long[nuevoTamanio];
-                auxiliar7[i] = new long[nuevoTamanio];
+                matrixA11[i] = new long[newSize];
+                matrixA12[i] = new long[newSize];
+                matrixA21[i] = new long[newSize];
+                matrixA22[i] = new long[newSize];
+                matrixB11[i] = new long[newSize];
+                matrixB12[i] = new long[newSize];
+                matrixB21[i] = new long[newSize];
+                matrixB22[i] = new long[newSize];
+                matrixResult11[i] = new long[newSize];
+                matrixResult12[i] = new long[newSize];
+                matrixResult21[i] = new long[newSize];
+                matrixResult22[i] = new long[newSize];
+                helper1[i] = new long[newSize];
+                helper2[i] = new long[newSize];
+                aux1[i] = new long[newSize];
+                aux2[i] = new long[newSize];
+                aux3[i] = new long[newSize];
+                aux4[i] = new long[newSize];
+                aux5[i] = new long[newSize];
+                aux6[i] = new long[newSize];
+                aux7[i] = new long[newSize];
             }
 
-            for (int i = 0; i < nuevoTamanio; i++)
+            for (int i = 0; i < newSize; i++)
             {
-                for (int j = 0; j < nuevoTamanio; j++)
+                for (int j = 0; j < newSize; j++)
                 {
-                    matrizA11[i][j] = matrizA[i][j];
-                    matrizA12[i][j] = matrizA[i][nuevoTamanio + j];
-                    matrizA21[i][j] = matrizA[nuevoTamanio + i][j];
-                    matrizA22[i][j] = matrizA[nuevoTamanio + i][nuevoTamanio + j];
+                    matrixA11[i][j] = matrixA[i][j];
+                    matrixA12[i][j] = matrixA[i][newSize + j];
+                    matrixA21[i][j] = matrixA[newSize + i][j];
+                    matrixA22[i][j] = matrixA[newSize + i][newSize + j];
 
-                    matrizB11[i][j] = matrizB[i][j];
-                    matrizB12[i][j] = matrizB[i][nuevoTamanio + j];
-                    matrizB21[i][j] = matrizB[nuevoTamanio + i][j];
-                    matrizB22[i][j] = matrizB[nuevoTamanio + i][nuevoTamanio + j];
+                    matrixB11[i][j] = matrixB[i][j];
+                    matrixB12[i][j] = matrixB[i][newSize + j];
+                    matrixB21[i][j] = matrixB[newSize + i][j];
+                    matrixB22[i][j] = matrixB[newSize + i][newSize + j];
                 }
             }
 
-            for (int i = 0; i < nuevoTamanio; i++)
+            // Computing the seven aux variables
+            Plus(matrixA11, matrixA22, helper1, newSize);
+            Plus(matrixB11, matrixB22, helper2, newSize);
+            StrassenNaivStep(helper1, helper2, aux1, newSize, m);
+            Plus(matrixA21, matrixA22, helper1, newSize);
+            StrassenNaivStep(helper1, matrixB11, aux2, newSize, m);
+            Minus(matrixB12, matrixB22, helper1, newSize);
+            StrassenNaivStep(matrixA11, helper1, aux3, newSize, m);
+            Minus(matrixB21, matrixB11, helper1, newSize);
+            StrassenNaivStep(matrixA22, helper1, aux4, newSize, m);
+            Plus(matrixA11, matrixA12, helper1, newSize);
+            StrassenNaivStep(helper1, matrixB22, aux5, newSize, m);
+            Minus(matrixA21, matrixA11, helper1, newSize);
+            Plus(matrixB11, matrixB12, helper2, newSize);
+            StrassenNaivStep(helper1, helper2, aux6, newSize, m);
+            Minus(matrixA12, matrixA22, helper1, newSize);
+            Plus(matrixB21, matrixB22, helper2, newSize);
+            StrassenNaivStep(helper1, helper2, aux7, newSize, m);
+
+            // Computing the four parts of the result
+            Plus(aux1, aux4, matrixResult11, newSize);
+            Minus(matrixResult11, aux5, matrixResult11, newSize);
+            Plus(matrixResult11, aux7, matrixResult11, newSize);
+            Plus(aux3, aux5, matrixResult12, newSize);
+            Plus(aux2, aux4, matrixResult21, newSize);
+            Plus(aux1, aux3, matrixResult22, newSize);
+            Minus(matrixResult22, aux2, matrixResult22, newSize);
+            Plus(matrixResult22, aux6, matrixResult22, newSize);
+
+            // fill results
+            for (int i = 0; i < newSize; i++)
             {
-                for (int j = 0; j < nuevoTamanio; j++)
+                for (int j = 0; j < newSize; j++)
                 {
-                    ayudante1[i][j] = matrizA11[i][j] + matrizA22[i][j];
-                    ayudante2[i][j] = matrizB11[i][j] + matrizB22[i][j];
+                    matrixResult[i][j] = matrixResult11[i][j];
                 }
             }
 
-            auxiliar1 = StrassenNaiveStep(ayudante1, ayudante2, auxiliar1, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
+            for (int i = 0; i < newSize; i++)
             {
-                for (int j = 0; j < nuevoTamanio; j++)
+                for (int j = 0; j < newSize; j++)
                 {
-                    ayudante1[i][j] = matrizA21[i][j] + matrizA22[i][j];
+                    matrixResult[i][newSize + j] = matrixResult12[i][j];
                 }
             }
 
-            auxiliar2 = StrassenNaiveStep(ayudante1, matrizB11, auxiliar2, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
+            for (int i = 0; i < newSize; i++)
             {
-                for (int j = 0; j < nuevoTamanio; j++)
+                for (int j = 0; j < newSize; j++)
                 {
-                    ayudante1[i][j] = matrizA11[i][j];
+                    matrixResult[newSize + i][j] = matrixResult21[i][j];
                 }
             }
 
-            auxiliar3 = StrassenNaiveStep(matrizA11, ayudante1, auxiliar3, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
+            for (int i = 0; i < newSize; i++)
             {
-                for (int j = 0; j < nuevoTamanio; j++)
+                for (int j = 0; j < newSize; j++)
                 {
-                    ayudante1[i][j] = matrizA22[i][j];
-                }
-            }
-
-            auxiliar4 = StrassenNaiveStep(matrizA22, ayudante1, auxiliar4, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    ayudante1[i][j] = matrizA11[i][j] + matrizA12[i][j];
-                }
-            }
-
-            auxiliar5 = StrassenNaiveStep(ayudante1, matrizB22, auxiliar5, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    ayudante1[i][j] = matrizA21[i][j] - matrizA11[i][j];
-                    ayudante2[i][j] = matrizB11[i][j] + matrizB12[i][j];
-                }
-            }
-
-            auxiliar6 = StrassenNaiveStep(ayudante1, ayudante2, auxiliar6, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    ayudante1[i][j] = matrizA12[i][j] - matrizA22[i][j];
-                    ayudante2[i][j] = matrizB21[i][j] + matrizB22[i][j];
-                }
-            }
-
-            auxiliar7 = StrassenNaiveStep(ayudante1, ayudante2, auxiliar7, nuevoTamanio, m);
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    matrizResultadoParte11[i][j] = auxiliar1[i][j] + auxiliar4[i][j] - auxiliar5[i][j] + auxiliar7[i][j];
-                    matrizResultadoParte12[i][j] = auxiliar3[i][j] + auxiliar5[i][j];
-                    matrizResultadoParte21[i][j] = auxiliar2[i][j] + auxiliar4[i][j];
-                    matrizResultadoParte22[i][j] = auxiliar1[i][j] - auxiliar2[i][j] + auxiliar3[i][j] + auxiliar6[i][j];
-                }
-            }
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    matrizResultado[i][j] = matrizResultadoParte11[i][j];
-                }
-            }
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    matrizResultado[i][nuevoTamanio + j] = matrizResultadoParte12[i][j];
-                }
-            }
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    matrizResultado[nuevoTamanio + i][j] = matrizResultadoParte21[i][j];
-                }
-            }
-
-            for (int i = 0; i < nuevoTamanio; i++)
-            {
-                for (int j = 0; j < nuevoTamanio; j++)
-                {
-                    matrizResultado[nuevoTamanio + i][nuevoTamanio + j] = matrizResultadoParte22[i][j];
+                    matrixResult[newSize + i][newSize + j] = matrixResult22[i][j];
                 }
             }
         }
         else
         {
-            // Usar algoritmo naiv
-            matrizResultado = NaivStandard.NaivStandardMultiply(matrizA, matrizB);
+            // Use naivstandard algoritm
+            matrixResult = NaivStandard(matrixA, matrixB, matrixResult, matrixA.Length, matrixB[0].Length, matrixResult.Length);
         }
 
-        return matrizResultado;
+        return matrixResult;
+    }
+
+    private static void Plus(long[][] matrixA, long[][] matrixB, long[][] result, int newSize)
+    {
+        for (int i = 0; i < newSize; i++)
+        {
+            for (int j = 0; j < newSize; j++)
+            {
+                result[i][j] = matrixA[i][j] + matrixB[i][j];
+            }
+        }
+    }
+
+    private static void Minus(long[][] matrixA, long[][] matrixB, long[][] result, int newSize)
+    {
+        for (int i = 0; i < newSize; i++)
+        {
+            for (int j = 0; j < newSize; j++)
+            {
+                result[i][j] = matrixA[i][j] - matrixB[i][j];
+            }
+        }
+    }
+
+    private static long[][] NaivStandard(long[][] matrixA, long[][] matrixB, long[][] matrixResult, int rowsA, int colsB, int rowsResult)
+    {
+        for (int i = 0; i < rowsA; i++)
+        {
+            for (int j = 0; j < colsB; j++)
+            {
+                matrixResult[i][j] = 0;
+                for (int k = 0; k < rowsResult; k++)
+                {
+                    matrixResult[i][j] += matrixA[i][k] * matrixB[k][j];
+                }
+            }
+        }
+        return matrixResult;
     }
 
     public long[][] MultiplyMatrices(long[][] matrix1, long[][] matrix2)
     {
-        return StrassenNaiveMultiply(matrix1,matrix2);
+        return StrassenNaivMultiply(matrix1,matrix2);
     }
 }

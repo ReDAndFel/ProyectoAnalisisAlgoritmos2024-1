@@ -1,3 +1,5 @@
+//Algoritmo basado en el libro METHODS OF MATRIX MULTIPLICATION AN OVERVIEW OF SEVERAL METHODS AND THEIR IMPLEMENTATION y apoyado en IA
+using System;
 using services.interfaces;
 public class IV3SequentialBlocks : AlgorithmInterface{
     /// <summary>
