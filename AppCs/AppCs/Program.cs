@@ -1,4 +1,4 @@
-/*using System.Diagnostics;
+using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 
 class Program
@@ -14,6 +14,7 @@ class Program
             string timesJsonPath = "../../times" + (i + 1) + ".json";
             JObject jsonTimes = JsonInterface.readJson(timesJsonPath);
             (long[][] matrix1, long[][] matrix2) = JsonInterface.readJsonMatrix(matrixJsonPath, (i + 1));
+            
             /*
             // Crear una instancia del algoritmo NaivOnArray
             var naivOnArrayAlgorithm = new NaivOnArray();
@@ -64,7 +65,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradOriginal
             Console.WriteLine("Tiempo de ejecución del algoritmo WinogradOriginal: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradOriginal", stopwatch.Elapsed.TotalSeconds);
-                        
+                    
             // Crear una instancia del algoritmo winogradScaled
             var winogradScaled = new WinogradScaled();
             var algorithm = new JsonManager(winogradScaled);
@@ -73,22 +74,24 @@ class Program
             // Multiplicar las matrices usando el algoritmo WinogradScaled
             long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
             stopwatch.Stop();
+            long lenght= result.Length;
             //imprime y setea en el json el tiemp de ejecucion del algoritmo WinogradScaled
             Console.WriteLine("Tiempo de ejecución del algoritmo WinogradScaled: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "WinogradScaled", stopwatch.Elapsed.TotalSeconds);
-                        
+            Console.WriteLine("Ultimo valor de la matriz result de winogradScaled: " + result[lenght-1][lenght-1]);
+                       
             // Crear una instancia del algoritmo StrassenNaiv
             var strassenNaiv = new StrassenNaive();
-            var algorithm = new JsonManager(strassenNaiv);
+            var algorithm2 = new JsonManager(strassenNaiv);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Multiplicar las matrices usando el algoritmo StrassenNaiv
-            long[][] result = algorithm.MultiplyMatricesFromJson(matrix1, matrix2);
+            long[][] result = algorithm2.MultiplyMatricesFromJson(matrix1, matrix2);
             stopwatch.Stop();
             //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenNaiv
             Console.WriteLine("Tiempo de ejecución del algoritmo StrassenNaiv: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenNaiv", stopwatch.Elapsed.TotalSeconds);
-                        
+            */            
             // Crear una instancia del algoritmo strassenWinograd
             var strassenWinograd = new StrassenWinograd();
             var algorithm = new JsonManager(strassenWinograd);
@@ -100,7 +103,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo StrassenWinograd
             Console.WriteLine("Tiempo de ejecución del algoritmo StrassenWinograd: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "StrassenWinograd", stopwatch.Elapsed.TotalSeconds);
-                        
+            /*            
             // Crear una instancia del algoritmo III.3 Sequential block
             var sequentialBlocks = new SequentialBlocks();
             var algorithm = new JsonManager(sequentialBlocks);
@@ -197,8 +200,7 @@ class Program
             //imprime y setea en el json el tiemp de ejecucion del algoritmo V.4 Parallel Block
             Console.WriteLine("Tiempo de ejecución del algoritmo V.4 Parallel Block: {0} segundos", stopwatch.Elapsed.TotalSeconds);
             JsonInterface.modifyProperty(jsonTimes, timesJsonPath, "V.4 Parallel Block", stopwatch.Elapsed.TotalSeconds);
-            
+            */
         }
     }
 }
-*/
