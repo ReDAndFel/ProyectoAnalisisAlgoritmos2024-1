@@ -25,14 +25,12 @@
     "StrassenNaiv": 693.035829782486,
     "StrassenWinograd": 669.965381860733,
     "III.3 Sequential block": 996.1433520317078,
-    "III.4 Parallel Block": 3.212,
+    "III.4 Parallel block": 1121.917519569397,
     "III.5 Enhanced Parallel Block": 1128.43696808815,
-    "IV.3 Sequential block": 2.3413123,
+    "IV.3 Sequential Block": 910.1734325885773,
     "IV.4 Parallel Block": 961.5552296638489,
     "IV.5 Enhanced Parallel Block": 945.0863738059998,
     "V.3 Sequential block": 1328.5119416713715,
-    "V.4 Parallel Block": 1409.9446969032288,
-    "IV.3 Sequential Block": 910.1734325885773,
-    "III.4 Parallel block": 1121.917519569397
+    "V.4 Parallel Block": 1409.9446969032288    
   }
 }
