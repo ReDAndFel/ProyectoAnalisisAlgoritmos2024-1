@@ -8,6 +8,7 @@ def WinogradScaledImpl(matrix_A, matrix_B):
     rows_A = len(matrix_A)
     cols_A = len(matrix_A[0])
     cols_B = len(matrix_B[0])
+    #Inicializa la matriz resultados y la llena de 0
     Result = [[0.0] * cols_B for _ in range(rows_A)]
 
     # Crear copias escaladas de A y B

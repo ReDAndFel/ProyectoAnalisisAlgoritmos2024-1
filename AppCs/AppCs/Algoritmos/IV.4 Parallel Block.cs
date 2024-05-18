@@ -25,7 +25,7 @@ public class ParallelBlocks2 : AlgorithmInterface{
         {
             result[i] = new long[size];
         }
-
+        //Método para multiplicar un bloque específico
         void MultiplyBlock(int rowStart, int colStart, int innerStart)
         {
             for (int row = rowStart; row < Math.Min(rowStart + blockSize, size); row++)

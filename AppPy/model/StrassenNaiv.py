@@ -10,6 +10,7 @@ def strassen_naiv(matrixA, matrixB):
     rows = len(matrixA)
     cols = len(matrixB[0])
     maxIt = len(matrixA[0])
+    #Inicializa la matriz resultado con 0s 
     matrixResult = [[0 for _ in range(cols)] for _ in range(rows)]
     
     # Encuentra la mayor dimensión entre las matrices
@@ -151,7 +152,7 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
         minus(matrixResult22, aux2, matrixResult22, newSize)
         plus(matrixResult22, aux6, matrixResult22, newSize)
 
-        # Llena la matriz resultado
+        # Llena la matriz resultado con los resultados de las matrices resultados auxiliares
         for i in range(newSize):
             for j in range(newSize):
                 matrizResult[i][j] = matrixResult11[i][j]

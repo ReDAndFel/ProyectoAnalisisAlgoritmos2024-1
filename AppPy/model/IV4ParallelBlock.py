@@ -17,6 +17,7 @@ def IV4ParallelBlockImpl(matrix_A, matrix_B):
                 for inner in range(inner_start, min(inner_start + block_size, size)):
                     result[row][inner] += matrix_A[row][col] * matrix_B[col][inner]
 
+    #Inicia tareas de multiplicacion en paralelo
     with ThreadPoolExecutor() as executor:
         futures = []
         for row_start in range(0, size, block_size):

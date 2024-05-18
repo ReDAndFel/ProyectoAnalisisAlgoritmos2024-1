@@ -16,17 +16,21 @@ public class Winograd : AlgorithmInterface
     /// <returns>Matriz resultado de la multiplicación.</returns>
     public static long[][] Original(long[][] A, long[][] B)
     {
+        //Obtiene las dimensiones de las matrices
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
-        long[][] result = new long[N][];
+        
         int i, j, k;
+        //Calcula la paridad de la cantidad de columnas de la matriz A.
         int upsilon = P % 2;
+        //Calcula el número de columnas de la matriz A que se pueden procesar en pares en el algoritmo
         int gamma = P - upsilon;
+        //Inicializa los arreglos y y z
         long[] y = new long[M];
         long[] z = new long[N];
 
-        // Calculo de y
+        // LLena con 0s el arreglo y
         for (i = 0; i < M; i++)
         {
             long aux = 0;
@@ -37,7 +41,7 @@ public class Winograd : AlgorithmInterface
             y[i] = aux;
         }
 
-        // Calculo de z
+        // LLena con 0s el arreglo z
         for (i = 0; i < N; i++)
         {
             long aux = 0;
@@ -48,41 +52,51 @@ public class Winograd : AlgorithmInterface
             z[i] = aux;
         }
 
-        result = new long[N][];
+        //Inicializa la matriz resultado
+        long[][] result = new long[N][];
         for (i = 0; i < N; i++)
         {
             result[i] = new long[M];
         }
 
+        //Realiza la multiplicación de matrices
+        //Verifica si la cantidad de columnas de la matriz A es impar (upsilon == 1).
         if (upsilon == 1)
         {
-            // P es impar
+            // Si es impar, se ajusta la multiplicación para el último elemento de la fila/columna.
+            //PP almacena el índice de la última columna de la matriz A.
             int PP = P - 1;
             for (i = 0; i < M; i++)
             {
                 for (k = 0; k < N; k++)
                 {
                     long aux = 0;
+                    //Recorre los bloques de las matrices A y B.
                     for (j = 0; j < gamma; j += 2)
                     {
+                        //Realiza la suma de productos para cada bloque de matrices.
                         aux += (A[i][j] + B[j + 1][k]) * (A[i][j + 1] + B[j][k]);
                     }
+                    //Almacena el resultado ajustado restando las sumas auxiliares y agregando el producto del último elemento.
                     result[i][k] = aux - y[i] - z[k] + A[i][PP] * B[PP][k];
                 }
             }
         }
         else
         {
-            // P es par
+            // # Si la cantidad de columnas de la matriz A es par, realiza la multiplicación sin ajustes.
             for (i = 0; i < M; i++)
             {
                 for (k = 0; k < N; k++)
                 {
                     long aux = 0;
+                    //Recorre los bloques de las matrices A y B.
                     for (j = 0; j < gamma; j += 2)
                     {
+                        //Realiza la suma de productos para cada bloque de matrices.
                         aux += (A[i][j] + B[j + 1][k]) * (A[i][j + 1] + B[j][k]);
                     }
+                    //Almacena el resultado ajustado restando las sumas auxiliares y agregando el producto del último elemento.
                     result[i][k] = aux - y[i] - z[k];
                 }
             }

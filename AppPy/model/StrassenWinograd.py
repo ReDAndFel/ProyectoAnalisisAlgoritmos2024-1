@@ -8,6 +8,7 @@ def strassen_winograd(matrixA, matrixB):
     rows = len(matrixA)
     cols = len(matrixB[0])
     maxIt = len(matrixA[0])
+    #Inicializacion de la matriz resultado con 0s
     matrixResult = [[0 for _ in range(cols)] for _ in range(rows)]
     # Encuentra la mayor dimensión entre las matrices
     maxSize = max(rows, maxIt)
@@ -156,7 +157,7 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
         plus(helper1, aux7, matrixResult21, newSize)
         plus(aux9, aux5, matrixResult22, newSize)
 
-        # Llena la matriz resultado
+        # Llena la matriz resultado con los resultados de las matrices resultado auxiliares
         for i in range(newSize):
             for j in range(newSize):
                 matrixResult[i][j] = matrixResult11[i][j]

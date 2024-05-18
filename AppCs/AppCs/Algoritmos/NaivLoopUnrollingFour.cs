@@ -13,9 +13,11 @@ public class NaivLoopUnrollingFour : AlgorithmInterface{
     /// <returns>Matriz resultado de la multiplicación de A y B.</returns>
     public static long[][] Multiplication(long[][] A, long[][] B)
     {
+        //Obtiene las cantidades de columnas y filas
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
+        //Inicializa con ceros la matriz result
         long[][] result = new long[N][];
         for (int o = 0; o < N; o++)
         {
@@ -24,6 +26,7 @@ public class NaivLoopUnrollingFour : AlgorithmInterface{
         int i, j, k;
         long aux;
 
+        //Realiza la multiplicación de matrices utilizando bucles desenrollados
         if (P % 4 == 0)
         {
             // Si P es divisible por 4
@@ -32,10 +35,13 @@ public class NaivLoopUnrollingFour : AlgorithmInterface{
                 for (j = 0; j < M; j++)
                 {
                     aux = 0;
+                    
                     for (k = 0; k < P; k += 4)
                     {
+                        // Realiza la multiplicación de 4 elementos a la vez y suma los resultados
                         aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
+                    // Añade el producto de los elementos
                     result[i][j] = aux;
                 }
             }
@@ -49,10 +55,13 @@ public class NaivLoopUnrollingFour : AlgorithmInterface{
                 for (j = 0; j < M; j++)
                 {
                     aux = 0;
+                    
                     for (k = 0; k < PP; k += 4)
-                    {
+                    {   
+                        // Realiza la multiplicación de 4 elementos a la vez y suma los resultados
                         aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
+                    // Añade el producto de los elementos
                     result[i][j] = aux + A[i][PP] * B[PP][j];
                 }
             }
@@ -69,8 +78,10 @@ public class NaivLoopUnrollingFour : AlgorithmInterface{
                     aux = 0;
                     for (k = 0; k < PP; k += 4)
                     {
+                        // Realiza la multiplicación de 4 elementos a la vez y suma los resultados
                         aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
+                    // Añade el producto de los elementos
                     result[i][j] = aux + A[i][PP] * B[PP][j] + A[i][PPP] * B[PPP][j];
                 }
             }
@@ -88,8 +99,10 @@ public class NaivLoopUnrollingFour : AlgorithmInterface{
                     aux = 0;
                     for (k = 0; k < PP; k += 4)
                     {
+                        // Realiza la multiplicación de 4 elementos a la vez y suma los resultados
                         aux += A[i][k] * B[k][j] + A[i][k + 1] * B[k + 1][j] + A[i][k + 2] * B[k + 2][j] + A[i][k + 3] * B[k + 3][j];
                     }
+                    // Añade el producto de los elementos
                     result[i][j] = aux + A[i][PP] * B[PP][j] + A[i][PPP] * B[PPP][j] + A[i][PPPP] * B[PPPP][j];
                 }
             }

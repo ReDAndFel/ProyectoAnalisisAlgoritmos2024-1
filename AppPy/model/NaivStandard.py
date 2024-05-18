@@ -10,6 +10,7 @@ def naiv_standard(matrizA, matrizB, matrizResultado, cantidadFilasMatrices, cant
             # Realiza la multiplicación de elementos y suma los resultados
             for k in range(cantidadMaximaIteracionesFilaColumna):
                 aux += matrizA[i][k] * matrizB[k][j]
+            # Añade el producto de los elementos    
             matrizResultado[i][j] = aux
             
     return matrizResultado

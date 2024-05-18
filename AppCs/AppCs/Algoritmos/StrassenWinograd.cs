@@ -5,12 +5,13 @@ using services.interfaces;
 
 public class StrassenWinograd : AlgorithmInterface
 {
-
     public static long[][] StrassenWinogradMultiply(long[][] matrixA, long[][] matrixB)
     {
+        //Obtiene las dimensiones de las matrices
         int rows = matrixA.Length;
         int cols = matrixB[0].Length;
         int maxIt = matrixA[0].Length;
+        //Inicializacion de la matriz resultado
         long[][] matrixResult = new long[rows][];
 
         for (int i = 0; i < rows; i++)
@@ -18,18 +19,22 @@ public class StrassenWinograd : AlgorithmInterface
             matrixResult[i] = new long[cols];
         }
 
+        //Encuentra la mayor dimensión entre las matrices
         int maxSize = Math.Max(rows, maxIt);
         maxSize = Math.Max(maxSize, rows);
 
+        //Asegura que la dimensión sea al menos 16 para la implementación de Strassen-Winograd
         if (maxSize < 16)
         {
             maxSize = 16;
         }
 
+        //Calcula los parámetros necesarios para el algoritmo de Strassen-Winograd
         int k = (int)Math.Floor(Math.Log(maxSize) / Math.Log(2)) - 4;
         int m = (int)(maxSize * Math.Pow(2, -k)) + 1;
         int newSize = m * (int)Math.Pow(2, k);
 
+        //Inicializa las nuevas matrices A y B y la matriz resultado auxiliar
         long[][] newMatrixA = new long[newSize][];
         long[][] newMatrixB = new long[newSize][];
         long[][] matrixResultAux = new long[newSize][];
@@ -41,6 +46,7 @@ public class StrassenWinograd : AlgorithmInterface
             matrixResultAux[i] = new long[newSize];
         }
 
+        //copia matrixA y matrixB
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
@@ -50,8 +56,10 @@ public class StrassenWinograd : AlgorithmInterface
             }
         }
 
+        //Realiza la multiplicación de matrices utilizando el algoritmo de Strassen-winograd
         matrixResultAux = StrassenWinogradStep(newMatrixA, newMatrixB, matrixResultAux, newSize, m);
 
+        //Llena la matriz resultante con los valores calculados        
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
@@ -63,13 +71,16 @@ public class StrassenWinograd : AlgorithmInterface
         return matrixResult;
     }
 
+    //Paso recursivo del algoritmo de multiplicación de matrices Strassen-winograd
     private static long[][] StrassenWinogradStep(long[][] matrixA, long[][] matrixB, long[][] matrixResult, int size, int m)
     {
+        //Calcula el nuevo tamaño
         int newSize = 0;
         if (size % 2 == 0 && size > m)
         {
             newSize = size / 2;
-
+            
+            //Secciona las matrices en submatrices
             long[][] matrixA11 = new long[newSize][];
             long[][] matrixA12 = new long[newSize][];
             long[][] matrixA21 = new long[newSize][];
@@ -129,6 +140,7 @@ public class StrassenWinograd : AlgorithmInterface
                 aux9[i] = new long[newSize];
             }
 
+            //Llena las submatrices con los valores correspondientes de las matrices originales
             for (int i = 0; i < newSize; i++)
             {
                 for (int j = 0; j < newSize; j++)
@@ -145,7 +157,7 @@ public class StrassenWinograd : AlgorithmInterface
                 }
             }
 
-            // Computing the seven aux variables
+            // Calcula las variables auxiliares necesarias para el algoritmo
             Minus(matrixA11, matrixA21, matrixA1, newSize);
             Minus(matrixA22, matrixA1, matrixA2, newSize);
             Minus(matrixB22, matrixB12, matrixB1, newSize);
@@ -164,14 +176,14 @@ public class StrassenWinograd : AlgorithmInterface
             Plus(aux1, aux3, aux8, newSize);
             Plus(aux8, aux4, aux9, newSize);
 
-            // computing the four parts of the result
+            // Calcula las cuatro partes del resultado
             Plus(aux1, aux2, matrixResult11, newSize);
             Plus(aux9, aux6, matrixResult12, newSize);
             Plus(aux8, aux5, helper1, newSize);
             Plus(helper1, aux7, matrixResult21, newSize);
             Plus(aux9, aux5, matrixResult22, newSize);
 
-            // fill results
+            // Llena la matriz resultado con los resultados de las matrices resultado auxiliares
             for (int i = 0; i < newSize; i++)
             {
                 for (int j = 0; j < newSize; j++)
@@ -206,13 +218,14 @@ public class StrassenWinograd : AlgorithmInterface
         }
         else
         {
-            // use naive standard algorithm
+            // usa el algoritmo naivstanndard
             matrixResult = NaiveStandard(matrixA, matrixB, matrixResult, matrixA.Length, matrixB[0].Length, matrixResult.Length);
         }
 
         return matrixResult;
     }
 
+     //Suma de matrices
     private static void Plus(long[][] matrixA, long[][] matrixB, long[][] result, int newSize)
     {
         for (int i = 0; i < newSize; i++)
@@ -224,6 +237,7 @@ public class StrassenWinograd : AlgorithmInterface
         }
     }
 
+     //Resta de matrices
     private static void Minus(long[][] matrixA, long[][] matrixB, long[][] result, int newSize)
     {
         for (int i = 0; i < newSize; i++)
@@ -234,7 +248,8 @@ public class StrassenWinograd : AlgorithmInterface
             }
         }
     }
-
+    
+    //algoritmo naivstandard
     private static long[][] NaiveStandard(long[][] matrixA, long[][] matrixB, long[][] matrixResult, int rowsA, int colsB, int rowsResult)
     {
         for (int i = 0; i < rowsA; i++)
@@ -244,6 +259,7 @@ public class StrassenWinograd : AlgorithmInterface
                 matrixResult[i][j] = 0;
                 for (int k = 0; k < rowsResult; k++)
                 {
+                    //Realiza la multiplicación de elementos y suma los resultados
                     matrixResult[i][j] += matrixA[i][k] * matrixB[k][j];
                 }
             }

@@ -5,28 +5,33 @@ public class StrassenNaive : AlgorithmInterface
 {
     public static long[][] StrassenNaivMultiply(long[][] matrixA, long[][] matrixB)
     {
+        //Obtiene las dimensiones de las matrices
         int rows = matrixA.Length;
         int cols = matrixB[0].Length;
         int maxIt = matrixA[0].Length;
+        //Inicializa la matriz resultado con 0s 
         long[][] matrixResult = new long[rows][];
 
         for (int i = 0; i < rows; i++)
         {
             matrixResult[i] = new long[cols];
         }
-
+        //Encuentra la mayor dimensión entre las matrices
         int maxSize = Math.Max(rows, maxIt);
         maxSize = Math.Max(maxSize, rows);
 
+        //Asegura que la dimensión sea al menos 16 para la implementación de Strassen
         if (maxSize < 16)
         {
             maxSize = 16;
         }
-
+        
+        //Calcula los parámetros necesarios para el algoritmo de Strassen
         int k = (int)Math.Floor(Math.Log(maxSize) / Math.Log(2)) - 4;
         int m = (int)(maxSize * Math.Pow(2, -k)) + 1;
         int newSize = m * (int)Math.Pow(2, k);
 
+        //Inicializa las nuevas matrices A y B y la matriz resultado auxiliar
         long[][] newMatrixA = new long[newSize][];
         long[][] newMatrixB = new long[newSize][];
         long[][] matrixResultAux = new long[newSize][];
@@ -37,7 +42,8 @@ public class StrassenNaive : AlgorithmInterface
             newMatrixB[i] = new long[newSize];
             matrixResultAux[i] = new long[newSize];
         }
-
+        
+        //copia la matrixA y matrixB
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
@@ -47,8 +53,10 @@ public class StrassenNaive : AlgorithmInterface
             }
         }
 
+        //Realiza la multiplicación de matrices utilizando el algoritmo de Strassen
         matrixResultAux = StrassenNaivStep(newMatrixA, newMatrixB, matrixResultAux, newSize, m);
 
+        //Llena la matriz resultante con los valores calculados
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
@@ -60,13 +68,16 @@ public class StrassenNaive : AlgorithmInterface
         return matrixResult;
     }
 
+    //Paso recursivo del algoritmo de multiplicación de matrices Strassen.
     private static long[][] StrassenNaivStep(long[][] matrixA, long[][] matrixB, long[][] matrixResult, int size, int m)
     {
+        //Calcula el nuevo tamaño
         int newSize = 0;
         if (size % 2 == 0 && size > m)
         {
             newSize = size / 2;
-
+            
+            //Secciona las matrices en submatrices
             long[][] matrixA11 = new long[newSize][];
             long[][] matrixA12 = new long[newSize][];
             long[][] matrixA21 = new long[newSize][];
@@ -88,7 +99,7 @@ public class StrassenNaive : AlgorithmInterface
             long[][] aux5 = new long[newSize][];
             long[][] aux6 = new long[newSize][];
             long[][] aux7 = new long[newSize][];
-
+            
             for (int i = 0; i < newSize; i++)
             {
                 matrixA11[i] = new long[newSize];
@@ -114,6 +125,7 @@ public class StrassenNaive : AlgorithmInterface
                 aux7[i] = new long[newSize];
             }
 
+            //Llena las submatrices matrix
             for (int i = 0; i < newSize; i++)
             {
                 for (int j = 0; j < newSize; j++)
@@ -130,7 +142,7 @@ public class StrassenNaive : AlgorithmInterface
                 }
             }
 
-            // Computing the seven aux variables
+            // Calcula las siete variables auxiliares
             Plus(matrixA11, matrixA22, helper1, newSize);
             Plus(matrixB11, matrixB22, helper2, newSize);
             StrassenNaivStep(helper1, helper2, aux1, newSize, m);
@@ -149,7 +161,7 @@ public class StrassenNaive : AlgorithmInterface
             Plus(matrixB21, matrixB22, helper2, newSize);
             StrassenNaivStep(helper1, helper2, aux7, newSize, m);
 
-            // Computing the four parts of the result
+            // Calcula las cuatro partes del resultado
             Plus(aux1, aux4, matrixResult11, newSize);
             Minus(matrixResult11, aux5, matrixResult11, newSize);
             Plus(matrixResult11, aux7, matrixResult11, newSize);
@@ -159,7 +171,7 @@ public class StrassenNaive : AlgorithmInterface
             Minus(matrixResult22, aux2, matrixResult22, newSize);
             Plus(matrixResult22, aux6, matrixResult22, newSize);
 
-            // fill results
+            // Llena la matriz resultado con los resultados de las matrices resultados auxiliares
             for (int i = 0; i < newSize; i++)
             {
                 for (int j = 0; j < newSize; j++)
@@ -194,13 +206,14 @@ public class StrassenNaive : AlgorithmInterface
         }
         else
         {
-            // Use naivstandard algoritm
+            // Usa el algoritmo naivstandard
             matrixResult = NaivStandard(matrixA, matrixB, matrixResult, matrixA.Length, matrixB[0].Length, matrixResult.Length);
         }
 
         return matrixResult;
     }
 
+    //Suma de matrices
     private static void Plus(long[][] matrixA, long[][] matrixB, long[][] result, int newSize)
     {
         for (int i = 0; i < newSize; i++)
@@ -211,7 +224,8 @@ public class StrassenNaive : AlgorithmInterface
             }
         }
     }
-
+    
+    //Resta de matrices
     private static void Minus(long[][] matrixA, long[][] matrixB, long[][] result, int newSize)
     {
         for (int i = 0; i < newSize; i++)
@@ -223,6 +237,7 @@ public class StrassenNaive : AlgorithmInterface
         }
     }
 
+    //algoritmo naivstandard
     private static long[][] NaivStandard(long[][] matrixA, long[][] matrixB, long[][] matrixResult, int rowsA, int colsB, int rowsResult)
     {
         for (int i = 0; i < rowsA; i++)
@@ -232,6 +247,7 @@ public class StrassenNaive : AlgorithmInterface
                 matrixResult[i][j] = 0;
                 for (int k = 0; k < rowsResult; k++)
                 {
+                    //Realiza la multiplicación de elementos y suma los resultados
                     matrixResult[i][j] += matrixA[i][k] * matrixB[k][j];
                 }
             }

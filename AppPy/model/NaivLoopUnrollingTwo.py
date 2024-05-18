@@ -17,6 +17,7 @@ def NaivLoopUnrollingTwoImpl(matrix_A, matrix_B):
                 for k in range(0, P, 2):
                     # Realiza la multiplicación de 2 elementos a la vez y suma los resultados
                     aux += matrix_A[i][k] * matrix_B[k][j] + matrix_A[i][k + 1] * matrix_B[k + 1][j]
+                # Añade el producto de los elementos
                 Result[i][j] = aux
     else:
         # Si el número de columnas de A es impar
@@ -27,6 +28,7 @@ def NaivLoopUnrollingTwoImpl(matrix_A, matrix_B):
                 for k in range(0, PP, 2):
                     # Realiza la multiplicación de 2 elementos a la vez y suma los resultados
                     aux += matrix_A[i][k] * matrix_B[k][j] + matrix_A[i][k + 1] * matrix_B[k + 1][j]
+                # Añade el producto de los elementos
                 Result[i][j] = aux + matrix_A[i][PP] * matrix_B[PP][j]
 
     return Result

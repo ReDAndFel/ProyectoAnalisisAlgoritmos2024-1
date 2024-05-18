@@ -18,15 +18,17 @@ class NaivOnArray : AlgorithmInterface {
     /// <returns>Matriz donde se almacenará el resultado.</returns>
     public long[][] naivOnArray(long[][] A, long[][] B)
     {
+        //Obtiene las cantidades de columnas y filas   
         int N = A.Length;
         int P = B[0].Length;
         int M = B.Length;
+        //Inicializa con 0 la matriz resultado
         long[][] result = new long[N][];
         for (int o = 0; o < N; o++)
         {
             result[o] = new long[M];
         }
-        
+        // Realiza la multiplicación de matrices
         for (int i = 0; i < N; i++)
         {
             result[i] = new long[M];
@@ -34,7 +36,8 @@ class NaivOnArray : AlgorithmInterface {
             {
                 result[i][j] = 0;
                 for (int k = 0; k < P; k++)
-                {
+                {   
+                    //Realiza la multiplicación de elementos y suma los resultados
                     result[i][j] += A[i][k] * B[k][j];
                 }
             }

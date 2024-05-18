@@ -43,6 +43,7 @@ public class EnhancedParallelBlocks2 : AlgorithmInterface{
 
         // Iniciar tareas de multiplicación en paralelo
         List<Task> tasks = new List<Task>();
+        // Iterar sobre los bloques superiores
         for (int rowStart = 0; rowStart < size / 2; rowStart += blockSize)
         {
             for (int colStart = 0; colStart < size; colStart += blockSize)
@@ -56,7 +57,7 @@ public class EnhancedParallelBlocks2 : AlgorithmInterface{
                 }
             }
         }
-
+        // Iterar sobre los bloques inferiores
         for (int rowStart = size / 2; rowStart < size; rowStart += blockSize)
         {
             for (int colStart = 0; colStart < size; colStart += blockSize)

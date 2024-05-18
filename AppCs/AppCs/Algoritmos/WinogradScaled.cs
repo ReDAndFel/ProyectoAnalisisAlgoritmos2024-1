@@ -16,10 +16,16 @@ public class WinogradScaled : AlgorithmInterface
     /// <returns>Matriz resultado de la multiplicación.</returns>
     public static long[][] Multiplication(long[][] A, long[][] B)
     {
+        //Obtiene las dimensiones de las matrices
         int N = A.Length;
         int P = B[0].Length;
         int M = A[0].Length;
+        //Inicializa la matriz resultado
         long[][] result = new long[N][];
+        for (int j = 0; j < N; j++)
+        {
+            result[j] = new long[M];
+        }
         int i;
 
         // Crear copias escaladas de A y B
