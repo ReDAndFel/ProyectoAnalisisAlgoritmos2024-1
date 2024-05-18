@@ -4,56 +4,60 @@ from .NaivStandard import naiv_standard
 
 
 def strassen_winograd(matrixA, matrixB):
-
+    # Obtiene las dimensiones de las matrices
     rows = len(matrixA)
     cols = len(matrixB[0])
     maxIt = len(matrixA[0])
     matrixResult = [[0 for _ in range(cols)] for _ in range(rows)]
-
+    # Encuentra la mayor dimensión entre las matrices
     maxSize = max(rows, maxIt)
     maxSize = max(maxSize, rows)
 
+    # Asegura que la dimensión sea al menos 16 para la implementación de Strassen-Winograd
     if maxSize < 16:
         maxSize = 16
 
+    # Calcula los parámetros necesarios para el algoritmo de Strassen-Winograd
     k = floor(log(maxSize) / log(2)) - 4
     m = floor(maxSize * pow(2, -k)) + 1
     newSize = m * pow(2, k)
 
+    #Inicializa las nuevas matrices A y B y la matriz resultado auxiliar
     newMatrixA = []
     newMatrixB = []
     matrixResultAux = []
 
-    # fill matrix with 0s
+    # Llena las matrices con 0s
     for i in range(newSize):
         newMatrixA.append([0 for i in range(newSize)])
         newMatrixB.append([0 for i in range(newSize)])
         matrixResultAux.append([0 for i in range(newSize)])
 
-    # copy matrixA and matrixB
+    # copia matrixA y matrixB
     for i in range(rows):
         for j in range(cols):
             newMatrixA[i][j] = matrixA[i][j]
             newMatrixB[i][j] = matrixB[i][j]            
-
+    # Realiza la multiplicación de matrices utilizando el algoritmo de Strassen-winograd
     matrixResultAux = strassen_winograd_step(
         newMatrixA, newMatrixB, matrixResultAux, newSize, m
     )
 
-    #fill matrixResult with matrixResultAux
+    # Llena la matriz resultante con los valores calculados
     for i in range(rows):
         for j in range(cols):
             matrixResult[i][j] = matrixResultAux[i][j]
 
     return matrixResult
 
-
+#Paso recursivo del algoritmo de multiplicación de matrices Strassen-winograd
 def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
-
+    
+    #Calcula el nuevo tamaño
     newSize = 0
     if (size % 2 == 0) and (size > m):
         newSize = size // 2
-
+        # Secciona las matrices en submatrices
         matrixA11 = []
         matrixA12 = []
         matrixA21 = []
@@ -82,8 +86,9 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
         aux8 = []
         aux9 = []
 
-        #fill matrix, aux and helper with 0s
+        # Llena las submatrices matrix,helper y aux con 0s
         for i in range(newSize):
+            
             matrixA11.append([0] * newSize)
             matrixA12.append([0] * newSize)
             matrixA21.append([0] * newSize)
@@ -112,7 +117,7 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
             aux8.append([0] * newSize)
             aux9.append([0] * newSize)
 
-        # fill matrix
+        # Llena las submatrices con los valores correspondientes de las matrices originales
         for i in range(newSize):
             for j in range(newSize):
                 matrixA11[i][j] = matrixA[i][j]
@@ -125,7 +130,7 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
                 matrixB21[i][j] = matrixB[newSize + i][j]
                 matrixB22[i][j] = matrixB[newSize + i][newSize + j]
 
-        # Computing the seven aux variables
+         # Calcula las variables auxiliares necesarias para el algoritmo
         minus(matrixA11, matrixA21, matrixA1, newSize)
         minus(matrixA22, matrixA1, matrixA2, newSize)
         minus(matrixB22, matrixB12, matrixB1, newSize)
@@ -144,14 +149,14 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
         plus(aux1, aux3, aux8, newSize)
         plus(aux8, aux4, aux9, newSize)
 
-        # computing the four parts of the result
+        # Calcula las cuatro partes del resultado
         plus(aux1, aux2, matrixResult11, newSize)
         plus(aux9, aux6, matrixResult12, newSize)
         plus(aux8, aux5, helper1, newSize)
         plus(helper1, aux7, matrixResult21, newSize)
         plus(aux9, aux5, matrixResult22, newSize)
 
-        # fill results
+        # Llena la matriz resultado
         for i in range(newSize):
             for j in range(newSize):
                 matrixResult[i][j] = matrixResult11[i][j]
@@ -169,7 +174,7 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
                 matrixResult[newSize + i][newSize + j] = matrixResult22[i][j]
 
     else:
-        # use naivstanndard algorithm
+        # usa el algoritmo naivstanndard
         matrixResult = naiv_standard(
             matrixA,
             matrixB,
@@ -181,13 +186,13 @@ def strassen_winograd_step(matrixA, matrixB, matrixResult, size, m):
 
     return matrixResult
 
-
+#Suma de matrices
 def plus(matrixA, matrixB, result, newSize):
     for i in range(newSize):
         for j in range(newSize):
             result[i][j] = matrixA[i][j] + matrixB[i][j]
 
-
+#Resta de matrices
 def minus(matrixA, matrixB, result, newSize):
     for i in range(newSize):
         for j in range(newSize):

@@ -6,56 +6,63 @@ from .NaivStandard import naiv_standard
 
 def strassen_naiv(matrixA, matrixB):
 
+    # Obtiene las dimensiones de las matrices
     rows = len(matrixA)
     cols = len(matrixB[0])
     maxIt = len(matrixA[0])
     matrixResult = [[0 for _ in range(cols)] for _ in range(rows)]
-
+    
+    # Encuentra la mayor dimensión entre las matrices
     maxSize = max(rows, maxIt)
     maxSize = max(maxSize, rows)
 
+    # Asegura que la dimensión sea al menos 16 para la implementación de Strassen
     if maxSize < 16:
         maxSize = 16
 
+    # Calcula los parámetros necesarios para el algoritmo de Strassen
     k = floor(log(maxSize) / log(2)) - 4
     m = floor(maxSize * pow(2, -k)) + 1
     newSize = m * pow(2, k)
 
+    #Inicializa las nuevas matrices A y B y la matriz resultado auxiliar
     newMatrixA = []
     newMatrixB = []
     matrixResultAux = []
 
-    # fill matrixA and matrixB with 0s
+    # Llena las matrices con 0s
 
     for i in range(newSize):
         newMatrixA.append([0 for i in range(newSize)])
         newMatrixB.append([0 for i in range(newSize)])
         matrixResultAux.append([0 for i in range(newSize)])
 
-    # copy matrixA and matrixB
+    # copia la matrixA y matrixB
     for i in range(rows):
         for j in range(cols):
             newMatrixA[i][j] = matrixA[i][j]
             newMatrixB[i][j] = matrixB[i][j]
 
+    # Realiza la multiplicación de matrices utilizando el algoritmo de Strassen
     matrixResultAux = strassen_naiv_step(
         newMatrixA, newMatrixB, matrixResultAux, newSize, m
     )
 
-    #fill matrixResult with matrixResultAux
+    # Llena la matriz resultante con los valores calculados
     for i in range(rows):
         for j in range(cols):
             matrixResult[i][j] = matrixResultAux[i][j]
 
     return matrixResult
 
-
+#Paso recursivo del algoritmo de multiplicación de matrices Strassen.
 def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
 
+    #Calcula el nuevo tamaño
     newSize = 0
     if (size % 2 == 0) and (size > m):
         newSize = size // 2
-
+        # Secciona las matrices en submatrices
         matrixA11 = []
         matrixA12 = []
         matrixA21 = []
@@ -78,7 +85,7 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
         aux6 = []
         aux7 = []
 
-        #fill matrix,helper and aux with 0s
+        # Llena las submatrices matrix,helper y aux con 0s
         for i in range(newSize):
             matrixA11.append([0] * newSize)
             matrixA12.append([0] * newSize)
@@ -102,7 +109,7 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
             aux6.append([0] * newSize)
             aux7.append([0] * newSize)
 
-        # fill matrix
+        # Llena las submatrices matrix
         for i in range(newSize):
             for j in range(newSize):
                 matrixA11[i][j] = matrixA[i][j]
@@ -115,7 +122,7 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
                 matrixB21[i][j] = matrixB[newSize + i][j]
                 matrixB22[i][j] = matrixB[newSize + i][newSize + j]
 
-        # Computing the seven aux variables
+        # Calcula las siete variables auxiliares
         plus(matrixA11, matrixA22, helper1, newSize)
         plus(matrixB11, matrixB22, helper2, newSize)
         strassen_naiv_step(helper1, helper2, aux1, newSize, m)
@@ -133,7 +140,8 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
         minus(matrixA12, matrixA22, helper1, newSize)
         plus(matrixB21, matrixB22, helper2, newSize)
         strassen_naiv_step(helper1, helper2, aux7, newSize, m)
-        # Computing the four parts of the result
+
+        # Calcula las cuatro partes del resultado
         plus(aux1, aux4, matrixResult11, newSize)
         minus(matrixResult11, aux5, matrixResult11, newSize)
         plus(matrixResult11, aux7, matrixResult11, newSize)
@@ -143,7 +151,7 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
         minus(matrixResult22, aux2, matrixResult22, newSize)
         plus(matrixResult22, aux6, matrixResult22, newSize)
 
-        # fill results
+        # Llena la matriz resultado
         for i in range(newSize):
             for j in range(newSize):
                 matrizResult[i][j] = matrixResult11[i][j]
@@ -161,7 +169,7 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
                 matrizResult[newSize + i][newSize + j] = matrixResult22[i][j]
 
     else:
-        # Use naivstandard algoritm
+        # Usa el algoritmo naivstandard
         matrizResult = naiv_standard(
             matrixA,
             matrixB,
@@ -173,13 +181,13 @@ def strassen_naiv_step(matrixA, matrixB, matrizResult, size, m):
 
     return matrizResult
 
-
+#Suma de matrices
 def plus(A, B, Result, newSize):
     for i in range(newSize):
         for j in range(newSize):
             Result[i][j] = A[i][j] + B[i][j]
 
-
+#Resta de matrices
 def minus(A, B, Result, newSize):
     for i in range(newSize):
         for j in range(newSize):

@@ -4,6 +4,7 @@ import math
 from .WinogradOriginal import WinogradOriginalImpl
 
 def WinogradScaledImpl(matrix_A, matrix_B):
+    # Obtiene las dimensiones de las matrices
     rows_A = len(matrix_A)
     cols_A = len(matrix_A[0])
     cols_B = len(matrix_B[0])

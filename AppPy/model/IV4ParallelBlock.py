@@ -10,6 +10,7 @@ def IV4ParallelBlockImpl(matrix_A, matrix_B):
     # Inicializar matriz A con ceros
     result = [[0 for _ in range(size)] for _ in range(size)]
     
+    # Método para multiplicar un bloque específico
     def multiply_block(row_start, col_start, inner_start):
         for row in range(row_start, min(row_start + block_size, size)):
             for col in range(col_start, min(col_start + block_size, size)):

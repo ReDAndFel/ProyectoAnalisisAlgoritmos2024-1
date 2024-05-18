@@ -1,8 +1,7 @@
 #Algoritmo basado en el libro METHODS OF MATRIX MULTIPLICATION AN OVERVIEW OF SEVERAL METHODS AND THEIR IMPLEMENTATION y apoyado en IA
 
 def III3SequentialBlockImpl(matrix_A, matrix_B):
-    # Obtener las dimensiones de las matrices
-    
+    # Obtener las dimensiones de las matrices    
     rows_A = len(matrix_A)
     cols_B = len(matrix_B[0])
     cols_A = len(matrix_A[0])

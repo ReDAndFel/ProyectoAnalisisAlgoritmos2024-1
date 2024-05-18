@@ -57,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_AndresFelipeCastroCardona_AndresFelipeGarcia\\AppCs\\AppCs\\AppCs.csproj",
       "projectName": "AppCs",
-      "projectPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\AppCs.csproj",
+      "projectPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_AndresFelipeCastroCardona_AndresFelipeGarcia\\AppCs\\AppCs\\AppCs.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_push\\AppCs\\AppCs\\obj\\",
+      "outputPath": "C:\\Users\\user\\Documents\\Analisis de algoritmos\\ProyectoAlgoritmos_AndresFelipeCastroCardona_AndresFelipeGarcia\\AppCs\\AppCs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
